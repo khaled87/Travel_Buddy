@@ -5,5 +5,5 @@ import travelbuddy.common.BasicQPXRequest;
 
 @Local
 public interface IQPXProxy {
-    String getFlights(BasicQPXRequest qpxr);
+    String getFlightList(BasicQPXRequest qpxr);
 }
