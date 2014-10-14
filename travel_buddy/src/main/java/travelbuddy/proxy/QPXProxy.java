@@ -9,9 +9,13 @@ import travelbuddy.entity.Flight;
 @Stateless
 public class QPXProxy implements IQPXProxy {
 
-    @Override
-    public List<Flight> getFlights(BasicQPXRequest qpxr) {
+    public List<Flight> getFlightList(BasicQPXRequest qpxr) {
         return new ArrayList<>();
+    }
+
+    @Override
+    public String getFlights(BasicQPXRequest qpxr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

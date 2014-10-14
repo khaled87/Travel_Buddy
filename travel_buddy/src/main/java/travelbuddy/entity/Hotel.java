@@ -3,6 +3,6 @@ package travelbuddy.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class Hotel {
+public class Hotel extends AbstractEntity {
     
 }
