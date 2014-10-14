@@ -23,10 +23,22 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+           <dependency>
+	<groupId>org.glassfish</groupId>
+	<artifactId>javax.json</artifactId>
+	<version>1.0.4</version>
+</dependency>
+	
+
+
         </dependencies>
     </dependencyManagement>
     
     <dependencies>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

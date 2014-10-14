@@ -22,9 +22,12 @@ class RequestHandler {
             url = new URL(targetURL);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod(requestMethod.toString());
-
+            //setting content-type is required for Flight API
+            connection.setRequestProperty("Content-Type", "application/json");
+            
             if (urlParameters != null && !"".equals(urlParameters)) {
                 connection.setDoOutput(true);
+                System.out.println("parameters are "  + urlParameters);
                 // Send request parameters
                 DataOutputStream writer;
                 writer = new DataOutputStream(connection.getOutputStream());
@@ -39,11 +42,11 @@ class RequestHandler {
                 String line;
                 response = new StringBuilder();
                 while ((line = rd.readLine()) != null) {
-                    System.out.println("response" + line);
                     response.append(line);
                     response.append('\r');
                 }
             }
+            System.out.println("The Response" + response.toString());
             return response.toString();
         } catch (Exception e) {
             e.printStackTrace();
