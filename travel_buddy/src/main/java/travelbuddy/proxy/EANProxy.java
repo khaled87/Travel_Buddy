@@ -1,7 +1,10 @@
 package travelbuddy.proxy;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import travelbuddy.common.HotelRequest;
+import travelbuddy.entity.Hotel;
 
 @Stateless
 public class EANProxy implements IEANProxy {
@@ -11,5 +14,10 @@ public class EANProxy implements IEANProxy {
         String value = RequestHandler.execute(RequestHandler.RequestMethod.GET, url + hr.toRESTParamString());
         // TODO: convert string value to hotel list
         return value;
+    }
+
+    @Override
+    public List<Hotel> getHotels(HotelRequest hr) {
+        return new ArrayList<>();
     }
 }

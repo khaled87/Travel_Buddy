@@ -2,7 +2,7 @@ package travelbuddy.common;
 
 import java.util.Date;
 
-public class HotelRequest extends BasicRequest {
+public class HotelRequest extends BasicEANRequest {
     private String city;
     private String stateProvinceCode;
     private String countryCode;
