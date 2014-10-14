@@ -1,0 +1,152 @@
+/*
+*  Simple CSS
+*/
+
+root { 
+    display: block;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-image:  url(../img/travel.jpg);
+    background-image:  url(../img/travel2.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius:25px;
+    background-repeat: no-repeat;
+    
+}
+
+header h1{  
+    padding-top: 8em;
+    font-size: 30px;
+    font-family: fantasy;
+    font-style: italic;
+    font-weight: 600;
+    font-variant: small-caps;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+nav ul{
+   margin: o; 
+   float: right; 
+   
+}
+h2{
+   text-align: center; 
+}
+p{
+   text-align: center; 
+}
+
+nav ul li{
+    padding-top: 20em;
+    font-size: 20px;
+    list-style-type: none;
+    display: inline-block;
+    color: white;
+    padding: 5px 15px;
+    margin: 0;
+}
+form {
+  margin: 0;
+  display: inline-block;
+  padding: 5px 15px 5px 200px
+ }
+input,select, button {
+    display: inline-block;
+    list-style-type: none;
+    font-size: inherit;
+    padding: 0.4em 0.5em;
+    margin:0;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    border: 1px solid #f90;
+    background-color: #fff;
+    position:relative;
+ 
+}
+input:focus {
+    outline: none;
+    background-color: #ffa;
+    background-color: rgba(255,255,210,0.5);
+}
+button {
+    margin-left: 0;
+    border-radius: 0 0.0em 0.0em 0;
+    background-color: #aef;
+}
+
+button:active,
+button:focus {
+    background-color: #acf;
+    outline: none;
+}
+
+.darkBG {
+    background: #999;
+}
+
+.darkerBG {
+    background: #666;
+}
+
+.darkestBG {
+    background: #333;
+}
+
+.raw{
+    clear: both; 
+}
+.col{
+    background: #333;
+    border-radius: 5px;
+    padding: .5px;
+    padding: 20px;
+    margin: 10px .5px;
+    width: 33%;
+    float: left;
+}
+footer {
+    clear: both;   
+    text-align: center;
+     
+}
+
+#error {
+    color:  red;
+}
+
+  a.hovertext {
+    position: relative;
+    width: 200px;
+    text-decoration: none !important;
+    text-align: center;
+  }
+  a.hovertext:after {
+    content: attr(title);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.5em 10px;
+    width: 100px;
+    background: rgba(0,0,0,0.8);
+    text-decoration: none !important;
+    color: #fff;
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+  }
+  a.hovertext:hover:after, a.hovertext:focus:after {
+    opacity: 1.0;
+  }
+
+ 
