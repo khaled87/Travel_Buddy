@@ -15,16 +15,18 @@ public class QPXProxy implements IQPXProxy {
     private final String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=";
     private final String ApiKey = "AIzaSyBK9KNDV3W5tIc121fI07eRYDGcT3yGUJU";
 
+    @Override
     public String getFlightList(BasicQPXRequest fr) {
         String value = RequestHandler.execute(RequestHandler.RequestMethod.POST, url + ApiKey, fr.toParam());
         // TODO: convert string value to hotel list
         return value;
     }
 
-    @Override
+    //If the above dont work, then the below will be implemented
+   /* @Override
     public List<Flight> getFlights(BasicQPXRequest qpxr) {
         return new ArrayList<>();
-    }
+    }*/
 
     //The code below is used for testing!
     /* public static void main(String[]args){
@@ -42,3 +44,4 @@ public class QPXProxy implements IQPXProxy {
      prox.getFlightList(qpx);
      }*/
 }
+
