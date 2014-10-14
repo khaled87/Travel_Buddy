@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+     RESTful Web shop
+-->
+<html lang="en" ng-app="Shop">
+    <head>
+        <title>Travel Agency</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../../libs/jquery/jquery.js"></script>
+        <script src="../../libs/angular/angular.js"></script>
+        <script src="../../libs/angular/angular-animate.js"></script>
+        <script src="../../libs/angular/angular-route.js"></script>
+        <script src="../../libs/angular/angular-resource.js"></script>
+        <script src="js/app.js"></script>   
+        <script src="js/controllers.js"></script>  
+        <script src="js/services.js"></script>  
+        <script src="js/filters.js"></script>  
+        <link rel="stylesheet" type="text/css" href="../../libs/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/default.css">
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script  type="text/javascript">
+            $(function () {
+                $("#checkincalendar").datepicker();
+            });
+
+            $(function () {
+                $("#checkoutcalendar").datepicker();
+            });
+
+            document.getElementById('frmsearch').onsubmit = function () {
+                window.location = 'http://www.google.com' + document.getElementById('txtSearch').value;
+                return false;
+            }
+        </script>              
+    </head>
+    <body>
+        <header>
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Sign up</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Log in <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#/authentication">Admin</a></li>
+                                    <li><a href="#">User</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Help <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">How do I create an account?</a></li>
+                                    <li><a href="#">How do I travel on travel Agency AB?</a></li>
+                                    <li><a href="#">See all FAQs</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="navbar-form navbar-left" id ="frmsearch" role="search">
+                            <div class="form-group">
+                                <input type="text" id="txtSearch" class="form-control" placeholder="Google Search...">
+                            </div>
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="http://www.google.com">Sign up</a></li>
+                    <li><a href="#/authentication">Log in</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                </ul>
+            </nav>
+            <script>
+                document.getElementById('frmsearch').onsubmit = function () {
+                window.location = 'http://www.google.com//#q=' + document.getElementById('txtSearch').value;
+                return false;
+                }
+            </script>
+            <h1>WELCOME HOME</h1>
+            <form action="location"  id="search_from">
+                <fieldset>  
+                    <input type="text" autocomplete="off" id="location" name="location"
+                           placeholder="Where do you want to go?" required>
+                    <input type="text" id="checkincalendar" name="checkin"  placeholder="Check In" required />
+                    <input type="text" id="checkoutcalendar" name="checkout"  placeholder="Check Out" required>
+                    <select id="guests" name="guests">
+                        <option value="1"> 1 Guest </option>
+                        <option value="1"> 2 Guests </option>
+                        <option value="1"> 3 Guests </option>
+                        <option value="1"> 4 Guests </option>
+                        <option value="1"> 5 Guests </option>
+                        <option value="1"> 6 Guests </option>
+                        <option value="1"> 7 Guests </option>
+                        <option value="1"> 8 Guests </option>
+                        <option value="1"> 9 Guests </option>
+                        <option value="1"> 10 Guests </option> 
+                        <option value="1"> 11 Guests </option>
+                        <option value="1"> 12 Guests </option>
+                        <option value="1"> 13 Guests </option>
+                        <option value="1"> 14 Guests </option>
+                        <option value="1"> 15 Guests </option>
+                        <option value="1"> 16+ Guests </option>
+                    </select>
+                    <button type="submit"> 
+                        Search
+                    </button>
+                </fieldset>
+            </form> 
+        </header>
+
+    </header>
+    <div class="view-container">
+        <!-- Include the view template for the current route -->
+        <div ng-view ></div>
+    </div>
+    <h2> Travel With Us </h2>
+    <p> With us you can get the best package with the cheapest price.
+        Every thing in one click! </p>
+    <div class ="container">
+        <div class ="row">
+            <div class="col-sm-3 col-lg-6">
+
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="New York"><img src="http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg" class="img-responsive" alt="Responsive"></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="Italy"><img src="http://www.desktopaper.com/wp-content/uploads/new-italy-architecture.jpg" class="img-responsive" alt="Responsive"></a>  
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12"> 
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="Vietnam"> <img src="http://www.hdwallpapersinn.com/wp-content/uploads/2014/08/1498104.jpg" class="img-responsive" alt="Responsive"></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-6"> 
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="Norway"> <img src="http://www.hdwallpapersos.com/wp-content/uploads/2014/07/Arctic-Sea-on-the-coast-of-Norway-wonderful-fullscreen-wallpapers-for-desktop-free.jpg" class="img-responsive" alt="Responsive"></a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12"> 
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="Berlin"><img src="http://travelhdwallpapers.com/wp-content/uploads/2014/03/Brandenburg-Gate-2.jpg" class="img-responsive" alt="Responsive"></a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12"> 
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="Bulgaria"> <img src="http://www.hdwallpapersinn.com/wp-content/uploads/2014/08/1358407606179.jpg" class="img-responsive" alt="Responsive"></a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12"> 
+                <div class="panel-body">
+                    <a class="hovertext" href="#" title="Petra"> <img src="http://cristimoise.files.wordpress.com/2012/11/petra-jordan.jpg" class="img-responsive" alt="Responsive"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Keep Up To Date</h2>
+    <footer>
+        <ul class="socialize">
+            <li><span>Facebook:</span> <a href="https://www.facebook.com">Facebook</a></li>
+            <li><span>Twitter:</span> <a href="https://twitter.com">Twitter</a></li>
+        </ul>
+        <div id="backtotop"><a href="#top" class="topOfPage">To The Top</a></div>
+        © 2014 Travel Agency AB
+    </footer>
+</body>
+</html>
