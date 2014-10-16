@@ -11,7 +11,6 @@ body {
 }
 
 header {
-    background-image:  url(../img/travel.jpg);
     background-image:  url(../img/travel2.jpg);
     background-position: center;
     background-size: cover;
@@ -20,39 +19,62 @@ header {
     
 }
 
+#video{
+    top: 20px;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: auto;
+ 
+      
+}
+
 header h1{  
-    padding-top: 8em;
-    font-size: 30px;
-    font-family: fantasy;
-    font-style: italic;
-    font-weight: 600;
-    font-variant: small-caps;
+    padding-top: 5em;
+    padding-bottom:9.5em;
+    font-size: 45px;
     color: white;
     text-align: center;
     vertical-align: middle;
+    width: 100%;
+    height: auto;
+    position: relative;
+    
 }
 
-nav ul{
-   margin: o; 
-   float: right; 
-   
-}
 h2{
    text-align: center; 
 }
-p{
+h3{
+    position: absolute; 
+   top: 150px; 
+   width: 100%; 
+   color: white;
+   text-align: center; 
+    
+}
+h4{
+    position: absolute; 
+   top: 120px; 
+   width: 100%; 
+   color: white;
    text-align: center; 
 }
 
-nav ul li{
-    padding-top: 20em;
-    font-size: 20px;
-    list-style-type: none;
-    display: inline-block;
-    color: white;
-    padding: 5px 15px;
-    margin: 0;
+h5{
+    position: absolute; 
+   top: 150px; 
+   width: 100%; 
+   color: white;
+   text-align: center; 
 }
+
+p{
+   text-align: center; 
+   font-family: cursive;
+   font-size: 20px;
+}
+
 form {
   margin: 0;
   display: inline-block;
@@ -101,17 +123,10 @@ button:focus {
     background: #333;
 }
 
-.raw{
-    clear: both; 
-}
-.col{
-    background: #333;
-    border-radius: 5px;
-    padding: .5px;
-    padding: 20px;
-    margin: 10px .5px;
-    width: 33%;
-    float: left;
+
+.panel-body{
+    padding: 25px 1px 1px 1px;
+    width: 100%;
 }
 footer {
     clear: both;   
@@ -126,16 +141,15 @@ footer {
   a.hovertext {
     position: relative;
     width: 200px;
-    text-decoration: none !important;
-    text-align: center;
+    floar: left;
+     padding-bottom:8.5em;
   }
   a.hovertext:after {
     content: attr(title);
     position: absolute;
     left: 0;
     bottom: 0;
-    padding: 0.5em 10px;
-    width: 100px;
+    width: 350px;
     background: rgba(0,0,0,0.8);
     text-decoration: none !important;
     color: #fff;
@@ -148,5 +162,14 @@ footer {
   a.hovertext:hover:after, a.hovertext:focus:after {
     opacity: 1.0;
   }
+  
+ .socialize{
+	list-style: none;
+}
+
+.socialize li{
+	display: inline;
+}
+
 
  

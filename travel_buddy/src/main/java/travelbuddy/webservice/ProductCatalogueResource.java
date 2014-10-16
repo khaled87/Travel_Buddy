@@ -19,7 +19,7 @@ public class ProductCatalogueResource {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response findAll() {
+    public Response  getHotelList() {
         return Response.ok(new GenericEntity<Collection<Product>>(productCatalogue.findAll()) {
         }).build();
     }
