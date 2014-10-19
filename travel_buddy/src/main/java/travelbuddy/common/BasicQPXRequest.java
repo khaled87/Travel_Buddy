@@ -17,6 +17,7 @@ public class BasicQPXRequest {
     private String solution;
     private String maxPrice;
 
+  
     public String getApiKey() {
         return apiKey;
     }
