@@ -53,7 +53,7 @@ public class ProductCatalogueResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
     public Response create(JsonObject jsonObject) {
-        Product p = new Product(jsonObject.getString("name"), (long) jsonObject.getInt("price"));
+        Product p = new Product(jsonObject.getString("name"), (long) jsonObject.getInt("price"), null, null);
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
@@ -63,8 +63,8 @@ public class ProductCatalogueResource {
     @Path("{id}")
     @Consumes(value = MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
-    public Response updateJson(@PathParam("id") final long id, JsonObject jsonObject) {
-        Product p = new Product(id, jsonObject.getString("name"), (long) jsonObject.getInt("price"));
+    public Response update(@PathParam("id") final long id, JsonObject jsonObject) {
+        Product p = new Product(id, jsonObject.getString("name"), (long) jsonObject.getInt("price"), null, null);
         productCatalogue.update(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
