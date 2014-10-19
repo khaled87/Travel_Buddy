@@ -35,10 +35,13 @@ shop.config(['$routeProvider',
                     templateUrl:'partials/products/product-detail.html',
                     controller:'UpdateProductsController'
                 }).
+                when('/admin', {
+                    templateUrl:'partials/authentication/admin_page.html',
+                    controller:'AdminController'
+                }).
                 otherwise({
                     redirectTo: '/index.html'
                 });
-
     }]);
 
 

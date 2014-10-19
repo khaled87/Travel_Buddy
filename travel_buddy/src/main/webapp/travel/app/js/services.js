@@ -7,7 +7,7 @@ var productCatalogueService = angular.module('ProductCatalogueService', []);
 // Representing the remote RESTful ProductCatalogue
 productCatalogueService.factory('ProductCatalogueProxy', ['$http',
     function($http) {
-        var url = 'http://localhost:8080/jpa_shop_skel/api/v1/products';
+        var url = 'http://localhost:8080/travel_buddy/api/v1/travels';
 
         return {
             findAll: function() {
@@ -30,6 +30,9 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
             },
             count: function() {
                 return $http.get(url + "/count");
+            },
+            getFlightList: function(flightInfo) {
+                return $http.post(url, flightInfo);
             }
         };
     }]);

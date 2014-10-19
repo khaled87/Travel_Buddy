@@ -99,3 +99,15 @@ productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$locatio
         };
     }
 ]);
+
+productCatalogueControllers.controller('AdminController', ['$scope', 
+    function($scope) {
+        $scope.getFlightList = function() {
+            ProductCatalogueProxy.getFlightList($scope.flightInfo).success(function(flightList) {
+                $scope.retrievedFlight = flightList;
+            }).error(function(e) {
+                console.log(e);
+            });
+        };
+    }
+]);

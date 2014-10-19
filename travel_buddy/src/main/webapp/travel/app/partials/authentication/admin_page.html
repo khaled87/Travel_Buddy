@@ -1,16 +1,34 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Admin page</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>Logged in Successfully</div>
-    </body>
-</html>
+<!--Body content-->
+<div>
+   
+    <h2>Admin</h2>
+    <table class="table">
+        <tr>
+            <td>Origin</td>
+            <td><input type="text" ng-model="flightInfo.Origin" value="{{flightInfo.Origin}}" required/></td>
+        </tr>  
+        <tr>
+            <td>Destination</td>
+            <td><input type="text" ng-model="flightInfo.Destination" value="{{flightInfo.Destination}}" required/></td>
+        </tr>
+        <tr>
+            <td>
+                Date
+            </td>
+            <td>
+                <input type="date" ng-model="flightInfo.Date" required/>
+            </td>
+        </tr>
+        <tr>
+            <td> Number of passengers </td>
+            <td>
+                <input type="number" ng-model="{{flightInfo.Passangers}}" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <input type="button" class="btn btn-default" value="Find" ng-click="getFlightList()"/>
+            </td>
+        </tr>
+    </table>
+</div>
