@@ -47,8 +47,22 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
+<<<<<<< HEAD
             <version>2.2.2</version>
             <type>jar</type>
+=======
+        </dependency>
+       <dependency>
+	<groupId>com.googlecode.json-simple</groupId>
+	<artifactId>json-simple</artifactId>
+	<version>1.1.1</version>
+</dependency>
+
+        <dependency>
+            <groupId>com.eclipsesource.minimal-json</groupId>
+            <artifactId>minimal-json</artifactId>
+            <version>0.9.1</version>
+>>>>>>> origin/master
         </dependency>
         <dependency>
             <groupId>javax</groupId>
