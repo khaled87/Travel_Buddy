@@ -1,5 +1,8 @@
 package travelbuddy.proxy;
 
+<<<<<<< HEAD
+import com.google.gson.Gson;
+=======
 import com.eclipsesource.json.JsonArray;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -11,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+>>>>>>> origin/master
 import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -23,7 +27,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.FlightResponse;
+<<<<<<< HEAD
+=======
 import travelbuddy.entity.Flight;
+>>>>>>> origin/master
 
 @Stateless
 public class QPXProxy implements IQPXProxy {

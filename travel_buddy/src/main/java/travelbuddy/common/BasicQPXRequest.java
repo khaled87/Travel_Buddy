@@ -1,6 +1,5 @@
 package travelbuddy.common;
 
-import java.math.BigDecimal;
 import javax.json.Json;
 import javax.json.JsonObject;
 
