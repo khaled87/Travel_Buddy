@@ -4,7 +4,7 @@
  *  The Shop App
  */
 var shop = angular.module('Shop', [
-    'ngRoute', 'base64', 'ngCookies',
+    'ngRoute',
     'ProductCatalogueControllers',
     'ProductCatalogueService'
      // More here
@@ -14,29 +14,26 @@ var shop = angular.module('Shop', [
 shop.config(['$routeProvider',
     function($routeProvider) {  // Injected object $routeProvider
         $routeProvider.
-                when('/products', {
-                    templateUrl: 'partials/products/products.html',
-                    controller: 'ProductListCtrl'
+               
+                 when('/authentication', {
+                    templateUrl: 'partials/authentication/authentication.html'
+                   // controller: 'AuthenticationCtrl'
                 }).
-                when('/products/:id', {
-                    templateUrl: 'partials/products/product-detail.html',
-                    controller: 'ProductDetailCtrl'
-                }).
-                when('/product', {
-                    templateUrl: 'partials/products/product-new.html',
-                    controller: 'ProductNewCtrl'
-                }).  
                 when('/customers', {
-                    templateUrl: 'partials/customers/customers.html'
-                    //controller: Not used
+                    templateUrl: 'partials/customers/customers.html',
+                    controller: 'homeCtrl'
                 }).
                 when('/orders', {
                     templateUrl: 'partials/orders/orders.html'
-                    //controller: Not used
+                    //controller: 
                 }).
-                when('/auth', {
-                    templateUrl: 'auth.html',
-                    controller: 'LoginCtrl'
+                when('/newProduct', { 
+                    templateUrl: 'partials/products/product-new.html',
+                    controller: 'NewProductsController'
+                }).
+                when('/updateProduct/:id', {
+                    templateUrl:'partials/products/product-detail.html',
+                    controller:'UpdateProductsController'
                 }).
                 otherwise({
                     redirectTo: '/index.html'
@@ -45,3 +42,6 @@ shop.config(['$routeProvider',
     }]);
 
 
+shop.controller('homeCtrl', ['$scope', function($scope) {
+    $scope.data = "Home data";
+}]);

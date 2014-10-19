@@ -20,6 +20,9 @@
         <link rel="stylesheet" type="text/css" href="css/default.css">
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script  type="text/javascript">
             $(function () {
                 $("#checkincalendar").datepicker();
@@ -59,7 +62,7 @@
     <body>
 
         <header>
-            <video id="video" height="340" autoplay="autoplay" loop="loop" preload="auto">
+            <video controls muted id="video" height="340" autoplay="autoplay" loop="loop" preload="auto">
                 <source src="Videos/Travel_agency.mp4" type="video/mp4" > <h1 class="uppercase text-jumbo text-contrast row-space-1">TRAVEL BUDDY</h1>
             </video>
             <h1 class="uppercase text-jumbo text-contrast row-space-1">TRAVEL BUDDY
@@ -67,13 +70,22 @@
             <br/> Explore the most beautiful places around the world.
             </h1>
         </header>
-        <div class="view-container">
-            <!-- Include the view template for the current route -->
+        <nav class="navbar navbar-default" role="navigation">
+            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="#/authentication">Sign In</a>
+            <a class="navbar-brand" href="#/customers">Customers</a>
+            <a class="navbar-brand" href="#/orders">Orders</a>
+        </nav>
+               
+      <div class="view-container">
+        
+           <!-- Include the view template for the current route -->
             <div ng-view ></div>
-        </div>
+      </div>
         <h2> Travel With Us </h2>
         <p> With us you can get the best package with the cheapest price.
             Every thing in one click! </p>
+  
         <div class ="container">
             <div class ="row">
                 <div class="col-sm-3 col-lg-6">

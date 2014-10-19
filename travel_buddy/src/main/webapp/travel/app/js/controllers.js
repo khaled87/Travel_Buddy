@@ -15,8 +15,8 @@ productCatalogueControllers.controller('NavigationCtrl', ['$scope', '$location',
         };
     }]);
 
-productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'ProductCatalogueProxy',
-    function($scope, ProductCatalogueProxy) {
+productCatalogueControllers.controller('AuthenticationCtrl', ['$scope', 'AuthenticationCtrlProxy',
+    function($scope, AuthenticationCtrlProxy) {
 
         $scope.pageSize = '7';
         $scope.currentPage = 0;
