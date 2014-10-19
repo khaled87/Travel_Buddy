@@ -23,46 +23,15 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-            <dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-    <version>2.3</version>
-</dependency>
-           <dependency>
-	<groupId>org.glassfish</groupId>
-	<artifactId>javax.json</artifactId>
-	<version>1.0.4</version>
-</dependency>
-	
-
-
         </dependencies>
     </dependencyManagement>
     
     <dependencies>
         <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-<<<<<<< HEAD
             <version>2.2.2</version>
             <type>jar</type>
-=======
-        </dependency>
-       <dependency>
-	<groupId>com.googlecode.json-simple</groupId>
-	<artifactId>json-simple</artifactId>
-	<version>1.1.1</version>
-</dependency>
-
-        <dependency>
-            <groupId>com.eclipsesource.minimal-json</groupId>
-            <artifactId>minimal-json</artifactId>
-            <version>0.9.1</version>
->>>>>>> origin/master
         </dependency>
         <dependency>
             <groupId>javax</groupId>
