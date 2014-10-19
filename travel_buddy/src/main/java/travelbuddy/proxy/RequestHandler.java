@@ -2,6 +2,9 @@ package travelbuddy.proxy;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.json.JsonObject;
 
 class RequestHandler {
 
@@ -46,8 +49,12 @@ class RequestHandler {
                     response.append('\r');
                 }
             }
-            System.out.println("The Response" + response.toString());
+            List<String> flight = new ArrayList<>();
+            flight.add(response.toString());
+            flight.parallelStream();
+           // System.out.println("The Response" + response);
             return response.toString();
+            
         } catch (Exception e) {
             e.printStackTrace();
             return null;
