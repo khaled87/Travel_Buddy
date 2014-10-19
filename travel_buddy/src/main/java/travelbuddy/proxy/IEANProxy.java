@@ -2,8 +2,9 @@ package travelbuddy.proxy;
 
 import javax.ejb.Local;
 import travelbuddy.common.HotelRequest;
+import travelbuddy.common.HotelResponse;
 
 @Local
 public interface IEANProxy {
-    String getHotels(HotelRequest hr);
+    HotelResponse getHotels(HotelRequest hr);
 }

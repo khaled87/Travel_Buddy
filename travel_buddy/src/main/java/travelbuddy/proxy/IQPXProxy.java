@@ -2,8 +2,9 @@ package travelbuddy.proxy;
 
 import javax.ejb.Local;
 import travelbuddy.common.BasicQPXRequest;
+import travelbuddy.common.FlightResponse;
 
 @Local
 public interface IQPXProxy {
-    String getFlightList(BasicQPXRequest qpxr);
+    FlightResponse getFlightList(BasicQPXRequest qpxr);
 }
