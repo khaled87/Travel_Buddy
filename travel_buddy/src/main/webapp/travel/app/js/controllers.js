@@ -24,7 +24,7 @@ productCatalogueControllers.controller('AuthenticationCtrl', ['$scope', 'Authent
                 .success(function(count) {
                     $scope.count = count.value;
                 }).error(function() {
-            console.log("count: error");
+           console.log("count: error");
         });
         getRange();
         $scope.$watch('currentPage', function() {

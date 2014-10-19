@@ -17,7 +17,6 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.stream.JsonParser;
 import javax.ws.rs.core.Request;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.json.simple.JSONArray;

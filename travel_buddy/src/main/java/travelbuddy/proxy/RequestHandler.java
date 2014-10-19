@@ -51,7 +51,7 @@ class RequestHandler {
             }
             List<String> flight = new ArrayList<>();
             flight.add(response.toString());
-            flight.parallelStream();
+            
            // System.out.println("The Response" + response);
             return response.toString();
             
