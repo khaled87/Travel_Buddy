@@ -6,6 +6,7 @@
 package travelbuddy.webservice;
 
 import javax.ejb.EJB;
+import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.FlightResponse;
+import travelbuddy.entity.Product;
 import travelbuddy.proxy.IQPXProxy;
 
 /**
@@ -37,9 +39,17 @@ public class TravelResource {
         fr.setOrigin(jsonObject.getString("origin"));
         fr.setDestination(jsonObject.getString("destination"));
         fr.setAdultCount(jsonObject.getInt("adultCount"));
-        fr.setDate(jsonObject.getString("date"));
+        //fr.setDate(jsonObject.getString("date"));
+        fr.setDate("2014-12-12");
+        fr.setSolution("3");
+        fr.setPreferredCabin("FIRST");
+        fr.setMaxPrice("SEK2000.0");
+        qpxProxy.getFlightList(fr);
         return Response.ok(new GenericEntity<FlightResponse>(qpxProxy.getFlightList(fr)) {
         }).build();
-
+            //return Response.ok(new GenericEntity<Product>(new Product("a", 3, null, null)) {}).build();
+//        JsonObject count = Json.createObjectBuilder().add("value", 1).build();
+//        return Response.ok(new GenericEntity<JsonObject>(count) {
+//        }).build();
     }
 }

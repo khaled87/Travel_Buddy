@@ -5,29 +5,42 @@
     <table class="table">
         <tr>
             <td>Origin</td>
-            <td><input type="text" ng-model="flightInfo.Origin" value="{{flightInfo.Origin}}" required/></td>
+            <td><input type="text" ng-model="flightInfo.origin" value="{{flightInfo.origin}}" required/></td>
         </tr>  
         <tr>
             <td>Destination</td>
-            <td><input type="text" ng-model="flightInfo.Destination" value="{{flightInfo.Destination}}" required/></td>
+            <td><input type="text" ng-model="flightInfo.destination" value="{{flightInfo.destination}}" required/></td>
         </tr>
         <tr>
             <td>
                 Date
             </td>
             <td>
-                <input type="date" ng-model="flightInfo.Date" required/>
+                <input type="date" ng-model="flightInfo.date" required/>
             </td>
         </tr>
         <tr>
             <td> Number of passengers </td>
             <td>
-                <input type="number" ng-model="{{flightInfo.Passangers}}" required/>
+                <input type="number" ng-model="flightInfo.adultCount" required/>
             </td>
         </tr>
         <tr>
             <td>
                  <input type="button" class="btn btn-default" value="Find" ng-click="getFlightList()"/>
+            </td>
+        </tr>
+        <tr ng-repeat="tripOption in flightInfo.trips.tripOption" ng-class-odd="'odd'" 
+            ng-class-even="'even'" >
+            <td>
+                <table>
+                    <tr  ng-repeat="slice in tripOption.slice" ng-class-odd="'odd'" 
+            ng-class-even="'even'" >
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>

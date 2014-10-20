@@ -5,7 +5,7 @@ import javax.json.JsonObject;
 
 public class BasicQPXRequest {
 
-    private final String apiKey = "AIzaSyBK9KNDV3W5tIc121fI07eRYDGcT3yGUJU";
+    //private final String apiKey = "AIzaSyBK9KNDV3W5tIc121fI07eRYDGcT3yGUJU";
     private int adultCount;
     private int childCount;
     private int infantInSeatCount;
@@ -17,9 +17,9 @@ public class BasicQPXRequest {
     private String maxPrice;
 
   
-    public String getApiKey() {
-        return apiKey;
-    }
+//    public String getApiKey() {
+//        return apiKey;
+//    }
 
     public int getAdultCount() {
         return adultCount;

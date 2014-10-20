@@ -5,6 +5,7 @@
  */
 package travelbuddy.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +13,12 @@ import java.util.List;
  *
  * @author Ali
  */
-public class FlightResponse {
+public class FlightResponse implements Serializable {
 
     private String kind;
     private Trips trips;
+    
+    public FlightResponse() {}
 
     public FlightResponse(String kind) {
         this.kind = kind;
@@ -39,8 +42,6 @@ public class FlightResponse {
         private String kind;
         private Data data;
         private List<Tripoption> tripOption = new ArrayList<>();
-        Leg leg = new Leg();
-        private String s = leg.getArrivalTime();
 
         @Override
         public String toString() {
@@ -71,13 +72,6 @@ public class FlightResponse {
             this.tripOption = tripOption;
         }
 
-        public String getS() {
-            return s;
-        }
-
-        public void setS(String s) {
-            this.s = s;
-        }
     }
 
     public static class Data {
