@@ -1,30 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <!-- Ignite UI Required Combined CSS Files -->
+        <link href="http://cdn-na.infragistics.com/igniteui/2014.2/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+        <link href="http://cdn-na.infragistics.com/igniteui/2014.2/latest/css/structure/infragistics.css" rel="stylesheet" />
 
-<!--Body content-->
-<div>
-    <h2>Products</h2>
-    <a href="#/product" >New Product</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <td>Id</td><td>Name</td><td>Price</td>
-            </tr>
-        </thead>
-        <tr ng-repeat="product in products" ng-class-odd="'odd'" 
-            ng-class-even="'even'" >
-            <td>{{product.id}}</td>
-            <td><a href="#/products/{{product.id}}">{{product.name}}</a></td>
-            <td>{{product.price}} </td>
-        </tr>
-    </table>
-    <div class="btn-group">
-        <button class="btn btn-default" ng-disabled="currentPage === 0" 
-                ng-click="currentPage = currentPage - 1">
-            Previous
-        </button>
-        <button class="btn btn-default" 
-                ng-disabled="currentPage >= count / pageSize - 1"
-                ng-click="currentPage = currentPage + 1"> 
-            Next
-        </button>
-    </div>
-</div>
+        <!-- Modernizr/jQuery/jQuery UI -->
+        <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+        <!-- Ignite UI Required Combined JavaScript Files -->
+        <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.core.js"></script>
+        <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.lob.js"></script>
+    </head>
+    <body>
+        <style type="text/css">
+            .dashboard {
+                position: relative;
+                width: 100%;
+                height: 650px;
+            }
+
+            #dashboard h4 {
+                position: absolute; 
+                font-size: 18px;
+                text-align: center;
+                color: white;
+            }
+
+            #dashboard h3 {
+                text-align: center;
+            }
+
+            #dashboard .crop img {
+                width: 100%;
+            }
+
+            #dashboard .crop {
+                margin: 2.5%;
+                position: absolute; 
+                width: 95%;
+                height: 90%;
+                overflow: hidden;
+            }
+
+            #dashboard .ui-igtile-maximized img {
+                width: 60%;
+                height: 50%;
+                position: static;
+                float: left;
+                //margin: 0 0 20px 0;
+            }
+
+            #dashboard .ui-igtilemanager-right img {
+                width: 250px;
+                height: 250px;
+                //margin-left: -30px;
+                //margin-top: 15px;
+            }
+
+            .ui-igtile-inner-container {
+                padding:0px;
+                height:100%;
+                border:none;
+                background-color: transparent;
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing:border-box;
+                box-sizing:border-box;
+                overflow:hidden;
+            }
+
+            .ui-igtile {
+                background-color: inherit;
+                padding:0px;
+                border:none;
+                z-index:1;
+                overflow:hidden
+            }
+
+            .ui-igtile-maximized .text {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .ui-igtile-maximized div {
+                text-align: left;
+            }
+
+            .linkedIn, .skills {
+                word-wrap: break-word;
+            }
+
+            @media all and (max-width: 430px) {
+
+                #dashboard h4 {
+                    margin: 0 0 5px;
+                    height: 50px;
+                } 
+
+                #dashboard h3 {
+                    clear: both;
+                    margin: 0 0 5px;
+                }
+
+                #dashboard img {
+                    width: 100%;
+                    height: 150px;
+                    margin:0;
+                    position: static;
+                    float: none;
+                }
+
+                .ui-igtile-maximized .text {
+                    font-size: 16px;
+                    margin-top: 10px;
+                }
+
+                #dashboard .ui-igtile-maximized img {
+                    width: 100%;
+                    height: 175px;
+                    margin: 0;
+                    float: none;
+                }
+
+                #dashboard .ui-igtilemanager-right img {
+                    width: 100%;
+                    height: 80px;
+                    margin: 0;
+                }
+            }
+
+            #dashboard .color {
+                color: blue;
+            }
+        </style>
+
+        <div id="dashboard" class="dashboard">
+
+        </div>
+
+        <script type="text/javascript">
+            var dataSource = [
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'},
+                {name: 'Berlin', description: 'Something', picture: 'http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg'}
+            ];
+            $(function () {
+                $.get("product-detail.html", function (data) {
+                    var options = {
+                        marginLeft: 0,
+                        marginTop: 0,
+                        rightPanelTilesWidth: 250,
+                        rightPanelTilesHeight: 250,
+                        dataSource: dataSource,
+                        maximizedState: data,
+                        minimizedState: '<div class="crop"><img src="${picture}" class="minimized" title="${name}" alt="error"/></div><h4>${name}</h4>',
+                        rendered: function (event, ui) {
+                            $('#dashboard').find('ul').igTree();
+                        }
+                    };
+
+                    $('#dashboard').igTileManager(options);
+                });
+            });
+            //'<h3>${name}</h3><img src="${picture}" title="${name}" alt="error"/><div id="map-canvas"></div><p class="text">${description}</p>',
+        </script>
+    </body>
+</html>
