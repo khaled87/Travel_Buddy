@@ -1,47 +1,102 @@
 <!--Body content-->
 <div>
-   
-    <h2>Admin</h2>
-    <table class="table">
+    <table>
         <tr>
-            <td>Origin</td>
-            <td><input type="text" ng-model="flightInfo.origin" value="{{flightInfo.origin}}" required/></td>
+            <td  style="width: 100px; height: 30px;">Origin</td>
+            <td><input  style="width: 150px; height: 50px;" type="text" ng-model="flightInfo.origin" value="{{flightInfo.origin}}" required/></td>
         </tr>  
         <tr>
             <td>Destination</td>
-            <td><input type="text" ng-model="flightInfo.destination" value="{{flightInfo.destination}}" required/></td>
+            <td><input style="width: 150px; height: 50px;" type="text" ng-model="flightInfo.destination" value="{{flightInfo.destination}}" required/></td>
         </tr>
         <tr>
             <td>
                 Date
             </td>
             <td>
-                <input type="date" ng-model="flightInfo.date" required/>
+                <input style="width: 150px; height: 50px;" type="date" ng-model="flightInfo.date" required/>
             </td>
         </tr>
         <tr>
-            <td> Number of passengers </td>
+            <td> Number of passengers &nbsp;&nbsp;&nbsp;</td>
             <td>
-                <input type="number" ng-model="flightInfo.adultCount" required/>
+                <input style="width: 150px; height: 50px;" type="number" ng-model="flightInfo.adultCount" required/>
             </td>
         </tr>
         <tr>
             <td>
-                 <input type="button" class="btn btn-default" value="Find" ng-click="getFlightList()"/>
+                 <input type="button" value="Find" class="btn btn-default" ng-click="getFlightList(flightInfo)"/>
             </td>
         </tr>
-        <tr ng-repeat="tripOption in flightInfo.trips.tripOption" ng-class-odd="'odd'" 
-            ng-class-even="'even'" >
-            <td>
-                <table>
-                    <tr  ng-repeat="slice in tripOption.slice" ng-class-odd="'odd'" 
-            ng-class-even="'even'" >
+                  <tr>
                         <td>
-                            
+                            &nbsp;
+                        </td>
+                    </tr>
+    </table>
+                <table> 
+                    <tr ng-repeat="i in items">
+                        <td>
+                            <input type="button" value="{{flightName}}" class="btn btn-default" ng-click="selectFlight('{{flightName}}')"/>
                         </td>
                     </tr>
                 </table>
+                   <table>
+                       <tr>
+                           <td>
+                               &nbsp;
+                           </td>
+                       </tr>
+                    <tr>
+                        <td>            
+                            <input type="button" value="{{selectedFlightName1}}" class="btn btn-default" ng-click="clearFlight1()" ng-show="clearFlight1Visible"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>  
+                            <input type="button" class="btn btn-default" value="{{selectedFlightName2}}" ng-show="clearFlight2Visible" ng-click="clearFlight2()"/> 
+                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>
+    <table>
+        <tr>
+            <td>
+                <h3>Create a package</h3>
             </td>
         </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Price
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" style="width: 150px; height: 30px;" ng-model ="package.name"  />
+            </td>
+            <td>
+                <input type="number" style="width: 150px; height: 30px;" ng-model ="package.price" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="textarea"  rows="4" style="width: 310px; height: 100px;" ng-model ="package.description"  />
+            </td> 
+        </tr>    
+        <tr>
+            <td>
+                 <input type="button" class="btn btn-default" value="Create" ng-click="createPackage()"/> 
+            <td>
+        </tr>
+        <tr>
+            <td>{{retrievedFlight}}</td>
+        </tr> 
     </table>
 </div>

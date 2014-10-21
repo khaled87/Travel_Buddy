@@ -33,6 +33,9 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
             },
             getFlightList: function(flightInfo) {
                 return $http.post(url, flightInfo);
+            },
+            createPackage: function(pack) {
+                return $http.post(url, pack);
             }
         };
     }]);

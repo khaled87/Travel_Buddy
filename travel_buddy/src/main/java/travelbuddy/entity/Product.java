@@ -14,6 +14,7 @@ public class Product extends AbstractEntity {
 
     private String name;
     private double price;
+    private String description;
     @OneToMany
     private List<Flight> flights;
     @OneToOne
@@ -21,9 +22,10 @@ public class Product extends AbstractEntity {
     
     public Product() { }
 
-    public Product(String name, double price, List<Flight> flights, Hotel hotel) {
+    public Product(String name, double price, String description, List<Flight> flights, Hotel hotel) {
         this.name = name;
         this.price = price;
+        this.description = description;
     }
 
     public Product(Long id, String name, double price, List<Flight> flights, Hotel hotel) {
@@ -34,6 +36,10 @@ public class Product extends AbstractEntity {
 
     public String getName() {
         return name;
+    }
+    
+    public String getDescription() {
+        return description;
     }
 
     public double getPrice() {

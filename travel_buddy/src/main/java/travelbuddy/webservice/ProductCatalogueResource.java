@@ -49,16 +49,6 @@ public class ProductCatalogueResource {
         }).build();
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response create(JsonObject jsonObject) {
-        Product p = new Product(jsonObject.getString("name"), (long) jsonObject.getInt("price"), null, null);
-        productCatalogue.create(p);
-        return Response.ok(new GenericEntity<Product>(p) {
-        }).build();
-    }
-
     @PUT
     @Path("{id}")
     @Consumes(value = MediaType.APPLICATION_JSON)
@@ -68,13 +58,5 @@ public class ProductCatalogueResource {
         productCatalogue.update(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
-    }
-
-    @DELETE
-    @Path("{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response delete(@PathParam("id") final long id) {
-        productCatalogue.delete(id);
-        return Response.ok().build();
     }
 }

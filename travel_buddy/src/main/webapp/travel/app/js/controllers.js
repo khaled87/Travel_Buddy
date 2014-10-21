@@ -103,10 +103,53 @@ productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$locatio
 productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCatalogueProxy',
     function($scope, ProductCatalogueProxy) {
         $scope.getFlightList = function() {
-            console.log($scope.flightInfo);
-            ProductCatalogueProxy.getFlightList($scope.flightInfo).success(function(flightList) {
-                $scope.retrievedFlight = flightList;
-                
+            $scope.package = null;
+            $scope.flightName = "flight1";
+            $scope.items = ["1","2","3"];
+            $scope.counter = 1;
+            $scope.clearFlight1Visible = false;
+            $scope.clearFlight2Visible = false;
+//            ProductCatalogueProxy.getFlightList($scope.flightInfo).success(function(flightList) {
+//                $scope.retrievedFlight = flightList;
+//                $scope.flightName = "flight1";
+//                console.log(flightList);
+//            }).error(function(e) {
+//                console.log(e);
+//            });
+        };
+        
+        $scope.selectFlight = function(flightName) {
+            $scope.items2 = ["1","2"];
+            if($scope.counter === 1)
+            {
+               $scope.selectedFlightName1 = "f1 selected";
+               $scope.counter = 2;
+               $scope.clearFlight1Visible = true;
+           
+            }   
+            else
+            {
+                $scope.selectedFlightName2 = "f2 selected"; 
+                $scope.counter = 1;
+                 $scope.clearFlight2Visible = true;
+            }
+        };
+        
+        $scope.clearFlight1 = function() {
+            $scope.selectedFlightName1 = "";
+            $scope.counter = 1;
+              $scope.clearFlight1Visible = false;
+        };
+        
+        $scope.clearFlight2 = function() {
+            $scope.selectedFlightName2 = "";
+            $scope.counter = 2;
+            $scope.clearFlight2Visible = false;
+        };
+    
+        $scope.createPackage = function() {
+            ProductCatalogueProxy.createPackage($scope.package).success(function(pack) {
+                $scope.packageCreated = "Package" + pack.name + "crated!";
             }).error(function(e) {
                 console.log(e);
             });
