@@ -102,10 +102,17 @@ productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$locatio
 
 productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCatalogueProxy',
     function($scope, ProductCatalogueProxy) {
-        $scope.getFlightList = function() {
-            $scope.package = null;
+        $scope.package = null;
+        $scope.callService = function()
+        {
+          //  $scope.getFlightList();
+            $scope.getHotels();
+        }
+        
+        $scope.getFlightList = function() {      
             $scope.flightName = "flight1";
             $scope.items = ["1","2","3"];
+            
             $scope.counter = 1;
             $scope.clearFlight1Visible = false;
             $scope.clearFlight2Visible = false;
@@ -150,6 +157,29 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         $scope.createPackage = function() {
             ProductCatalogueProxy.createPackage($scope.package).success(function(pack) {
                 $scope.packageCreated = "Package" + pack.name + "crated!";
+            }).error(function(e) {
+                console.log(e);
+            }); 
+        };
+        
+        $scope.getHotels = function() {
+//            $scope.package = null;
+//            $scope.flightName = "flight1";
+//            $scope.items = ["1","2","3"];
+//            $scope.counter = 1;
+//            $scope.clearFlight1Visible = false;
+//            $scope.clearFlight2Visible = false;
+            
+           var hotelInfo = {};
+           hotelInfo.city = "Seattle";//$scope.destination;
+           hotelInfo.arrivalDate = "09/04/2015";//$scope.arrivalDate;
+           hotelInfo.departureDate = "09/05/2015";//$scope.departureDate;
+           
+            console.log($scope.destination);
+           
+            ProductCatalogueProxy.getHotels(hotelInfo).success(function(hotelList) {
+                $scope.retrievedHotels = hotelList;
+                console.log(hotelList);
             }).error(function(e) {
                 console.log(e);
             });
