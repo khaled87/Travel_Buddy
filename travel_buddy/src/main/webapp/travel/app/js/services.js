@@ -32,10 +32,13 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
                 return $http.get(url + "/count");
             },
             getFlightList: function(flightInfo) {
-                return $http.post(url, flightInfo);
+                return $http.post(url+"/flights", flightInfo);
             },
             createPackage: function(pack) {
                 return $http.post(url, pack);
+            },
+            getHotels: function(hotelInfo){
+                return $http.post(url+"/hotels", hotelInfo);
             }
         };
     }]);
