@@ -7,44 +7,44 @@ var shop = angular.module('Shop', [
     'ngRoute',
     'ProductCatalogueControllers',
     'ProductCatalogueService'
-     // More here
+            // More here
 ]);
 
 
 shop.config(['$routeProvider',
-    function($routeProvider) {  // Injected object $routeProvider
+    function ($routeProvider) {  // Injected object $routeProvider
         $routeProvider.
-               
-                 when('/authentication', {
-                    templateUrl: 'partials/authentication/authentication.html'
-                   // controller: 'AuthenticationCtrl'
+                when('/home', {
+                    templateUrl: 'partials/home/home.html'
                 }).
-                when('/customers', {
-                    templateUrl: 'partials/customers/customers.html',
-                    controller: 'homeCtrl'
+                when('/authentication', {
+                    templateUrl: 'partials/authentication/authentication.html'
+                }).
+                when('/products', {
+                    templateUrl: 'partials/products/products.html',
+                    controller: 'NavigationCtrl'
                 }).
                 when('/orders', {
                     templateUrl: 'partials/orders/orders.html'
-                    //controller: 
                 }).
-                when('/newProduct', { 
+                when('/newProduct', {
                     templateUrl: 'partials/products/product-new.html',
                     controller: 'NewProductsController'
                 }).
                 when('/updateProduct/:id', {
-                    templateUrl:'partials/products/product-detail.html',
-                    controller:'UpdateProductsController'
+                    templateUrl: 'partials/products/product-detail.html',
+                    controller: 'UpdateProductsController'
                 }).
                 when('/admin', {
-                    templateUrl:'partials/authentication/admin_page.html',
-                    controller:'AdminController'
+                    templateUrl: 'partials/authentication/admin_page.html',
+                    controller: 'AdminController'
                 }).
                 otherwise({
-                    redirectTo: '/index.html'
+                    redirectTo: 'partials/home/home.html'
                 });
     }]);
 
 
-shop.controller('homeCtrl', ['$scope', function($scope) {
-    $scope.data = "Home data";
-}]);
+shop.controller('homeCtrl', ['$scope', function ($scope) {
+        $scope.data = "Home data";
+    }]);
