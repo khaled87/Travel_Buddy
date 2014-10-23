@@ -186,3 +186,23 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         };
     }
 ]);
+
+productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
+    function ($scope, Auth, $location) {
+        $scope.login = function () {
+            Auth.login($scope.user.name, $scope.user.passwd)
+                    .success(function () {
+                        Auth.saveData();
+                        $location.path("/customers");
+                    }).error(function () {
+                Auth.clearCredentials();
+                $scope.message = "Bad credentials";
+            });
+        };
+
+        $scope.logout = function () {
+            Auth.clearCredentials();
+            $location.path("/auth");
+        };
+    }
+]);

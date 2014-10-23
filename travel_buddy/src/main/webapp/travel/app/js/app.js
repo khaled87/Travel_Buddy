@@ -14,12 +14,10 @@ var shop = angular.module('Shop', [
 shop.config(['$routeProvider',
     function ($routeProvider) {  // Injected object $routeProvider
         $routeProvider.
-<<<<<<< HEAD
-               
                 when('/customers', {
                     templateUrl: 'partials/customers/customers.html',
                     controller: 'homeCtrl'
-=======
+                }).
                 when('/home', {
                     templateUrl: 'partials/home/home.html'
                 }).
@@ -29,7 +27,6 @@ shop.config(['$routeProvider',
                 when('/products', {
                     templateUrl: 'partials/products/products.html',
                     controller: 'NavigationCtrl'
->>>>>>> origin/master
                 }).
                 when('/orders', {
                     templateUrl: 'partials/orders/orders.html'
@@ -46,22 +43,15 @@ shop.config(['$routeProvider',
                     templateUrl: 'partials/authentication/admin_page.html',
                     controller: 'AdminController'
                 }).
-                 when('/auth', {
-                templateUrl: 'auth.html',
-               controller: 'LoginCtrl'
+                when('/auth', {
+                    templateUrl: 'auth.html',
+                    controller: 'LoginCtrl'
                 }).
                 otherwise({
                     redirectTo: 'partials/home/home.html'
                 });
     }]);
 
-<<<<<<< HEAD
-shop.controller('homeCtrl', ['$scope', function($scope) {
-    $scope.data = "Home data";
-}]);
-=======
-
 shop.controller('homeCtrl', ['$scope', function ($scope) {
         $scope.data = "Home data";
     }]);
->>>>>>> origin/master
