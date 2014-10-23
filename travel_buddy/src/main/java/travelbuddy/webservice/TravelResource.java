@@ -70,15 +70,12 @@ public class TravelResource {
     @Path("/flights")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
-<<<<<<< HEAD
-    public Response getFlightList(JsonObject jsonObject) throws ParseException {     
-=======
+
     public Response getFlightList(JsonObject jsonObject) throws ParseException {
         City city = new City();
         city.createAbbrevList();
         String origin = city.getCityAbbrev(jsonObject.getString("origin"));
         String destination = city.getCityAbbrev(jsonObject.getString("destination"));
->>>>>>> origin/master
         BasicQPXRequest fr = new BasicQPXRequest();
         fr.setOrigin(origin);
         fr.setDestination(destination);
