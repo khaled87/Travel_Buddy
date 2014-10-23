@@ -24,10 +24,6 @@ public class FlightResponse implements Serializable {
         this.kind = kind;
     }
 
-    @Override
-    public String toString() {
-        return kind + getTrips() + " ";
-    }
 
     public Trips getTrips() {
         return trips;
@@ -43,10 +39,7 @@ public class FlightResponse implements Serializable {
         private Data data;
         private List<Tripoption> tripOption = new ArrayList<>();
 
-        @Override
-        public String toString() {
-            return getKind() + " " + getData() + getTripOption().get(0);
-        }
+       
 
         public String getKind() {
             return kind;
@@ -81,10 +74,7 @@ public class FlightResponse implements Serializable {
         private List<Airport> airport = new ArrayList<>();
         private List<Carrier> carrier = new ArrayList<>();
 
-        @Override
-        public String toString() {
-            return getKind() + " from" + " " + getAirport().get(0).getName() + " to " + getAirport().get(1) + " " + getCarrier().get(0);
-        }
+      
 
         public String getKind() {
             return kind;
@@ -123,10 +113,6 @@ public class FlightResponse implements Serializable {
             this.name = name;
         }
 
-        @Override
-        public String toString() {
-            return getName();
-        }
     }
 
     public static class Carrier {
@@ -134,10 +120,6 @@ public class FlightResponse implements Serializable {
         //flight company
         private String name;
 
-        @Override
-        public String toString() {
-            return getName();
-        }
 
         public String getName() {
             return name;
@@ -160,18 +142,12 @@ public class FlightResponse implements Serializable {
             this.segment = segment;
         }
 
-        @Override
-        public String toString() {
-            for (int i = 0; i < getSegment().size(); i++) {
-                return "Cabin " + getSegment().get(i).getCabin() + " arrivalTime"
-                        + getSegment().get(i).getLeg().get(i).getArrivalTime() + " Meal"
-                        + getSegment().get(i).getLeg().get(i).getMeal();
-            }
-            return null;
+    
+          //  return null;
 
         }
 
-    }
+    
 
     public static class Segment {
 
@@ -201,10 +177,7 @@ public class FlightResponse implements Serializable {
         private String saleTotal;
         private List<Slice> slice = new ArrayList<>();
 
-        @Override
-        public String toString() {
-            return "price " + getSaleTotal() + getSlice().get(0);
-        }
+       
 
         public String getSaleTotal() {
             return saleTotal;
@@ -241,10 +214,7 @@ public class FlightResponse implements Serializable {
             return meal;
         }
 
-        @Override
-        public String toString() {
-            return "depTime" + getDepartureTime() + "ArivTime" + getArrivalTime();
-        }
+    
     }
 
 }
