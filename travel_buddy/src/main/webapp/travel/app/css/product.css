@@ -1,0 +1,143 @@
+.dashboard {
+    position: relative;
+    width: 100%;
+    height: 588px;
+}
+
+#dashboard .title {
+    //margin: 20px 20px 20px 20px;
+    position: absolute; 
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    background: grey;
+    opacity: 0.5;
+    min-width: 200px;
+}
+
+#dashboard h3 {
+    text-align: center;
+    margin: 0;
+    color: white;
+}
+
+#dashboard .ui-state-hover {
+    background: transparent;
+}
+
+.ui-widget-content {
+    background: transparent;
+}
+
+#descPanel {
+    position: absolute;
+    background: gray;
+    width: 30%;
+    height: 100%;
+    opacity: 0.8;
+    min-width: 300px;
+}
+
+#dashboard .crop img {
+    width: 100%;
+    min-width: 450px;
+}
+
+#dashboard .crop img:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+#dashboard .crop {
+    position: absolute; 
+    overflow: hidden;
+}
+
+#imgPanel {
+    position: absolute;
+    right: 2px;
+    z-index: -100;  
+}
+
+#dashboard .ui-igtile-maximized img {
+    height: 500px;
+    float:right;
+}
+
+#dashboard .ui-igtilemanager-right img {
+    width: 250px;
+    height: 250px;
+}
+
+.ui-igtile-inner-container {
+    margin: 2px;
+    padding: 0px;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.ui-igtile {
+    background-color: transparent;
+    padding:0px;
+    border:none;
+    z-index:1;
+    overflow:hidden
+}
+
+.ui-igtile-maximized .text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ui-igtile-maximized div {
+    text-align: left;
+}
+
+.linkedIn, .skills {
+    word-wrap: break-word;
+}
+
+@media all and (max-width: 430px) {
+
+    #dashboard h4 {
+        margin: 0 0 5px;
+        height: 50px;
+    } 
+
+    #dashboard h3 {
+        clear: both;
+        margin: 0 0 5px;
+    }
+
+    #dashboard img {
+        width: 100%;
+        height: 150px;
+        margin:0;
+        position: static;
+        float: none;
+    }
+
+    .ui-igtile-maximized .text {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #dashboard .ui-igtile-maximized img {
+        width: 100%;
+        height: 175px;
+        margin: 0;
+        float: none;
+    }
+
+    #dashboard .ui-igtilemanager-right img {
+        width: 100%;
+        height: 80px;
+        margin: 0;
+    }
+}
+
+#dashboard .color {
+    color: blue;
+}

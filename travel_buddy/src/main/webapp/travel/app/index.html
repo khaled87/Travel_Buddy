@@ -15,233 +15,48 @@
         <script src="js/app.js"></script>   
         <script src="js/controllers.js"></script>  
         <script src="js/services.js"></script>  
-        <script src="js/filters.js"></script>  
-        <link rel="stylesheet" type="text/css" href="../../libs/bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="css/default.css">
-        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="js/filters.js"></script>
+        <link href="http://cdn-na.infragistics.com/igniteui/2014.2/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+        <link href="http://cdn-na.infragistics.com/igniteui/2014.2/latest/css/structure/infragistics.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="../../libs/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/default.css"/>
+        <link rel="stylesheet" type="text/css" href="css/home.css"/>
+        <link rel="stylesheet" type="text/css" href="css/product.css"/>
+         <script src="../../libs/angular/angular-base64.js"></script>
+        <script src="../../libs/angular/angular-cookies.js"></script>
         
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script  type="text/javascript">
-            $(function () {
-                $("#checkincalendar").datepicker();
-            });
 
-            $(function () {
-                $("#checkoutcalendar").datepicker();
-            });
+        <!-- Modernizr/jQuery/jQuery UI -->
+        <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
-            document.getElementById('frmsearch').onsubmit = function () {
-                window.location = 'http://www.google.com' + document.getElementById('txtSearch').value;
-                return false;
-            }
-            !function ($) {
-                var video = $("#travel-buddy-video");
-
-                if (video.get(0).canPlayType) {
-                    var playVideo = function () {
-                        video.get(0).play();
-                        video.addClass("video-playing");
-                        $("#slideshow").addClass("hide");
-                    }
-
-                    if (video.get(0).readyState >= video.get(0).HAVE_FUTURE_DATA) {
-                        playVideo();
-                    } else {
-                        video.get(0).addEventListener('canplay', function () {
-                            playVideo();
-                        }, false);
-                    }
-                } 
-            }(jQuery);
+        <!-- Ignite UI Required Combined JavaScript Files -->
+        <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.core.js"></script>
+        <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.lob.js"></script>
         
-        </script>              
     </head>
 
     <body>
-
         <header>
-            <video controls muted id="video" height="340" autoplay="autoplay" loop="loop" preload="auto">
-                <source src="Videos/Travel_agency.mp4" type="video/mp4" > <h1 class="uppercase text-jumbo text-contrast row-space-1">TRAVEL BUDDY</h1>
-            </video>
-            <h1 class="uppercase text-jumbo text-contrast row-space-1">TRAVEL BUDDY
-                
-            <br/> Explore the most beautiful places around the world.
-            </h1>
+            <nav class="navbar navbar-default" role="navigation">
+                <a class="navbar-brand" href="#/home" style="font-size: 36px">TravelBuddy</a>
+                <a class="navbar-brand" href="#/auth">Sign In</a>
+                <a class="navbar-brand" href="#/products">Product</a>
+                <a class="navbar-brand" href="#/orders">Orders</a>
+                <a class="navbar-brand" href="#/admin">Admin</a>
+                <a class="socialize" href="https://www.facebook.com/sharer/sharer.php?u"><img height="22" src="img/facebook-icon.png" alt="Responsive"></a>
+                <a class="socialize" href="https://twitter.com/intent/tweet"><img height="22" src="img/twitter-icon.png" alt="Responsive"></a>
+                <a class="socialize" href="https://twitter.com/intent/tweet"><img height="22" src="img/linkedin.png" alt="Responsive"></a>
+                <a class="socialize" href="https://twitter.com/intent/tweet"><img height="22" src="img/google-plus.png" alt="Responsive"></a>
+            </nav>
         </header>
-        <nav class="navbar navbar-default" role="navigation">
-            <a class="navbar-brand" href="#">Home</a>
-            <a class="navbar-brand" href="#/authentication">Sign In</a>
-            <a class="navbar-brand" href="#/customers">Customers</a>
-            <a class="navbar-brand" href="#/orders">Orders</a>
-            <a class="navbar-brand" href="#/admin">Admin</a>
-        </nav>
-               
-      <div class="view-container">
-        
-           <!-- Include the view template for the current route -->
+        <div style="height: 52px"></div>
+        <div class="view-container">
+            <!-- Include the view template for the current route -->
             <div ng-view ></div>
-      </div>
-        <h2> Travel With Us </h2>
-        <p> With us you can get the best package with the cheapest price.
-            Every thing in one click! </p>
-  
-        <div class ="container">
-            <div class ="row">
-                <div class="col-sm-3 col-lg-6">
-
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="There are a lot of things to discover in new york such as the Central Park, 
-                           City Hall and the American Museum of Natural History.">
-                            <img src="http://freshtheme.net/wp-content/uploads/2014/07/new_york_city_hd_wallpaper_24.jpg" class="img-responsive" alt="Responsive"></a>
-                        <h3>New York<br /></h3>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-lg-6">
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="Take a night ride on the #1 vaporetto in Venice
-                           Spend 15 minutes with “The Last Supper” in Milan
-                           Get a guided tour of the Vatican Museum">
-                            <img src="http://www.desktopaper.com/wp-content/uploads/new-italy-architecture.jpg" class="img-responsive" alt="Responsive"></a>  
-                        <h3>Italy<br /></h3>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-6"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="In vietnam experiance these range from stunning Ha Long Bay 
-                           to beautifully quaint Hoi An to Ho Chi Minh’s mausoleum."> 
-                            <img src="http://www.hdwallpapersinn.com/wp-content/uploads/2014/08/1498104.jpg" class="img-responsive" alt="Responsive"></a>
-                        <h3>Vietnam<br /></h3>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-6"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="In Norway experience the beautiful nature and do not miss 
-                           the chance to see Geirangerfjord, Northern lights and Svalbard."> 
-                            <img src="http://www.hdwallpapersos.com/wp-content/uploads/2014/07/Arctic-Sea-on-the-coast-of-Norway-wonderful-fullscreen-wallpapers-for-desktop-free.jpg" class="img-responsive" alt="Responsive"></a>
-                        <h3>Norway<br /></h3>
-                    </div>
-                </div>
-               
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="In Berlin experience Brandenburger Tor 
-                           (Brandenburg Gate), Fernsehturm  (TV Tower)and Kurfürstendamm">
-                            <img width="360" height="250" src="http://travelhdwallpapers.com/wp-content/uploads/2014/03/Brandenburg-Gate-2.jpg" alt="Responsive"></a>
-                        <h4>Berlin<br /></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="In Bulgaria experience Ancient spas, Batchkovo Monastery
-                           and dicover Sofia architecture"> 
-                            <img width="360" height="250" src="http://www.hdwallpapersinn.com/wp-content/uploads/2014/08/1358407606179.jpg" alt="Responsive"></a>
-                        <h4>Bulgaria<br /></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext"  href="#" 
-                           title="In Jordan experience the one from the seven wonders in the world
-                           the beautiful Petra"> <img width="360" height="250" src="http://cristimoise.files.wordpress.com/2012/11/petra-jordan.jpg" alt="Responsive"></a>
-                        <h4>Petra<br /></h4>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-6"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="Visit the Alhambra in Granada, See Frank Gehry's amazing architecture
-                           and see the spectacular views at Ronda"> 
-                            <img width="560" height="315"  src="../app/img/Spain.jpg" alt="Responsive"></a>
-                        <h3>Spain<br /></h3>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-6"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" 
-                           title="Enjoy the sun and have your vacation in South Beach and Hit the Beach"> 
-                            <img width="560" height="315"  src="../app/img/miami-beach.jpg" alt="Responsive"></a>
-                        <h3>Miami Beach<br /></h3>
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="Italy"><img width="360" height="250" src="../app/img/Rome-Italy.jpg" alt="Responsive"></a>
-                        <h4>Italy<br /></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="London"> <img width="360" height="250" src="../app/img/london.jpg" alt="Responsive"></a>
-                        <h4>London<br /></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext"  href="#" title="San Francisco"> <img width="360" height="250" src="../app/img/San_Francisco.jpg" alt="Responsive"></a>
-                        <h4>San Francisco<br /></h4>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-6 col-lg-6"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="Amsterdam"> <img width="560" height="315" src="../app/img/Amsterdam.jpg" alt="Responsive"></a>
-                        <h3>Amsterdam<br /></h3>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-6"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="Mallorca"> <img width="560" height="315" src="../app/img/mallorca-spain-2.jpg" alt="Responsive"></a>
-                        <h3>Mallorca<br /></h3>
-                    </div>
-                </div>
-
-
-
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="Budapest"> <img width="360" height="250" src="../app/img/budapest.jpg" alt="Responsive"></a>
-                        <h4>Budapest<br /></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="China"> <img width="360" height="250" src="../app/img/china.jpg" alt="Responsive"></a>
-                        <h4>China<br /></h4>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-lg-4"> 
-                    <div class="panel-body">
-                        <a class="hovertext" href="#" title="Paris"> <img width="360" height="250" src="../app/img/paris.jpg" alt="Responsive"></a>
-                        <h4>Paris<br /></h4>
-                    </div>
-                </div>
-            </div>
         </div>
-        <h2>Keep Up To Date</h2>
-        <footer>
-            <ul class="socialize">
-                <li><a href="https://www.facebook.com/sharer/sharer.php?u"><img width="30" height="22" src="http://upload.wikimedia.org/wikipedia/commons/8/82/Facebook_icon.jpg" alt="Responsive"></a></li>
-                <li><a href="https://twitter.com/intent/tweet"><img width="30" height="22" src="https://upload.wikimedia.org/wikipedia/en/9/9f/Twitter_bird_logo_2012.svg" alt="Responsive"></a></li>
-
-            </ul>
-            <div id="backtotop"><a href="#top" class="topOfPage">To The Top</a></div>
-            © 2014 Travel Agency AB
-        </footer>
     </body>
 </html>

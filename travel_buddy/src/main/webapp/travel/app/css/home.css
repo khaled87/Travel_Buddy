@@ -1,0 +1,32 @@
+.home {
+    position: fixed;
+}
+
+a.home {  
+    margin-top: 4em;
+    font-size: 60px;
+    font-family: tbFont;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 500;
+}
+
+a.home:hover {
+    color: #84f8fc;
+    text-decoration: none;
+}
+
+img.home {
+    position: absolute;
+    width: 100%;
+}
+
+#travel-buddy-video {
+    margin: 0;
+    width: auto;
+    height: 100%;
+}
