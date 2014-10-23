@@ -66,7 +66,7 @@ public class TravelResource {
     }
 
     @POST
-    @Path("/hotels")
+    @Path("/flights")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
     public Response getFlightList(JsonObject jsonObject) throws ParseException {
@@ -81,6 +81,10 @@ public class TravelResource {
         return r;
     }
 
+    @POST
+    @Path("/hotels")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON})
     public Response getHotelList(JsonObject jsonObject) {
         HotelRequest hr = new HotelRequest();
         try {

@@ -46,10 +46,10 @@ public class ProductCatalogue extends AbstractDAO<Product, Long>
         return em;
     }
     
-//    @Override
-//    public void create(Product p) {
-//        Hotel ph = p.getHotel();
-//        em.persist(ph);
-//        super.create(p);
-//    }
+    @Override
+    public void create(Product p) {
+        Hotel ph = p.getHotel();
+        em.persist(ph);
+        super.create(p);
+    }
 }
