@@ -192,8 +192,7 @@ productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$locatio
         $scope.login = function () {
             Auth.login($scope.user.name, $scope.user.passwd)
                     .success(function () {
-                        Auth.saveData();
-                        $location.path("/customers");
+                        $location.path("/admin");
                     }).error(function () {
                 Auth.clearCredentials();
                 $scope.message = "Bad credentials";
