@@ -4,9 +4,9 @@
     <jta-data-source>jdbc/travelbuddy</jta-data-source>
     <class>travelbuddy.entity.Flight</class>
     <class>travelbuddy.entity.Hotel</class>
-    <class>travelbuddy.entity.OrderItem</class>
     <class>travelbuddy.entity.Product</class>
     <class>travelbuddy.entity.PurchaseOrder</class>
+    <class>travelbuddy.entity.TBUser</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

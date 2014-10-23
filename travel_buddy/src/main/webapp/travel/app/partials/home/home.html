@@ -1,4 +1,35 @@
 <div>
-    <a class="home" href="#/products" style="position: fixed" data-speed="0" data-type="background">TRAVEL BUDDY</a>
-    <img class="home grayscale" src="img/Amsterdam.jpg" alt="err" data-speed="8" data-type="background"/>
+    <a class="home" href="#/products">TRAVEL BUDDY</a>
+    <video class="home grayscale"
+           loop="loop" preload="auto" id="travel-buddy-video" controls muted>
+        <source src="video/barcelona 01.mp4" type="video/mp4">
+        <source src="video/munich 01.mp4" type="video/mp4">
+        <source src="video/stockholm 01.mp4" type="video/mp4">
+    </video>
+    <img id="travel-buddy-background" class="home grayscale" src="img/Amsterdam.jpg" alt="err"/>
+
+    <script>
+        !function ($) {
+            var video = $("#travel-buddy-video");
+
+            if (video.get(0).canPlayType) {
+                var playVideo = function () {
+                    setTimeout(function() {
+                        video.get(0).play();
+                        $("#travel-buddy-background").hide();
+                    }, 3000);
+                };
+
+                if (video.get(0).readyState >= video.get(0).HAVE_FUTURE_DATA) {
+                    playVideo();
+                } else {
+                    video.get(0).addEventListener('canplay', function () {
+                        playVideo();
+                    }, false);
+                }
+            } else {
+                $("#travel-buddy-background").show();
+            }
+        }(jQuery);
+    </script>
 </div>
