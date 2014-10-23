@@ -40,7 +40,6 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
         };
     }]);
 
-
 productCatalogueService.factory('Auth', ['$base64', '$http',
     function(base64, $http) {
      
@@ -48,17 +47,21 @@ productCatalogueService.factory('Auth', ['$base64', '$http',
             login: function(username, password) {
                 var encoded = base64.encode(username + ':' + password);
                 $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
-                return $http.post('http://localhost:8080/ws_shop_skel/api/v1/auth', 'Basic ' + encoded);
+                return $http.post('http://localhost:8080/travel_buddy/api/v1/auth', 'Basic ' + encoded);
             },
             setCredentials: function(username, password) {
                 // Auth dta just set in local app , Server not contacted
                 var encoded = base64.encode(username + ':' + password);
                 $http.defaults.headers.common.Authorization = 'Basic ' + encoded;
+                
+                
             },
+            
+            
             clearCredentials: function() {
                 document.execCommand("ClearAuthenticationCache"); // TODO not standard
                 //$cookieStore.remove('authdata');
                 $http.defaults.headers.common.Authorization = 'Basic ';
-            }
+            },
         };
     }]);
