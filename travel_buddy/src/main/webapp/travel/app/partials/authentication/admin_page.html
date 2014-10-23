@@ -52,9 +52,16 @@
             </td>
             <td  style="width:70%; vertical-align:top" >
                 <table style="width:100%"> 
-                    <tr ng-repeat="i in items">
+                    <tr ng-repeat="t in trips1">
                         <td style="width:100%">
-                            <input  style="width:95%" type="button" value="{{flightName}}" class="btn btn-default" ng-click="selectFlight(flightName)"/>
+                            <table>
+                                <tr ng-repeat="st in t.subTripList">
+                                    <td>
+                                          <input  style="width:95%" type="button" value="{{st.origin +'   ' + st.arrivalTime+'   '+ st.destination +'   ' + st.departureTime}}" class="btn btn-default" ng-click="selectFlight()"/>
+                                    </td>
+                                </tr>
+                            </table>
+                          
                         </td>
                     </tr>
                     <tr>
@@ -62,7 +69,7 @@
                             <table style="width:100%">
                                 <tr ng-repeat="summary in retrievedHotels">
                                     <td style="width:100%">
-                                         <input  style="width:100%; {{bfont}}" type="button" value="{{summary.name+'   ' +summary.price+ ' SEK'}}" class="btn btn-default" ng-click="selectHotel(summary)" />
+                                         <input  style="width:100%;" type="button" value="{{summary.name+'   ' +summary.price+ ' SEK'}}" class="btn btn-default" ng-click="selectHotel(summary)" />
                                     </td>
                                 </tr>
                             </table>

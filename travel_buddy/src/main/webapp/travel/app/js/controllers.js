@@ -66,24 +66,48 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         $scope.package = null;
         $scope.callService = function()
         {
-            //  $scope.getFlightList();
+            $scope.getFlightList();
             $scope.getHotels();
-        }
+        };
 
-        $scope.getFlightList = function() {
-            $scope.flightName = "flight1";
-            $scope.items = ["1", "2", "3"];
-
+        $scope.getFlight = function(searchedFlight) {
+            ProductCatalogueProxy.getFlightList(searchedFlight).success(function(flightList) {
+                console.log(flightList);
+               return flightList;
+            }).error(function(e) {
+                console.log(e);
+                return "";
+            });  
+        };
+        
+        $scope.getFlightList = function()
+        {
             $scope.counter = 1;
             $scope.clearFlight1Visible = false;
             $scope.clearFlight2Visible = false;
-//            ProductCatalogueProxy.getFlightList($scope.flightInfo).success(function(flightList) {
-//                $scope.retrievedFlight = flightList;
-//                $scope.flightName = "flight1";
-//                console.log(flightList);
-//            }).error(function(e) {
-//                console.log(e);
-//            });
+            
+            var searchedFlight1 = {};
+            searchedFlight1.origin = $scope.origin;
+            searchedFlight1.destination = $scope.destination;
+            searchedFlight1.date = $scope.arrivalDate;
+            searchedFlight1.adultCount = $scope.adultCount;
+            ProductCatalogueProxy.getFlightList(searchedFlight1).success(function(flightList1) {
+               $scope.trips1 = flightList1;
+            }).error(function(e) {
+                console.log(e);
+            });  
+     
+            var searchedFlight2 = {};
+            searchedFlight2.origin = $scope.destination;
+            searchedFlight2.destination = $scope.origin;
+            searchedFlight2.date = $scope.departureDate;
+            searchedFlight2.adultCount = $scope.adultCount;
+            ProductCatalogueProxy.getFlightList(searchedFlight2).success(function(flightList2) {
+               $scope.trips2 = flightList2;
+            }).error(function(e) {
+                console.log(e);   
+            }); 
+            
         };
 
         $scope.selectFlight = function(flightName) {
@@ -118,7 +142,7 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         $scope.selectHotel = function(hotel){
             $scope.selectedHotel = hotel;
            // $scope.bfont = "font: 10px sans-serif;";
-        }
+        };
         
         $scope.createPackage = function() {
             var request = {};
@@ -133,12 +157,6 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         
         
         $scope.getHotels = function() {
-//            $scope.package = null;
-//            $scope.flightName = "flight1";
-//            $scope.items = ["1","2","3"];
-//            $scope.counter = 1;
-//            $scope.clearFlight1Visible = false;
-//            $scope.clearFlight2Visible = false;
 
             var hotelInfo = {};
             hotelInfo.city = "Seattle";//$scope.destination;

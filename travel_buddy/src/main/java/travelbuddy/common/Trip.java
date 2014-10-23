@@ -29,7 +29,7 @@ public class Trip {
 
     public void setSubTripList(List<SubTrip> list) {
         // this.subTripList = subTripList;
-        this.subTripList = new ArrayList<SubTrip>(list);
+        this.subTripList = new ArrayList<>(list);
     }
 
     public String getSaleTotal() {

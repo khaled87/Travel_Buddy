@@ -8,29 +8,29 @@ import travelbuddy.entity.Hotel;
 // Documentation can be found here: http://developer.ean.com/docs/hotel-list/
 public class HotelResponse {
 
-
-    public class Hotels
-    {
-        private  ArrayList<Hotel> hotels;
-        public void setHotels(ArrayList<Hotel> hotels)
-        {
-            this.hotels = hotels;
-        }
-        
-        public ArrayList<Hotel> getHotels()
-        {
-            return this.hotels;
-        }   
-        
-        public void addHotel(Hotel h)
-        {
-            if (hotels == null)
-            {
-                hotels = new ArrayList<>();
-            }
-            hotels.add(h);
-        }
-    }
+//
+//    public class Hotels
+//    {
+//        private  ArrayList<Hotel> hotels;
+//        public void setHotels(ArrayList<Hotel> hotels)
+//        {
+//            this.hotels = hotels;
+//        }
+//        
+//        public ArrayList<Hotel> getHotels()
+//        {
+//            return this.hotels;
+//        }   
+//        
+//        public void addHotel(Hotel h)
+//        {
+//            if (hotels == null)
+//            {
+//                hotels = new ArrayList<>();
+//            }
+//            hotels.add(h);
+//        }
+//    }
     
     public ArrayList<Hotel> getHotelList(){
          ArrayList<Hotel> innerHotels = new ArrayList<>();

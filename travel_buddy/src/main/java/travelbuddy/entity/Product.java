@@ -19,6 +19,7 @@ public class Product extends AbstractEntity {
     private List<Flight> flights;
     @OneToOne
     private Hotel hotel;
+    //int numberOfPeople;
     
     public Product() {
         
