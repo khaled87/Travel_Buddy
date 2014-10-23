@@ -18,7 +18,7 @@ public class HotelRequest extends BasicEANRequest {
     public String getCity() {
         return city;
     }
-
+ //THis
     public void setCity(String city) {
         this.city = city;
     }
@@ -50,7 +50,7 @@ public class HotelRequest extends BasicEANRequest {
     public Date getArrivalDate() {
         return arrivalDate;
     }
-
+//THis
     public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
@@ -58,7 +58,7 @@ public class HotelRequest extends BasicEANRequest {
     public Date getDepartureDate() {
         return departureDate;
     }
-
+//THis
     public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
     }
