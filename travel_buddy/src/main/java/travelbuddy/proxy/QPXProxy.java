@@ -10,7 +10,6 @@ import javax.json.Json;
 import javax.json.stream.JsonParser;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.FlightInfo;
-import travelbuddy.common.FlightResponse;
 import travelbuddy.common.SubTrip;
 import travelbuddy.common.Trip;
 
