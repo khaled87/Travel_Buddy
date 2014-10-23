@@ -4,7 +4,7 @@
  *  The Shop App
  */
 var shop = angular.module('Shop', [
-    'ngRoute',
+    'ngRoute', 'base64', 'ngCookies',
     'ProductCatalogueControllers',
     'ProductCatalogueService'
             // More here
@@ -14,6 +14,10 @@ var shop = angular.module('Shop', [
 shop.config(['$routeProvider',
     function ($routeProvider) {  // Injected object $routeProvider
         $routeProvider.
+                when('/customers', {
+                    templateUrl: 'partials/customers/customers.html',
+                    controller: 'homeCtrl'
+                }).
                 when('/home', {
                     templateUrl: 'partials/home/home.html'
                 }).
@@ -39,11 +43,14 @@ shop.config(['$routeProvider',
                     templateUrl: 'partials/authentication/admin_page.html',
                     controller: 'AdminController'
                 }).
+                when('/auth', {
+                    templateUrl: 'auth.html',
+                    controller: 'LoginCtrl'
+                }).
                 otherwise({
                     redirectTo: 'partials/home/home.html'
                 });
     }]);
-
 
 shop.controller('homeCtrl', ['$scope', function ($scope) {
         $scope.data = "Home data";

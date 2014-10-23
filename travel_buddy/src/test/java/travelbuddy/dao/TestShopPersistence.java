@@ -1,4 +1,4 @@
-package travelbuddy.dao;
+/*package travelbuddy.dao;
 
 import travelbuddy.entity.Product;
 import java.util.List;
@@ -28,7 +28,7 @@ import org.junit.runner.RunWith;
  *
  * @author hajo
  */
-@RunWith(Arquillian.class)
+/*@RunWith(Arquillian.class)
 public class TestShopPersistence {
 
     @EJB
@@ -120,3 +120,4 @@ public class TestShopPersistence {
     }
 
 }
+*/
