@@ -24,7 +24,7 @@ productCatalogueControllers.controller('AuthenticationCtrl', ['$scope', 'Authent
                 .success(function(count) {
                     $scope.count = count.value;
                 }).error(function() {
-           console.log("count: error");
+            console.log("count: error");
         });
         getRange();
         $scope.$watch('currentPage', function() {
@@ -41,56 +41,17 @@ productCatalogueControllers.controller('AuthenticationCtrl', ['$scope', 'Authent
         }
     }]);
 
-productCatalogueControllers.controller('ProductDetailCtrl', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy',
-    function($scope, $location, $routeParams, ProductCatalogueProxy) {
-        ProductCatalogueProxy.find($routeParams.id).success(function(product) {
-            $scope.product = product;
-        }).error(function(e) {
-            console.log(e);
-        });
-        
-        $scope.update = function() {
-            console.log($scope.product);
-            ProductCatalogueProxy.update($routeParams.id, $scope.product).success(function() {
-                $location.path('/products');
-            }).error(function(e) {
-                console.log(e);
-            });
-        };
-        $scope.delete = function() {
-            ProductCatalogueProxy.delete($routeParams.id).success(function() {
-                $location.path('/products');
-            }).error(function(e) {
-                console.log(e);
-            });
-        };
-    }
-]);
-
-productCatalogueControllers.controller('ProductNewCtrl', ['$scope', '$location', 'ProductCatalogueProxy',
-    function($scope, $location, ProductCatalogueProxy) {
-        $scope.create = function() {
-            ProductCatalogueProxy.create($scope.product).success(function() {
-                $location.path('/products');
-            }).error(function(e) {
-                console.log(e);
-            });
-        };
-    }
-]);
-
-
 productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
     function($scope, Auth, $location) {
 
         $scope.login = function() {
             Auth.login($scope.user.name, $scope.user.passwd)
-                .success(function() {
-                    $location.path("/products");
-                }).error(function() {
-                    Auth.clearCredentials();
-                    $scope.message = "Bad credentials";
-                });
+                    .success(function() {
+                        $location.path("/products");
+                    }).error(function() {
+                Auth.clearCredentials();
+                $scope.message = "Bad credentials";
+            });
         };
 
         $scope.logout = function() {
@@ -105,14 +66,14 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         $scope.package = null;
         $scope.callService = function()
         {
-          //  $scope.getFlightList();
+            //  $scope.getFlightList();
             $scope.getHotels();
         }
-        
-        $scope.getFlightList = function() {      
+
+        $scope.getFlightList = function() {
             $scope.flightName = "flight1";
-            $scope.items = ["1","2","3"];
-            
+            $scope.items = ["1", "2", "3"];
+
             $scope.counter = 1;
             $scope.clearFlight1Visible = false;
             $scope.clearFlight2Visible = false;
@@ -124,43 +85,52 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 //                console.log(e);
 //            });
         };
-        
+
         $scope.selectFlight = function(flightName) {
-            $scope.items2 = ["1","2"];
-            if($scope.counter === 1)
+            $scope.items2 = ["1", "2"];
+            if ($scope.counter === 1)
             {
-               $scope.selectedFlightName1 = "f1 selected";
-               $scope.counter = 2;
-               $scope.clearFlight1Visible = true;
-           
-            }   
+                $scope.selectedFlightName1 = "f1 selected";
+                $scope.counter = 2;
+                $scope.clearFlight1Visible = true;
+
+            }
             else
             {
-                $scope.selectedFlightName2 = "f2 selected"; 
+                $scope.selectedFlightName2 = "f2 selected";
                 $scope.counter = 1;
-                 $scope.clearFlight2Visible = true;
+                $scope.clearFlight2Visible = true;
             }
         };
-        
+
         $scope.clearFlight1 = function() {
             $scope.selectedFlightName1 = "";
             $scope.counter = 1;
-              $scope.clearFlight1Visible = false;
+            $scope.clearFlight1Visible = false;
         };
-        
+
         $scope.clearFlight2 = function() {
             $scope.selectedFlightName2 = "";
             $scope.counter = 2;
             $scope.clearFlight2Visible = false;
         };
-    
+        
+        $scope.selectHotel = function(hotel){
+            $scope.selectedHotel = hotel;
+           // $scope.bfont = "font: 10px sans-serif;";
+        }
+        
         $scope.createPackage = function() {
-            ProductCatalogueProxy.createPackage($scope.package).success(function(pack) {
+            var request = {};
+            request.product = $scope.package;
+            request.hotel = $scope.selectedHotel;
+            ProductCatalogueProxy.createPackage(request).success(function(pack) {
                 $scope.packageCreated = "Package" + pack.name + "crated!";
             }).error(function(e) {
                 console.log(e);
-            }); 
+            });
         };
+        
         
         $scope.getHotels = function() {
 //            $scope.package = null;
@@ -169,17 +139,13 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 //            $scope.counter = 1;
 //            $scope.clearFlight1Visible = false;
 //            $scope.clearFlight2Visible = false;
-            
-           var hotelInfo = {};
-           hotelInfo.city = "Seattle";//$scope.destination;
-           hotelInfo.arrivalDate = "09/04/2015";//$scope.arrivalDate;
-           hotelInfo.departureDate = "09/05/2015";//$scope.departureDate;
-           
-            console.log($scope.destination);
-           
+
+            var hotelInfo = {};
+            hotelInfo.city = "Seattle";//$scope.destination;
+            hotelInfo.arrivalDate = "09/04/2015";//$scope.arrivalDate;
+            hotelInfo.departureDate = "09/05/2015";//$scope.departureDate;
             ProductCatalogueProxy.getHotels(hotelInfo).success(function(hotelList) {
                 $scope.retrievedHotels = hotelList;
-                console.log(hotelList);
             }).error(function(e) {
                 console.log(e);
             });
