@@ -7,6 +7,10 @@ package travelbuddy.webservice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +49,7 @@ public class TravelResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
     public Response createPackage(JsonObject jsonObject) {
+<<<<<<< HEAD
 
         JsonObject jProduct = jsonObject.getJsonObject("product");
         JsonObject jHotel = jsonObject.getJsonObject("hotel");
@@ -53,6 +58,9 @@ public class TravelResource {
         nHotel.setAddress1(jHotel.getString("address1"));
         nHotel.setPrice((long)jHotel.getInt("price"));  
         Product p = new Product( jProduct.getString("name"), (long) jProduct.getInt("price"),jProduct.getString("description"), null, nHotel);
+=======
+        Product p = new Product(jsonObject.getString("name"), (long) jsonObject.getInt("price"), jsonObject.getString("description"), null, null);
+>>>>>>> origin/master
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
@@ -95,10 +103,14 @@ public class TravelResource {
             Logger.getLogger(TravelResource.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
+<<<<<<< HEAD
 
         Response r;
         r = Response.ok(new GenericEntity<Collection<Hotel>>( eanProxy.getHotels(hr).getHotelList()) {
 
+=======
+        Response r = Response.ok(new GenericEntity<HotelResponse>(eanProxy.getHotels(hr)) {
+>>>>>>> origin/master
         }).build();
         return r;
     }
