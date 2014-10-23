@@ -17,6 +17,7 @@ import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import travelbuddy.common.BasicQPXRequest;
+import travelbuddy.common.City;
 import travelbuddy.common.Trip;
 import travelbuddy.common.HotelRequest;
 import travelbuddy.dao.IProductCatalogue;
@@ -70,9 +71,13 @@ public class TravelResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
     public Response getFlightList(JsonObject jsonObject) throws ParseException {
+        City city = new City();
+        city.createAbbrevList();
+        String origin = city.getCityAbbrev(jsonObject.getString("origin"));
+        String destination = city.getCityAbbrev(jsonObject.getString("destination"));
         BasicQPXRequest fr = new BasicQPXRequest();
-        fr.setOrigin(jsonObject.getString("origin"));
-        fr.setDestination(jsonObject.getString("destination"));
+        fr.setOrigin(origin);
+        fr.setDestination(destination);
         fr.setAdultCount(jsonObject.getInt("adultCount"));
         fr.setDate(jsonObject.getString("date"));
         fr.setSolution("2");
