@@ -2,14 +2,55 @@ package travelbuddy.common;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
+import travelbuddy.entity.Hotel;
 
 // Contains hotel information received from EAN
 // Documentation can be found here: http://developer.ean.com/docs/hotel-list/
 public class HotelResponse {
 
+//
+//    public class Hotels
+//    {
+//        private  ArrayList<Hotel> hotels;
+//        public void setHotels(ArrayList<Hotel> hotels)
+//        {
+//            this.hotels = hotels;
+//        }
+//        
+//        public ArrayList<Hotel> getHotels()
+//        {
+//            return this.hotels;
+//        }   
+//        
+//        public void addHotel(Hotel h)
+//        {
+//            if (hotels == null)
+//            {
+//                hotels = new ArrayList<>();
+//            }
+//            hotels.add(h);
+//        }
+//    }
+    
+    public ArrayList<Hotel> getHotelList(){
+         ArrayList<Hotel> innerHotels = new ArrayList<>();
+        for(HotelSummary hs : this.getHotelListResponse().getHotelList().getHotelSummary())
+        {
+            Hotel hotel = new Hotel();
+            hotel.setName(hs.name);
+            hotel.setAddress1(hs.address1);
+            hotel.setPrice(hs.highRate);
+            innerHotels.add(hotel);
+        }
+        
+        return innerHotels;
+    }
+    
     public HotelListResponse getHotelListResponse() {
         return HotelListResponse;
     }
+    
+      
 
     public class Surcharge {
 
@@ -349,4 +390,5 @@ public class HotelResponse {
 
     }
     private HotelListResponse HotelListResponse;
+
 }

@@ -1,12 +1,13 @@
 package travelbuddy.dao;
 
-import travelbuddy.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import travelbuddy.entity.Hotel;
+import travelbuddy.entity.Product;
 
 /**
  * All products
@@ -41,7 +42,14 @@ public class ProductCatalogue extends AbstractDAO<Product, Long>
     private EntityManager em;
     
     @Override
-    protected EntityManager getEntityManager() {
+    public EntityManager getEntityManager() {
         return em;
+    }
+    
+    @Override
+    public void create(Product p) {
+        Hotel ph = p.getHotel();
+        em.persist(ph);
+        super.create(p);
     }
 }

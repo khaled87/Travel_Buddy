@@ -19,13 +19,18 @@ public class Product extends AbstractEntity {
     private List<Flight> flights;
     @OneToOne
     private Hotel hotel;
+    //int numberOfPeople;
     
-    public Product() { }
+    public Product() {
+        
+    }
 
     public Product(String name, double price, String description, List<Flight> flights, Hotel hotel) {
         this.name = name;
         this.price = price;
         this.description = description;
+        this.hotel = hotel;
+      //  this.flights = flights;
     }
 
     public Product(Long id, String name, double price, List<Flight> flights, Hotel hotel) {

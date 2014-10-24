@@ -94,7 +94,31 @@ public class BasicQPXRequest {
     }
 
     public String toParam() {
-        JsonObject object = Json.createObjectBuilder()
+        JsonObject object;
+        
+        if(getMaxPrice()==null){
+            setMaxPrice("SEK999999");
+        }
+        if(getPreferredCabin()==null){
+             object = Json.createObjectBuilder()
+                .add("request", Json.createObjectBuilder().
+                        add("passengers", Json.createObjectBuilder().
+                                add("adultCount", getAdultCount())
+                                .add("childCount", getChildCount())
+                                .add("infantInSeatCount", getInfantInSeatCount()))
+                        .add("slice", Json.createArrayBuilder()
+                                .add(Json.createObjectBuilder().
+                                        add("origin", getOrigin())
+                                        .add("destination", getDestination())
+                                        .add("date", getDate())
+                                       ))
+                        .add("maxPrice", getMaxPrice())
+                        .add("solutions", getSolution())).build();
+        }
+        else{
+            
+        
+         object = Json.createObjectBuilder()
                 .add("request", Json.createObjectBuilder().
                         add("passengers", Json.createObjectBuilder().
                                 add("adultCount", getAdultCount())
@@ -108,7 +132,8 @@ public class BasicQPXRequest {
                                         .add("preferredCabin", getPreferredCabin())))
                         .add("maxPrice", getMaxPrice())
                         .add("solutions", getSolution())).build();
-
+        
+}
         return object.toString();
     }
 
