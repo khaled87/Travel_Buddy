@@ -198,20 +198,6 @@ productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieSt
                     $scope.message = "Bad credentials";
                     console.log("Bad credentials!");
                 });
-            };
-        }
-   ]);     
-   
-productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
-    function($scope, Auth, $location) {
-        $scope.login = function() {
-            Auth.login($scope.user.name, $scope.user.passwd)
-                    .success(function() {
-                        $location.path("/admin");
-                    }).error(function() {
-                Auth.clearCredentials();
-                $scope.message = "Bad credentials";
-            });
         };
 
         $scope.logout = function() {
