@@ -159,6 +159,9 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 ]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieStore', '$location', 
     function ($scope, Auth, $cookieStore, $location) {
         var showAuthorizedControls = function(isAdmin) {
@@ -199,6 +202,7 @@ productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieSt
                     $scope.message = "Bad credentials";
                     console.log("Bad credentials!");
                 });
+<<<<<<< HEAD
 =======
 productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
     function($scope, Auth, $location) {
@@ -211,6 +215,8 @@ productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$locatio
                 $scope.message = "Bad credentials";
             });
 >>>>>>> more small fixes
+=======
+>>>>>>> origin/master
         };
 
         $scope.logout = function() {

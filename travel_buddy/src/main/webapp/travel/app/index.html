@@ -22,7 +22,7 @@
         <link rel="stylesheet" type="text/css" href="css/default.css"/>
         <link rel="stylesheet" type="text/css" href="css/home.css"/>
         <link rel="stylesheet" type="text/css" href="css/product.css"/>
-         <script src="../../libs/angular/angular-base64.js"></script>
+        <script src="../../libs/angular/angular-base64.js"></script>
         <script src="../../libs/angular/angular-cookies.js"></script>
         
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script> 
@@ -36,27 +36,38 @@
         <!-- Ignite UI Required Combined JavaScript Files -->
         <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.core.js"></script>
         <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.lob.js"></script>
-        
+
     </head>
 
     <body>
         <header>
             <nav class="navbar navbar-default" role="navigation">
                 <a class="navbar-brand" href="#/home" style="font-size: 36px">TravelBuddy</a>
-                <a class="navbar-brand" href="#/auth">Sign In</a>
-                <a class="navbar-brand" href="#/products">Product</a>
+                <a class="navbar-brand" href="#/products">Products</a>
                 <a class="navbar-brand" href="#/orders">Orders</a>
-                <a class="navbar-brand" href="#/admin">Admin</a>
-                <a class="socialize" href="https://www.facebook.com/sharer/sharer.php?u"><img height="22" src="img/facebook-icon.png" alt="Responsive"></a>
-                <a class="socialize" href="https://twitter.com/intent/tweet"><img height="22" src="img/twitter-icon.png" alt="Responsive"></a>
-                <a class="socialize" href="https://twitter.com/intent/tweet"><img height="22" src="img/linkedin.png" alt="Responsive"></a>
-                <a class="socialize" href="https://twitter.com/intent/tweet"><img height="22" src="img/google-plus.png" alt="Responsive"></a>
+                <a class="navbar-brand" id="adminBtn" href="#/admin">Admin</a>
+                
+                <a class="rightHeader" href="https://www.facebook.com/sharer/sharer.php?u"><img height="22" src="img/facebook-icon.png" alt="Responsive"></a>
+                <a class="rightHeader" href="https://twitter.com/intent/tweet"><img height="22" src="img/twitter-icon.png" alt="Responsive"></a>
+                <a class="rightHeader" href="https://linkedin.com"><img height="22" src="img/linkedin.png" alt="Responsive"></a>
+                <a class="rightHeader" href="https://plus.google.com/"><img height="22" src="img/google-plus.png" alt="Responsive"></a>
+                <a class="navbar-brand rightHeader" id="signOutBtn" style="font-size: 11px" href="#/home" ng-controller="homeCtrl" ng-click="logout()">Sign Out</a>
+                <a class="navbar-brand rightHeader" id="signInBtn" style="font-size: 11px" href="#/auth">Sign In</a>
+                <a class="navbar-brand rightHeader" id="userBtn" style="font-size: 11px" href="#/home"></a>
+                <a class="rightHeader" id="userIcon" href="#/home"><img height="22" src="img/user-icon.png" alt="Responsive"></a>
             </nav>
         </header>
-        <div style="height: 52px"></div>
+        <div id="headerPadding" style="height: 52px" ng-controller="homeCtrl">
+            <script>
+                $(function() {
+                    angular.element($("#headerPadding")).scope().autologin();
+                });
+            </script>
+        </div>
         <div class="view-container">
             <!-- Include the view template for the current route -->
             <div ng-view ></div>
         </div>
+
     </body>
 </html>

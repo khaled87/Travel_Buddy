@@ -1,51 +1,47 @@
 package travelbuddy.dao;
 
-import javax.ejb.EJB;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import travelbuddy.entity.*;
 import javax.ejb.Stateless;
+import javax.mail.MessagingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import travelbuddy.common.EmailSender;
 import travelbuddy.common.SessionIdentifierGenerator;
 
-/**
- * All orders
- *
- * @author hajo
- */
 @Stateless
 public class OrderBook extends AbstractDAO<PurchaseOrder, Long>
         implements IOrderBook {
 
     public OrderBook() {
         super(PurchaseOrder.class);
-    }   
-    
+    }
+
     @PersistenceContext
     private EntityManager em;
 
-    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    @EJB
-    private IUserRegistry userRegistry;
-    
+
     @Override
-    public PurchaseOrder book(Product product, TBUser user) {
-        TBUser existingUser = userRegistry.getByEmail(user.getEmail());
-        if (existingUser == null) {
-            userRegistry.create(user);
-            existingUser = user;
-        }
-        
-        PurchaseOrder po = new PurchaseOrder();       
-        po.setUser(existingUser);
-        po.setProduct(product);
+    public void create(PurchaseOrder po) {
         po.setConfirmationCode(SessionIdentifierGenerator.nextSessionId());
-        create(po);
-        
-        return po;
+        super.create(po);
+        try {
+            EmailSender.sendEmail(
+                    "smtp.gmail.com", 
+                    "587", 
+                    "travel.buddy.org@gmail.com", 
+                    "banananana", 
+                    po.getUserEmail(), 
+                    "Booking confirmation for product: " + po.getProduct().getName(), 
+                    po.getConfirmationCode(), 
+                    null);
+        } catch (MessagingException ex) {
+            Logger.getLogger(OrderBook.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

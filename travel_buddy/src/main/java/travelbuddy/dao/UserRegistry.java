@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * All orders
@@ -60,7 +61,7 @@ public class UserRegistry extends AbstractDAO<TBUser, Long>
         List<TBUser> found = new ArrayList<>();
         
         TypedQuery<TBUser> q = getEntityManager().createQuery(
-                String.format("select t from %1$s t where t.name like '%2$s' and password = '%3$s'", getTableName(), name, password)
+                String.format("select t from %1$s t where upper(t.name) = upper('%2$s') and t.password = '%3$s'", getTableName(), name, password)
                 , TBUser.class);
         found.addAll(q.getResultList());
         if (found.isEmpty()) {
@@ -68,5 +69,17 @@ public class UserRegistry extends AbstractDAO<TBUser, Long>
         } else {
             return found.get(0);
         }
+    }
+    
+    @Override
+    public TBUser login(String auth) {
+        byte[] base64 = DatatypeConverter.parseBase64Binary(auth.split(" ")[1].trim());
+        String credentials = new String(base64);
+
+        String[] cr = credentials.split(":");
+        if (cr.length != 2) {
+            return null;
+        }
+        return login(cr[0], cr[1]);
     }
 }

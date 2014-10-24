@@ -7,22 +7,13 @@ var shop = angular.module('Shop', [
     'ngRoute', 'base64', 'ngCookies',
     'ProductCatalogueControllers',
     'ProductCatalogueService'
-            // More here
 ]);
-
 
 shop.config(['$routeProvider',
     function ($routeProvider) {  // Injected object $routeProvider
         $routeProvider.
-                when('/customers', {
-                    templateUrl: 'partials/customers/customers.html',
-                    controller: 'homeCtrl'
-                }).
                 when('/home', {
                     templateUrl: 'partials/home/home.html'
-                }).
-                when('/authentication', {
-                    templateUrl: 'partials/authentication/authentication.html'
                 }).
                 when('/products', {
                     templateUrl: 'partials/products/products.html',
@@ -45,13 +36,10 @@ shop.config(['$routeProvider',
                 }).
                 when('/auth', {
                     templateUrl: 'auth.html',
-                    controller: 'LoginCtrl'
+                    controller: 'homeCtrl'
                 }).
                 otherwise({
                     redirectTo: 'partials/home/home.html'
                 });
     }]);
 
-shop.controller('homeCtrl', ['$scope', function ($scope) {
-        $scope.data = "Home data";
-    }]);
