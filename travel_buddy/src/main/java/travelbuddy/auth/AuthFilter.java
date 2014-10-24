@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package travelbuddy.auth;
 
+import javax.ejb.EJB;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -14,14 +10,15 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
 import javax.xml.bind.DatatypeConverter;
+import travelbuddy.dao.IUserRegistry;
+import travelbuddy.entity.TBUser;
 
-/**
- *
- * @author Tin
- */
 @Provider
 public class AuthFilter implements ContainerRequestFilter {
 
+    @EJB
+    private IUserRegistry userRegistry;
+    
     @Context
     SecurityContext sCtx;
 
@@ -29,10 +26,11 @@ public class AuthFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext rCtx) throws WebApplicationException {
         UriInfo uriInfo = rCtx.getUriInfo();
 
-        if (uriInfo.getPath().startsWith("/product")) {
+        if (isAuthorizationRequired(uriInfo)) {
             boolean isAuthorized = false;
             String auth = rCtx.getHeaderString("authorization");
-            if (auth != null && isAuthorized(auth)) {
+            TBUser user = userRegistry.login(auth);
+            if (auth != null && user != null && user.getRole().equals(TBUser.Role.ADMIN)) {
                 isAuthorized = true;
             }
 
@@ -42,10 +40,7 @@ public class AuthFilter implements ContainerRequestFilter {
         }
     }
 
-    public static boolean isAuthorized(String auth) {
-        byte[] base64 = DatatypeConverter.parseBase64Binary(auth.split(" ")[1].trim());
-        String credentials = new String(base64);
-
-        return "qqq:111".equals(credentials);
+    private static boolean isAuthorizationRequired(UriInfo uriInfo) {
+        return uriInfo.getPath().startsWith("/product");
     }
 }

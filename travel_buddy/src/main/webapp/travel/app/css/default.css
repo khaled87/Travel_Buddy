@@ -152,8 +152,11 @@ a.hovertext:hover:after, a.hovertext:focus:after {
 }
 */
 
-.socialize{
+.rightHeader {
     float: right;
+}
+
+.rightHeader img {
     margin-right: 5px;
     margin-top: 13px;
 }

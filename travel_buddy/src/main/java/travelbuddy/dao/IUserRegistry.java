@@ -14,6 +14,7 @@ public interface IUserRegistry extends IDAO<TBUser, Long> {
 
     public List<TBUser> getByName(String name);
     public TBUser getByEmail(String email);
+    public TBUser login(String auth);
     public TBUser login(String name, String password);
     
 }
