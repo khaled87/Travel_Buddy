@@ -15,48 +15,40 @@ productCatalogueControllers.controller('NavigationCtrl', ['$scope', '$location',
         };
     }]);
 
-productCatalogueControllers.controller('AuthenticationCtrl', ['$scope', 'AuthenticationCtrlProxy',
-    function($scope, AuthenticationCtrlProxy) {
-
-        $scope.pageSize = '7';
-        $scope.currentPage = 0;
-        ProductCatalogueProxy.count()
-                .success(function(count) {
-                    $scope.count = count.value;
-                }).error(function() {
-            console.log("count: error");
+productCatalogueControllers.controller('ProductDetailCtrl', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy',
+    function($scope, $location, $routeParams, ProductCatalogueProxy) {
+        ProductCatalogueProxy.find($routeParams.id).success(function(product) {
+            $scope.product = product;
+        }).error(function(e) {
+            console.log(e);
         });
-        getRange();
-        $scope.$watch('currentPage', function() {
-            getRange();
-        });
-        function getRange() {
-            var fst = $scope.pageSize * $scope.currentPage;
-            ProductCatalogueProxy.findRange(fst, $scope.pageSize)
-                    .success(function(products) {
-                        $scope.products = products;
-                    }).error(function() {
-                console.log("findRange: error");
-            });
-        }
-    }]);
-
-productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
-    function($scope, Auth, $location) {
-
-        $scope.login = function() {
-            Auth.login($scope.user.name, $scope.user.passwd)
-                    .success(function() {
-                        $location.path("/products");
-                    }).error(function() {
-                Auth.clearCredentials();
-                $scope.message = "Bad credentials";
+        
+        $scope.update = function() {
+            console.log($scope.product);
+            ProductCatalogueProxy.update($routeParams.id, $scope.product).success(function() {
+                $location.path('/products');
+            }).error(function(e) {
+                console.log(e);
             });
         };
+        $scope.delete = function() {
+            ProductCatalogueProxy.delete($routeParams.id).success(function() {
+                $location.path('/products');
+            }).error(function(e) {
+                console.log(e);
+            });
+        };
+    }
+]);
 
-        $scope.logout = function() {
-            Auth.clearCredentials();
-            $location.path("/auth");
+productCatalogueControllers.controller('ProductNewCtrl', ['$scope', '$location', 'ProductCatalogueProxy',
+    function($scope, $location, ProductCatalogueProxy) {
+        $scope.create = function() {
+            ProductCatalogueProxy.create($scope.product).success(function() {
+                $location.path('/products');
+            }).error(function(e) {
+                console.log(e);
+            });
         };
     }
 ]);
@@ -166,6 +158,48 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
     }
 ]);
 
+<<<<<<< HEAD
+productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieStore', '$location', 
+    function ($scope, Auth, $cookieStore, $location) {
+        var showAuthorizedControls = function(isAdmin) {
+            $("#signInBtn").hide();
+            $("#signOutBtn").show();
+            $("#userIcon").show();
+            $("#userBtn").show();
+            $("#userBtn").html($scope.user.name);
+            if (isAdmin === true) {
+                $("#adminBtn").show();
+            }
+        };
+        
+        var hideAuthorizedControls = function() {
+            $("#adminBtn").hide();
+            $("#userIcon").hide();
+            $("#userBtn").hide();
+            $("#signOutBtn").hide();
+            $("#signInBtn").show();
+        };
+        
+        $scope.login = function (redirect) {
+            Auth.login($scope.user.name, $scope.user.password)
+                .success(function (user) {
+                    console.log("Log in successfully!");
+                    $scope.user = user;
+                    $cookieStore.put('user', user);
+                    showAuthorizedControls(user.role === "ADMIN");
+                    if (redirect === true) {
+                        if (user.role === "ADMIN") {
+                            $location.path("/admin");
+                        } else {
+                            $location.path("/orders");
+                        }
+                    }
+                }).error(function () {
+                    Auth.clearCredentials();
+                    $scope.message = "Bad credentials";
+                    console.log("Bad credentials!");
+                });
+=======
 productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
     function($scope, Auth, $location) {
         $scope.login = function() {
@@ -176,11 +210,24 @@ productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$locatio
                 Auth.clearCredentials();
                 $scope.message = "Bad credentials";
             });
+>>>>>>> more small fixes
         };
 
         $scope.logout = function() {
             Auth.clearCredentials();
-            $location.path("/auth");
+            hideAuthorizedControls();
+            $cookieStore.remove('user');
+            $location.path("/home");
         };
-    }
-]);
+        
+        $scope.autologin = function() {
+            console.log("Auto logging in...");
+            $scope.user = $cookieStore.get('user');
+            console.log($scope.user);
+            if ($scope.user !== undefined) {
+                $scope.login(false);
+            } else {
+                hideAuthorizedControls();
+            }
+        };
+}]);
