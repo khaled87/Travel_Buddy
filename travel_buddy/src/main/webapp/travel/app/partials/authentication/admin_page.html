@@ -1,6 +1,6 @@
 <div>
-    <table  border="1" style="width:100%">
-        <tr>
+    <table  border="1" style="width:100%; height:100%">
+        <tr style="height:70%">
             <td style="width:30%; vertical-align:top">
                 <table>
                     <tr>
@@ -50,14 +50,14 @@
                     </tr>
                 </table> 
             </td>
-            <td  style="width:70%; vertical-align:top" >
+            <td  style="width:100%; vertical-align:top" >
                 <table style="width:100%"> 
                     <tr ng-repeat="t in trips1">
                         <td style="width:100%">
-                            <table>
+                            <table style="width:100%;">
                                 <tr ng-repeat="st in t.subTripList">
                                     <td style="width:100%">
-                                        <input  style="width:100%" type="button" value="{{st.origin + '   ' + st.arrivalTime + '   ' + st.destination + '   ' + st.departureTime}}" class="btn btn-default" ng-click="selectFlight()"/>
+                                        <input  style="width:100%" type="button" value="{{st.origin + '   ' + st.departureTime + '   ' + st.destination + '   ' + st.arrivalTime}}" class="btn btn-default" ng-click="selectFlight1(st)"/>
                                     </td>
                                 </tr>
                             </table>                        
@@ -68,10 +68,10 @@
                             <table style="width:100%"> 
                                 <tr ng-repeat="t in trips2">
                                     <td style="width:100%">
-                                        <table>
+                                        <table style="width:100%;">
                                             <tr ng-repeat="st in t.subTripList">
                                                 <td style="width:100%">
-                                                    <input  style="width:100%" type="button" value="{{st.origin + '   ' + st.arrivalTime + '   ' + st.destination + '   ' + st.departureTime}}" class="btn btn-default" ng-click="selectFlight()"/>
+                                                    <input  style="width:100%" type="button" value="{{st.origin + '   ' + st.departureTime + '   ' + st.destination + '   ' + st.arrivalTime}}" class="btn btn-default" ng-click="selectFlight2(st)"/>
                                                 </td>
                                             </tr>
                                         </table>                        
@@ -95,7 +95,7 @@
             </td>
 
         </tr>
-        <tr>
+        <tr style=" height:30%"> 
             <td>      
                 <table>
                     <tr >
@@ -134,27 +134,27 @@
                                 </tr>
                             </table>
                         </td>
-                        <td>
-                            &nbsp;
-                        </td>
-                        <td style="width:70%; vertical-align:top">  
-                            <table>
-                                <tr>
-                                    <td>
-                                        <input type="button" value="{{selectedFlightName1}}" class="btn btn-default" ng-click="clearFlight1()" ng-show="clearFlight1Visible"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align:top">  
-                                        <input type="button" class="btn btn-default" value="{{selectedFlightName2}}" ng-show="clearFlight2Visible" ng-click="clearFlight2()"/> 
-                                    </td> 
-                                </tr>
-                            </table>
-                        </td>
+
                     </tr>
                 </table> 
             </td>
-            <td style="vertical-align:top">{{selectedHotel.name}}&nbsp;&nbsp;&nbsp;{{selectedHotel.address1}}&nbsp;&nbsp;&nbsp;{{selectedHotel.price}}</td>
+            <td style="width:70%; vertical-align:top">  
+                <table>
+                    <tr>
+                        <td style="vertical-align:top">
+                            {{selectedFlight1.origin + '   ' + selectedFlight1.departureTime + '   ' + selectedFlight1.destination + '   ' + selectedFlight1.arrivalTime}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top">  
+                            {{selectedFlight2.origin + '   ' + selectedFlight2.departureTime + '   ' + selectedFlight2.destination + '   ' + selectedFlight2.arrivalTime}}
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top">{{selectedHotel.name}}&nbsp;&nbsp;&nbsp;{{selectedHotel.address1}}&nbsp;&nbsp;&nbsp;{{selectedHotel.price}}</td> 
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
 </div>

@@ -73,89 +73,84 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         $scope.getFlight = function(searchedFlight) {
             ProductCatalogueProxy.getFlightList(searchedFlight).success(function(flightList) {
                 console.log(flightList);
-               return flightList;
+                return flightList;
             }).error(function(e) {
                 console.log(e);
                 return "";
-            });  
+            });
         };
-        
+
         $scope.getFlightList = function()
         {
             $scope.counter = 1;
             $scope.clearFlight1Visible = false;
             $scope.clearFlight2Visible = false;
-            
+
             var searchedFlight1 = {};
             searchedFlight1.origin = $scope.origin;
             searchedFlight1.destination = $scope.destination;
             searchedFlight1.date = $scope.arrivalDate;
             searchedFlight1.adultCount = $scope.adultCount;
             ProductCatalogueProxy.getFlightList(searchedFlight1).success(function(flightList1) {
-               $scope.trips1 = flightList1;
+                $scope.trips1 = flightList1;
             }).error(function(e) {
                 console.log(e);
-            });  
-     
+            });
+
             var searchedFlight2 = {};
             searchedFlight2.origin = $scope.destination;
             searchedFlight2.destination = $scope.origin;
             searchedFlight2.date = $scope.departureDate;
             searchedFlight2.adultCount = $scope.adultCount;
             ProductCatalogueProxy.getFlightList(searchedFlight2).success(function(flightList2) {
-               $scope.trips2 = flightList2;
+                $scope.trips2 = flightList2;
             }).error(function(e) {
-                console.log(e);   
-            }); 
-            
+                console.log(e);
+            });
+
         };
 
-        $scope.selectFlight = function(flightName) {
-            $scope.items2 = ["1", "2"];
-            if ($scope.counter === 1)
-            {
-                $scope.selectedFlightName1 = "f1 selected";
-                $scope.counter = 2;
-                $scope.clearFlight1Visible = true;
-
-            }
-            else
-            {
-                $scope.selectedFlightName2 = "f2 selected";
-                $scope.counter = 1;
-                $scope.clearFlight2Visible = true;
-            }
+        $scope.selectFlight1 = function(subTrip) {
+            var sf1 = {};
+            sf1.arrivalTime = subTrip.arrivalTime;
+            sf1.departureTime = subTrip.departureTime;
+            sf1.origin = subTrip.origin;
+            sf1.destination = subTrip.destination;
+            sf1.passangers = $scope.adultCount;
+            $scope.selectedFlight1 = sf1;
         };
 
-        $scope.clearFlight1 = function() {
-            $scope.selectedFlightName1 = "";
-            $scope.counter = 1;
-            $scope.clearFlight1Visible = false;
+        $scope.selectFlight2 = function(subTrip) {
+            var sf2 = {};
+            sf2.arrivalTime = subTrip.arrivalTime;
+            sf2.departureTime = subTrip.departureTime;
+            sf2.origin = subTrip.origin;
+            sf2.destination = subTrip.destination;
+            sf2.passangers = $scope.adultCount;
+            $scope.selectedFlight2 = sf2;
         };
 
-        $scope.clearFlight2 = function() {
-            $scope.selectedFlightName2 = "";
-            $scope.counter = 2;
-            $scope.clearFlight2Visible = false;
-        };
-        
-        $scope.selectHotel = function(hotel){
+
+        $scope.selectHotel = function(hotel) {
             $scope.selectedHotel = hotel;
-           // $scope.bfont = "font: 10px sans-serif;";
+            // $scope.bfont = "font: 10px sans-serif;";
         };
-        
+
         $scope.createPackage = function() {
             var request = {};
             request.product = $scope.package;
             request.hotel = $scope.selectedHotel;
+           // request.flight1 = $scope.selectedFlight1;
+           // request.flight2 = $scope.selectedFlight2;
             ProductCatalogueProxy.createPackage(request).success(function(pack) {
-                $scope.packageCreated = "Package" + pack.name + "crated!";
+                $scope.packageCreated = "Package" + pack.name + "created!";
+                alert("Package " + pack.name + " created!");
             }).error(function(e) {
                 console.log(e);
             });
         };
-        
-        
+
+
         $scope.getHotels = function() {
 
             var hotelInfo = {};
@@ -172,18 +167,18 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 ]);
 
 productCatalogueControllers.controller('LoginCtrl', ['$scope', 'Auth', '$location',
-    function ($scope, Auth, $location) {
-        $scope.login = function () {
+    function($scope, Auth, $location) {
+        $scope.login = function() {
             Auth.login($scope.user.name, $scope.user.passwd)
-                    .success(function () {
+                    .success(function() {
                         $location.path("/admin");
-                    }).error(function () {
+                    }).error(function() {
                 Auth.clearCredentials();
                 $scope.message = "Bad credentials";
             });
         };
 
-        $scope.logout = function () {
+        $scope.logout = function() {
             Auth.clearCredentials();
             $location.path("/auth");
         };
