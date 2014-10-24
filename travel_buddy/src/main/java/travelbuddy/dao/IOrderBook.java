@@ -1,7 +1,6 @@
 
 package travelbuddy.dao;
 
-import travelbuddy.entity.PurchaseOrder;
 import javax.ejb.Local;
 import travelbuddy.entity.*;
 
@@ -11,5 +10,5 @@ import travelbuddy.entity.*;
  */
 @Local
 public interface IOrderBook extends IDAO<PurchaseOrder, Long> {
-    public PurchaseOrder book(Product product, TBUser user);
+
 }

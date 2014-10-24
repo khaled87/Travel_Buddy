@@ -12,8 +12,8 @@ public class PurchaseOrder extends AbstractEntity {
     private Date date = new Date();
     @ManyToOne
     private Product product;
-    @ManyToOne
-    private TBUser user;
+    private String userFullName;
+    private String userEmail;
     private String confirmationCode;
     private String hotelConfirmationCode;
     private String flight1ConfirmationCode;
@@ -43,12 +43,20 @@ public class PurchaseOrder extends AbstractEntity {
         this.product = p;
     }
 
-    public TBUser getUser() {
-        return user;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUser(TBUser user) {
-        this.user = user;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+    
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
     }
     
     public String getConfirmationCode() {
