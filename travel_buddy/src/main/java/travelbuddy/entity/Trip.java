@@ -14,7 +14,7 @@ public class Trip extends AbstractEntity {
     private String saleTotal;
     private String maxFreeBaggage;
 
-    public List<SubTrip> getSubtrips() {
+    public List<SubTrip> getSubtripList() {
        return new ArrayList<>(this.subtrips);
     }
 
@@ -35,7 +35,7 @@ public class Trip extends AbstractEntity {
     }
 
   
-    public void setSubTrips(List<SubTrip> subtrip) {
+    public void setSubtripList(List<SubTrip> subtrip) {
         this.subtrips = new ArrayList<>(subtrip);
     }
      

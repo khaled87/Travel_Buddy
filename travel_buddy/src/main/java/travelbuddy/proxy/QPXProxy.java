@@ -1278,7 +1278,7 @@ public class QPXProxy implements IQPXProxy {
         trip.setSaleTotal(saleTotal);
         trip.setMaxFreeBaggage(prevMaxFreeBaggage);
         System.out.println("SKITSKALLE " + subtrip.get(0).getArrivalTime());
-        trip.setSubTrips(subtrip);
+        trip.setSubtripList(subtrip);
         tripList.add(trip);
         //subtrip.clear();
 
@@ -1312,16 +1312,16 @@ public class QPXProxy implements IQPXProxy {
             System.out.println("**********tripObject**********' " + " " + i);
             System.out.println("departureTIme" + tripList.get(i).getSaleTotal());
             System.out.println("Free KG" + tripList.get(i).getMaxFreeBaggage());
-            for (int j = 0; j < tripList.get(i).getSubtrips().size(); j++) {
+            for (int j = 0; j < tripList.get(i).getSubtripList().size(); j++) {
                 System.out.println("-------subTrip--------------- " + " " + j);
                 System.out.println("subTrip size " + subtrip.size());
 
-                System.out.println("departureTIme" + tripList.get(i).getSubtrips().get(j).getCabin());
-                System.out.println("arrivalTime" + tripList.get(i).getSubtrips().get(j).getArrivalTime());
-                System.out.println("departureTIme" + tripList.get(i).getSubtrips().get(j).getDepartureTime());
-                System.out.println("origin" + tripList.get(i).getSubtrips().get(j).getOrigin());
-                System.out.println("destination" + tripList.get(i).getSubtrips().get(j).getDestination());
-                System.out.println("meal" + tripList.get(i).getSubtrips().get(j).getMeal());
+                System.out.println("departureTIme" + tripList.get(i).getSubtripList().get(j).getCabin());
+                System.out.println("arrivalTime" + tripList.get(i).getSubtripList().get(j).getArrivalTime());
+                System.out.println("departureTIme" + tripList.get(i).getSubtripList().get(j).getDepartureTime());
+                System.out.println("origin" + tripList.get(i).getSubtripList().get(j).getOrigin());
+                System.out.println("destination" + tripList.get(i).getSubtripList().get(j).getDestination());
+                System.out.println("meal" + tripList.get(i).getSubtripList().get(j).getMeal());
             }
         }
     }
