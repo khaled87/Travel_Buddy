@@ -102,24 +102,27 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 
         };
 
-        $scope.selectFlight1 = function(subTrip) {
-            var sf1 = {};
-            sf1.arrivalTime = subTrip.arrivalTime;
+        $scope.selectFlight1 = function(trip) {
+            //var sf1 = {};
+           /* sf1.arrivalTime = subTrip.arrivalTime;
             sf1.departureTime = subTrip.departureTime;
             sf1.origin = subTrip.origin;
             sf1.destination = subTrip.destination;
-            sf1.passangers = $scope.adultCount;
-            $scope.selectedFlight1 = sf1;
+            sf1.passangers = $scope.adultCount;*/
+           // $scope.selectedFlight1 = sf1;
+           $scope.selectedFlight1 = trip;
         };
 
-        $scope.selectFlight2 = function(subTrip) {
-            var sf2 = {};
+        $scope.selectFlight2 = function(trip) {
+           /* var sf2 = {};
             sf2.arrivalTime = subTrip.arrivalTime;
             sf2.departureTime = subTrip.departureTime;
             sf2.origin = subTrip.origin;
             sf2.destination = subTrip.destination;
             sf2.passangers = $scope.adultCount;
-            $scope.selectedFlight2 = sf2;
+            $scope.selectedFlight2 = sf2;*/
+            $scope.selectedFlight2 = trip;
+            
         };
 
 
@@ -132,8 +135,8 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
             var request = {};
             request.product = $scope.package;
             request.hotel = $scope.selectedHotel;
-           // request.flight1 = $scope.selectedFlight1;
-           // request.flight2 = $scope.selectedFlight2;
+            request.flight1 = $scope.selectedFlight1;
+            request.flight2 = $scope.selectedFlight2;
             ProductCatalogueProxy.createPackage(request).success(function(pack) {
                 $scope.packageCreated = "Package" + pack.name + "created!";
                 alert("Package " + pack.name + " created!");

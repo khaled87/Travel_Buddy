@@ -8,16 +8,16 @@ import javax.persistence.OneToMany;
 public class Trip extends AbstractEntity {
 
     @OneToMany
-    private List<Trip> trips;
+    private List<SubTrip> subtrips;
     private String saleTotal;
     private String maxFreeBaggage;
 
-    public List<Trip> getTrips() {
-        return trips;
+    public List<SubTrip> getSubtrips() {
+        return subtrips;
     }
 
-    public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+    public void setSubtrips(List<SubTrip> subtrips) {
+        this.subtrips = subtrips;
     }
 
     public String getSaleTotal() {
@@ -35,4 +35,5 @@ public class Trip extends AbstractEntity {
     public void setMaxFreeBaggage(String maxFreeBaggage) {
         this.maxFreeBaggage = maxFreeBaggage;
     }
+
 }
