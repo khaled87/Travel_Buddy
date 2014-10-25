@@ -7,7 +7,9 @@ package travelbuddy.webservice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -48,10 +50,14 @@ public class TravelResource {
     public Response createPackage(JsonObject jsonObject) {
         JsonObject jProduct = jsonObject.getJsonObject("product");
         JsonObject jHotel = jsonObject.getJsonObject("hotel");
+        List<Trip> flightList = new ArrayList<>();
+        flightList.add((Trip) jsonObject.getJsonObject("flight1"));
+        flightList.add((Trip) jsonObject.getJsonObject("flight2"));
         Hotel nHotel = new Hotel();
         nHotel.setName(jHotel.getString("name"));
         nHotel.setAddress1(jHotel.getString("address1"));
         nHotel.setPrice((long)jHotel.getInt("price"));  
+        
         Product p = new Product( jProduct.getString("name"), (long) jProduct.getInt("price"),jProduct.getString("description"), null, nHotel);
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
