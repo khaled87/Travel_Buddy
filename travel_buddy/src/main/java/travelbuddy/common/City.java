@@ -8,10 +8,7 @@ package travelbuddy.common;
 import java.util.HashMap;
 import java.util.Hashtable;
 
-/**
- *
- * @author Ali
- */
+
 public class City {
 
     /*public static void main(String[] args) {

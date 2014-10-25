@@ -7,6 +7,7 @@ package travelbuddy.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import travelbuddy.entity.Trip;
 
 /**
  *

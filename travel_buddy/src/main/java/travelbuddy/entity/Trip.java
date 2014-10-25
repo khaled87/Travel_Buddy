@@ -1,5 +1,7 @@
 package travelbuddy.entity;
 
+import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -13,11 +15,7 @@ public class Trip extends AbstractEntity {
     private String maxFreeBaggage;
 
     public List<SubTrip> getSubtrips() {
-        return subtrips;
-    }
-
-    public void setSubtrips(List<SubTrip> subtrips) {
-        this.subtrips = subtrips;
+       return new ArrayList<>(this.subtrips);
     }
 
     public String getSaleTotal() {
@@ -35,5 +33,19 @@ public class Trip extends AbstractEntity {
     public void setMaxFreeBaggage(String maxFreeBaggage) {
         this.maxFreeBaggage = maxFreeBaggage;
     }
+
+  
+    public void setSubTrips(List<SubTrip> subtrip) {
+        this.subtrips = new ArrayList<>(subtrip);
+    }
+     
+       
+    
+
+  
+
+  
+
+   
 
 }

@@ -1,6 +1,5 @@
 package travelbuddy.proxy;
 
-import com.google.gson.Gson;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,20 +9,23 @@ import javax.json.Json;
 import javax.json.stream.JsonParser;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.FlightInfo;
-import travelbuddy.common.SubTrip;
-import travelbuddy.common.TripObj;
+import travelbuddy.entity.SubTrip;
+import travelbuddy.entity.Trip;
+
+
+
 
 @Stateless
 public class QPXProxy implements IQPXProxy {
 
     private final String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=";
-    private final String ApiKey = "AIzaSyBK9KNDV3W5tIc121fI07eRYDGcT3yGUJU";
+    private final String ApiKey = "AIzaSyC3OAnGCXMYwYHyTjB-9_wIhxCC31eiV7E";
     private List<FlightInfo> FlightInfoList = new ArrayList<>();
     //private List<Slice>slices = new ArrayList<>();
     //private List<Leg>leg = new ArrayList<>();
     //private final Slice slice = new Slice();
     private final List<SubTrip> subtrip = new ArrayList<>();
-    private final List<TripObj> tripList = new ArrayList<>();
+    private final List<Trip> tripList = new ArrayList<>();
     private final List<String> airPortList = new ArrayList<>();
     private String airPortData;
     int count;
@@ -41,7 +43,7 @@ public class QPXProxy implements IQPXProxy {
     // SubTrip sub = new SubTrip();
 
     @Override
-    public Collection<TripObj> getFlightList(BasicQPXRequest fr) {
+    public Collection<Trip> getFlightList(BasicQPXRequest fr) {
         //String value = RequestHandler.execute(RequestHandler.RequestMethod.POST, url + ApiKey, fr.toParam());
         // System.out.println("TITTA HÄÄÄÄR" + value);
         String value = "{\n" +
@@ -1126,7 +1128,7 @@ public class QPXProxy implements IQPXProxy {
         // return new Gson().fromJson(value, FlightResponse.class);
     }
 
-    public Collection<TripObj> parseToFlightInfo(String httpResponse) {
+    public Collection<Trip> parseToFlightInfo(String httpResponse) {
         clearPreviousData();
         JsonParser parser;
         parser = Json.createParser(new StringReader(httpResponse));
@@ -1266,18 +1268,19 @@ public class QPXProxy implements IQPXProxy {
         createTrip(saleTotal, prevMaxFreeBaggage);
         saleTotal = null;
 
-        printAll(tripList);
+       printAll(tripList);
         return tripList;
     }
 
     private void createTrip(String saleTotal, String prevMaxFreeBaggage) {
         System.out.println("the sales total in create trip is " + saleTotal);
-        TripObj trip = new TripObj();
+        Trip trip = new Trip();
         trip.setSaleTotal(saleTotal);
         trip.setMaxFreeBaggage(prevMaxFreeBaggage);
-        trip.setSubTripList(subtrip);
+        System.out.println("SKITSKALLE " + subtrip.get(0).getArrivalTime());
+        trip.setSubTrips(subtrip);
         tripList.add(trip);
-        subtrip.clear();
+        //subtrip.clear();
 
     }
 
@@ -1301,23 +1304,24 @@ public class QPXProxy implements IQPXProxy {
         subtrip.add(sub);
     }
 
+
     //  below code is for test purposes only
-    private void printAll(List<TripObj> tripList) {
+    private void printAll(List<Trip> tripList) {
 
         for (int i = 0; i < tripList.size(); i++) {
             System.out.println("**********tripObject**********' " + " " + i);
             System.out.println("departureTIme" + tripList.get(i).getSaleTotal());
             System.out.println("Free KG" + tripList.get(i).getMaxFreeBaggage());
-            for (int j = 0; j < tripList.get(i).getSubTripList().size(); j++) {
+            for (int j = 0; j < tripList.get(i).getSubtrips().size(); j++) {
                 System.out.println("-------subTrip--------------- " + " " + j);
                 System.out.println("subTrip size " + subtrip.size());
 
-                System.out.println("departureTIme" + tripList.get(i).getSubTripList().get(j).getCabin());
-                System.out.println("arrivalTime" + tripList.get(i).getSubTripList().get(j).getArrivalTime());
-                System.out.println("departureTIme" + tripList.get(i).getSubTripList().get(j).getDepartureTime());
-                System.out.println("origin" + tripList.get(i).getSubTripList().get(j).getOrigin());
-                System.out.println("destination" + tripList.get(i).getSubTripList().get(j).getDestination());
-                System.out.println("meal" + tripList.get(i).getSubTripList().get(j).getMeal());
+                System.out.println("departureTIme" + tripList.get(i).getSubtrips().get(j).getCabin());
+                System.out.println("arrivalTime" + tripList.get(i).getSubtrips().get(j).getArrivalTime());
+                System.out.println("departureTIme" + tripList.get(i).getSubtrips().get(j).getDepartureTime());
+                System.out.println("origin" + tripList.get(i).getSubtrips().get(j).getOrigin());
+                System.out.println("destination" + tripList.get(i).getSubtrips().get(j).getDestination());
+                System.out.println("meal" + tripList.get(i).getSubtrips().get(j).getMeal());
             }
         }
     }
@@ -1330,4 +1334,5 @@ public class QPXProxy implements IQPXProxy {
         prevMaxFreeBaggage = null;
         maxFreeBaggage = null;
     }
+
 }
