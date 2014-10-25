@@ -1,6 +1,5 @@
 package travelbuddy.proxy;
 
-import com.google.gson.Gson;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,8 +9,8 @@ import javax.json.Json;
 import javax.json.stream.JsonParser;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.FlightInfo;
-import travelbuddy.common.SubTrip;
-import travelbuddy.common.Trip;
+import travelbuddy.entity.SubTrip;
+import travelbuddy.entity.Trip;
 
 @Stateless
 public class QPXProxy implements IQPXProxy {
@@ -206,7 +205,7 @@ public class QPXProxy implements IQPXProxy {
         Trip trip = new Trip();
         trip.setSaleTotal(saleTotal);
         trip.setMaxFreeBaggage(prevMaxFreeBaggage);
-        trip.setSubTripList(subtrip);
+        trip.setSubTrips(subtrip);
         tripList.add(trip);
         subtrip.clear();
 
@@ -239,16 +238,16 @@ public class QPXProxy implements IQPXProxy {
      System.out.println("**********tripObject**********' " + " " + i);
      System.out.println("departureTIme" + tripList.get(i).getSaleTotal());
      System.out.println("Free KG" + tripList.get(i).getMaxFreeBaggage());
-     for (int j = 0; j < tripList.get(i).getSubTripList().size(); j++) {
+     for (int j = 0; j < tripList.get(i).getSubTrips().size(); j++) {
      System.out.println("-------subTrip--------------- " + " " + j);
      System.out.println("subTrip size " + subtrip.size());
                 
-     System.out.println("departureTIme" + tripList.get(i).getSubTripList().get(j).getCabin());
-     System.out.println("arrivalTime" + tripList.get(i).getSubTripList().get(j).getArrivalTime());
-     System.out.println("departureTIme" + tripList.get(i).getSubTripList().get(j).getDepartureTime());
-     System.out.println("origin" + tripList.get(i).getSubTripList().get(j).getOrigin());
-     System.out.println("destination" + tripList.get(i).getSubTripList().get(j).getDestination());
-     System.out.println("meal" + tripList.get(i).getSubTripList().get(j).getMeal());
+     System.out.println("departureTIme" + tripList.get(i).getSubTrips().get(j).getCabin());
+     System.out.println("arrivalTime" + tripList.get(i).getSubTrips().get(j).getArrivalTime());
+     System.out.println("departureTIme" + tripList.get(i).getSubTrips().get(j).getDepartureTime());
+     System.out.println("origin" + tripList.get(i).getSubTrips().get(j).getOrigin());
+     System.out.println("destination" + tripList.get(i).getSubTrips().get(j).getDestination());
+     System.out.println("meal" + tripList.get(i).getSubTrips().get(j).getMeal());
      }
      }
      }

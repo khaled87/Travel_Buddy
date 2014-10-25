@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package travelbuddy.webservice;
 
 import java.text.ParseException;
@@ -20,11 +15,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.City;
-import travelbuddy.common.Trip;
 import travelbuddy.common.HotelRequest;
 import travelbuddy.dao.IProductCatalogue;
 import travelbuddy.entity.Hotel;
 import travelbuddy.entity.Product;
+import travelbuddy.entity.Trip;
 import travelbuddy.proxy.IEANProxy;
 import travelbuddy.proxy.IQPXProxy;
 
@@ -45,24 +40,38 @@ public class TravelResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
     public Response createPackage(JsonObject jsonObject) {
-        JsonObject jProduct = jsonObject.getJsonObject("product");
-        JsonObject jHotel = jsonObject.getJsonObject("hotel");
         List<Trip> flightList = new ArrayList<>();
-        flightList.add((Trip) jsonObject.getJsonObject("flight1"));
-        flightList.add((Trip) jsonObject.getJsonObject("flight2"));
-        Hotel nHotel = new Hotel();
-        nHotel.setName(jHotel.getString("name"));
-        nHotel.setAddress1(jHotel.getString("address1"));
-        nHotel.setPrice((long)jHotel.getInt("price"));  
-        Product p = new Product(
-                jProduct.getString("name"), 
-                (long) jProduct.getInt("price"),
-                jProduct.getString("description"), 
-                null, nHotel, 
-                jProduct.getString("imgSrc"));
+        flightList.add(getTrip(jsonObject.getJsonObject("flight1")));
+        flightList.add(getTrip(jsonObject.getJsonObject("flight2")));
+        Hotel nHotel = getHotel(jsonObject.getJsonObject("hotel"));  
+        Product p = getProduct(jsonObject.getJsonObject("product"), flightList, nHotel);
+        
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
+    }
+
+    private Product getProduct(JsonObject jProduct, List<Trip> trips, Hotel nHotel) {
+        Product p = new Product(
+                jProduct.getString("name"),
+                (long) jProduct.getInt("price"),
+                jProduct.getString("description"),
+                trips, nHotel,
+                jProduct.getString("imgSrc"));
+        return p;
+    }
+
+    private Hotel getHotel(JsonObject jHotel) {
+        Hotel nHotel = new Hotel();
+        nHotel.setName(jHotel.getString("name"));
+        nHotel.setAddress1(jHotel.getString("address1"));
+        nHotel.setPrice((long)jHotel.getInt("price"));
+        return nHotel;
+    }
+    
+    private Trip getTrip(JsonObject jTrip) {
+        Trip trip = new Trip();
+        return trip;
     }
 
     @DELETE
@@ -77,7 +86,6 @@ public class TravelResource {
     @Path("/flights")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
-
     public Response getFlightList(JsonObject jsonObject) throws ParseException {
         City city = new City();
         city.createAbbrevList();

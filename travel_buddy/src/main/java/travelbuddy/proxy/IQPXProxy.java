@@ -3,7 +3,7 @@ package travelbuddy.proxy;
 import java.util.Collection;
 import javax.ejb.Local;
 import travelbuddy.common.BasicQPXRequest;
-import travelbuddy.common.Trip;
+import travelbuddy.entity.Trip;
 
 @Local
 public interface IQPXProxy {
