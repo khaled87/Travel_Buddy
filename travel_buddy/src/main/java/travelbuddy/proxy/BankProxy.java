@@ -14,11 +14,11 @@ public class BankProxy implements IBankProxy{
         {
             ok = "okay";
         }
-        else if (pi.getPrice() < 1000){
-             err = "Not enough money";  
+        else if (pi.getPrice() > 1000){
+             err = "moneyErr";  
         } 
         else {
-            err = "Invalid account";
+            err = "accountErr";
         }
         
         BankResponse br = new BankResponse(err, ok);

@@ -160,17 +160,31 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 
 productCatalogueControllers.controller('CreditcardController', ['$scope', 'ProductCatalogueProxy',
     function($scope, ProductCatalogueProxy) {
+        
         $scope.verify = function()
         {
            var paymentInfo = {};
+           paymentInfo.account = $scope.account;
+           paymentInfo.holder = $scope.holder;
+           paymentInfo.ccv = $scope.ccv;
            paymentInfo.price = 123;
-           paymentInfo.holder = "Eric";
-           paymentInfo.ccv = "333";
-           paymentInfo.account = "111";
            ProductCatalogueProxy.verify(paymentInfo).success(function(bankResponse) {
-                $scope.bankResponse = bankResponse.ok;
+                if(bankResponse.ok.equals("okay"))
+                {
+                    alert("payment ok");
+                }
+                else if(bankResponse.err.equals("accountErr"))
+                {
+                    alert("There was an error with your account");
+                }
+                else if(bankResponse.err.equals("moneyErr"))
+                {
+                    alert("Not enough money in your account");
+                }
+               
             }).error(function(e) {
                 console.log(e);
+               // console.log(bankResponse);
             });
         };
     }

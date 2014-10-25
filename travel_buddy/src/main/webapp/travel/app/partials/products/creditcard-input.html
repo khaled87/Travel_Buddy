@@ -1,5 +1,47 @@
 <div>
-    {{bankResponse}}
-    
-    <input type="button" class="btn btn-default" value="Validate" ng-click="verify()"/> 
+    <table> 
+         <tr>
+            <td>
+               purchase info
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Holder   &nbsp;   &nbsp;
+            </td>
+            <td>
+                <input  style="width: 100%; height: 20px;" type="text" ng-model="holder" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Creditcard number   &nbsp;   &nbsp;
+            </td>
+            <td>
+                <input  style="width: 100%; height: 20px;" type="text" ng-model="account" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                CCV    &nbsp;   &nbsp;
+            </td>
+            <td>
+                 <input  style="width: 100%; height: 20px;" type="text" ng-model="ccv" required/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                  <input style="width: 100%; height: 35px;" type="button" class="btn btn-default" value="Buy" ng-click="verify()"/> 
+            </td>
+        </tr>
+    </table>
+  
 </div>
