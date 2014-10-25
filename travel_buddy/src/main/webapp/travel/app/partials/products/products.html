@@ -1,8 +1,7 @@
 <div>
     <div style="margin: 2px; float: right">
-        <input type="button" class="btn btn-default" value="Prev" ng-click="prev()"/>
-        <input type="button" class="btn btn-default" value="Next" ng-click="next()"/>
-        <input type="button" class="btn btn-default" value="X" onclick="createDashboardX()"/>
+        <input type="button" class="btn btn-default" value="Prev" ng-click="getRange()"/>
+        <input type="button" class="btn btn-default" value="Next" ng-click="getRange()"/>
     </div>
 
     <div id="dashboard" class="dashboard">
@@ -32,29 +31,28 @@
             {id: 7, name: 'Paris', price: 2000, description: 'Something', picture: 'img/8.jpg'},
             {id: 8, name: 'Paris', price: 2000, description: 'Something', picture: 'img/9.jpg'}
         ];
-        var createDashboard = function (dataSource) {
-            console.log('A');
-            $.get("partials/products/product-detail.html", function (detail) {
-                $.get("partials/products/product-overview.html", function (overview) {
-                    var options = {
-                        marginLeft: 0,
-                        marginTop: 0,
-                        rightPanelTilesWidth: 250,
-                        rightPanelTilesHeight: 250,
-                        dataSource: dataSource,
-                        maximizedState: detail,
-                        minimizedState: overview,
-                        rendered: function (event, ui) {
-                            $('#dashboard').find('ul').igTree();
-                        }
-                    };
-
-                    $('#dashboard').igTileManager(options);
-                });
-            });
-        };
-        var createDashboardX = function() {createDashboard(dataSourceX);};
-        $(createDashboard(dataSource));
+//        var createDashboard = function (dataSource) {
+//            $.get("partials/products/product-detail.html", function (detail) {
+//                $.get("partials/products/product-overview.html", function (overview) {
+//                    var options = {
+//                        marginLeft: 0,
+//                        marginTop: 0,
+//                        rightPanelTilesWidth: 250,
+//                        rightPanelTilesHeight: 250,
+//                        dataSource: dataSource,
+//                        maximizedState: detail,
+//                        minimizedState: overview,
+//                        rendered: function (event, ui) {
+//                            $('#dashboard').find('ul').igTree();
+//                        }
+//                    };
+//
+//                    $('#dashboard').igTileManager(options);
+//                });
+//            });
+//        };
+//        
+//        $(createDashboard(angular.element($("#dashboard")).scope().products));
         //'<h3>${name}</h3><img src="${picture}" title="${name}" alt="error"/><div id="map-canvas"></div><p class="text">${description}</p>',
     </script>
 </div>

@@ -15,43 +15,53 @@ productCatalogueControllers.controller('NavigationCtrl', ['$scope', '$location',
         };
     }]);
 
-productCatalogueControllers.controller('ProductDetailCtrl', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy',
-    function($scope, $location, $routeParams, ProductCatalogueProxy) {
-        ProductCatalogueProxy.find($routeParams.id).success(function(product) {
-            $scope.product = product;
-        }).error(function(e) {
-            console.log(e);
+productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'PackageProxy',
+    function($scope, PackageProxy) {
+        $scope.pageSize = '9';
+        $scope.currentPage = 0;
+        PackageProxy.count()
+                .success(function(count) {
+                    $scope.count = count.value;
+                }).error(function() {
+            console.log("count: error");
         });
-        
-        $scope.update = function() {
-            console.log($scope.product);
-            ProductCatalogueProxy.update($routeParams.id, $scope.product).success(function() {
-                $location.path('/products');
-            }).error(function(e) {
-                console.log(e);
+        getRange();
+        $scope.$watch('currentPage', function() {
+            getRange();
+        });
+        function getRange() {
+            var fst = $scope.pageSize * $scope.currentPage;
+            PackageProxy.findRange(fst, $scope.pageSize)
+                    .success(function(products) {
+                        debugger;
+                        console.log(products);
+                        $scope.products = products;
+                        createDashboard($scope.products);
+                    }).error(function() {
+                console.log("findRange: error");
             });
-        };
-        $scope.delete = function() {
-            ProductCatalogueProxy.delete($routeParams.id).success(function() {
-                $location.path('/products');
-            }).error(function(e) {
-                console.log(e);
-            });
-        };
-    }
-]);
+        }
+        var createDashboard = function (dataSource) {
+            $.get("partials/products/product-detail.html", function (detail) {
+                $.get("partials/products/product-overview.html", function (overview) {
+                    var options = {
+                        marginLeft: 0,
+                        marginTop: 0,
+                        rightPanelTilesWidth: 250,
+                        rightPanelTilesHeight: 250,
+                        dataSource: dataSource,
+                        maximizedState: detail,
+                        minimizedState: overview,
+                        rendered: function (event, ui) {
+                            $('#dashboard').find('ul').igTree();
+                        }
+                    };
 
-productCatalogueControllers.controller('ProductNewCtrl', ['$scope', '$location', 'ProductCatalogueProxy',
-    function($scope, $location, ProductCatalogueProxy) {
-        $scope.create = function() {
-            ProductCatalogueProxy.create($scope.product).success(function() {
-                $location.path('/products');
-            }).error(function(e) {
-                console.log(e);
+                    $('#dashboard').igTileManager(options);
+                });
             });
         };
-    }
-]);
+    }]);
 
 productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCatalogueProxy',
     function($scope, ProductCatalogueProxy) {
@@ -131,9 +141,15 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         $scope.createPackage = function() {
             var request = {};
             request.product = $scope.package;
+            request.product.img = $scope.img;
+            request.product.imgSrc = $scope.imgSrc;
+            request.product.formData = $scope.formData;
+            debugger;
+            var nicE = new nicEditors.findEditor('package-description');
+            request.product.detail = nicE.getContent();
             request.hotel = $scope.selectedHotel;
-           // request.flight1 = $scope.selectedFlight1;
-           // request.flight2 = $scope.selectedFlight2;
+            request.flight1 = $scope.selectedFlight1;
+            request.flight2 = $scope.selectedFlight2;
             ProductCatalogueProxy.createPackage(request).success(function(pack) {
                 $scope.packageCreated = "Package" + pack.name + "created!";
                 alert("Package " + pack.name + " created!");

@@ -18,13 +18,6 @@ public class ProductCatalogueResource {
     private IProductCatalogue productCatalogue;
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response  getHotelList() {
-        return Response.ok(new GenericEntity<Collection<Product>>(productCatalogue.findAll()) {
-        }).build();
-    }
-
-    @GET
     @Path("range")
     @Produces({MediaType.APPLICATION_JSON})
     public Response findRange(@QueryParam("fst") int fst, @QueryParam("count") int count) {
@@ -46,17 +39,6 @@ public class ProductCatalogueResource {
     public Response count() {
         JsonObject count = Json.createObjectBuilder().add("value", productCatalogue.count()).build();
         return Response.ok(new GenericEntity<JsonObject>(count) {
-        }).build();
-    }
-
-    @PUT
-    @Path("{id}")
-    @Consumes(value = MediaType.APPLICATION_JSON)
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response update(@PathParam("id") final long id, JsonObject jsonObject) {
-        Product p = new Product(id, jsonObject.getString("name"), (long) jsonObject.getInt("price"), null, null);
-        productCatalogue.update(p);
-        return Response.ok(new GenericEntity<Product>(p) {
         }).build();
     }
 }

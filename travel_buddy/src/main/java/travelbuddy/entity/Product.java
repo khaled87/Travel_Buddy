@@ -1,7 +1,9 @@
 package travelbuddy.entity;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,24 +21,21 @@ public class Product extends AbstractEntity {
     private List<Flight> flights;
     @OneToOne
     private Hotel hotel;
-    //int numberOfPeople;
+    @Column(columnDefinition="CLOB NOT NULL") 
+    @Lob 
+    private String img;
     
     public Product() {
         
     }
 
-    public Product(String name, double price, String description, List<Flight> flights, Hotel hotel) {
+    public Product(String name, double price, String description, List<Flight> flights, Hotel hotel, String img) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.hotel = hotel;
-      //  this.flights = flights;
-    }
-
-    public Product(Long id, String name, double price, List<Flight> flights, Hotel hotel) {
-        super(id);
-        this.name = name;
-        this.price = price;
+        this.flights = flights;
+        this.img = img;
     }
 
     public String getName() {
@@ -62,5 +61,33 @@ public class Product extends AbstractEntity {
 
     public Hotel getHotel() {
         return hotel;
+    }
+    
+    public String getImg() {
+        return img;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

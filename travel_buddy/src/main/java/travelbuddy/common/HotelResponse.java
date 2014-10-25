@@ -40,6 +40,9 @@ public class HotelResponse {
             hotel.setName(hs.name);
             hotel.setAddress1(hs.address1);
             hotel.setPrice(hs.highRate);
+            hotel.setShortDescription(hs.shortDescription);
+            hotel.setThumbNailUrl("http://media.expedia.com" + hs.thumbNailUrl);
+            hotel.setHotelRating(hs.hotelRating);
             innerHotels.add(hotel);
         }
         
@@ -49,8 +52,6 @@ public class HotelResponse {
     public HotelListResponse getHotelListResponse() {
         return HotelListResponse;
     }
-    
-      
 
     public class Surcharge {
 

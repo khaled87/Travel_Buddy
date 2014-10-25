@@ -5,18 +5,18 @@
                 <table>
                     <tr>
                         <td>Origin</td>
-                        <td><input  style="width: 100%; height: 20px;" type="text" ng-model="origin" required/></td>
+                        <td><input class="text" type="text" ng-model="origin" required/></td>
                     </tr>  
                     <tr>
                         <td>Destination</td>
-                        <td><input style="width: 100%; height: 20px;" type="text" ng-model="destination" required/></td>
+                        <td><input class="text" type="text" ng-model="destination" required/></td>
                     </tr>
                     <tr>
                         <td>
                             Arrival Date
                         </td>
                         <td>
-                            <input style="width: 100%; height: 20px;" type="date" ng-model="arrivalDate" required/>
+                            <input class="text" type="date" ng-model="arrivalDate" required/>
                         </td>
                     </tr>
                     <tr>
@@ -24,13 +24,13 @@
                             Departure Date
                         </td>
                         <td>
-                            <input style="width: 100%; height: 20px;" type="date" ng-model="departureDate" required/>
+                            <input class="text" type="date" ng-model="departureDate" required/>
                         </td>
                     </tr>
                     <tr>
                         <td> Number of guests &nbsp;&nbsp;&nbsp;</td>
                         <td>
-                            <input style="width: 100%; height: 20px;" type="number" ng-model="adultCount" required/>
+                            <input class="text" type="number" ng-model="adultCount" required/>
                         </td>
                     </tr>
                     <tr>
@@ -102,7 +102,7 @@
                         <td rowspan="2">
                             <table>
                                 <tr>
-                                    <td>
+                                    <td colspan="2">
                                         <h3>Create a package</h3>
                                     </td>
                                 </tr>
@@ -116,17 +116,27 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" style="width: 150px; height: 30px;" ng-model ="package.name"  />
+                                        <input type="text" class="text" ng-model ="package.name"  />
                                     </td>
                                     <td>
-                                        <input type="number" style="width: 150px; height: 30px;" ng-model ="package.price" />
+                                        <input type="number" class="text" ng-model ="package.price" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <input type="textarea"  rows="4" style="width: 310px; height: 100px;" ng-model ="package.description"  />
+                                        <textarea id="package-description" style="width: 100%; height: 200px;" ng-model ="package.description">{{package.description}}</textarea>
                                     </td>            
-                                </tr>    
+                                </tr>   
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="user-detail">
+                                            <div id="holder" class="holder"></div> 
+                                            <p id="upload" class="hidden">
+                                                <label>Drag &amp; drop not supported, but you can still upload via this input field:<br><input type="file"></label>
+                                            </p>
+                                        </div>
+                                    </td>            
+                                </tr> 
                                 <tr>
                                     <td>
                                         <input type="button" class="btn btn-default" value="Create" ng-click="createPackage()"/> 
@@ -157,4 +167,70 @@
             </td>
         </tr>
     </table>
+    
+    <script>
+        $(function() {nicEditors.allTextAreas();});
+        
+        var holder = document.getElementById('holder'),
+        tests = {
+            dnd: 'draggable' in document.createElement('span')
+        },
+                
+        acceptedTypes = {
+            'image/png': true,
+            'image/jpeg': true,
+            'image/gif': true
+        };
+
+        function previewfile(file) {
+            if (acceptedTypes[file.type] === true) {
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    var image = new Image();
+                    image.src = event.target.result;
+                    image.width = 250; // a fake resize
+                    angular.element($("#user-detail")).scope().imgSrc = image.src;
+                    holder.appendChild(image);
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                holder.innerHTML += '<p>Uploaded ' + file.name + ' ' + (file.size ? (file.size / 1024 | 0) + 'K' : '');
+                console.log(file);
+            }
+        };
+
+        function readfiles(files) {
+            debugger;
+            var formData = tests.formdata ? new FormData() : null;
+            for (var i = 0; i < files.length; i++) {
+                if (tests.formdata)
+                    formData.append('file', files[i]);
+                previewfile(files[i]);
+            }
+        };
+
+        if (tests.dnd) {
+            holder.ondragover = function () {
+                this.className = 'hover';
+                return false;
+            };
+            holder.ondragend = function () {
+                this.className = '';
+                return false;
+            };
+            holder.ondrop = function (e) {
+                this.className = '';
+                e.preventDefault();
+                readfiles(e.dataTransfer.files);
+            };
+        } else {
+            var fileupload = document.getElementById('upload');
+            fileupload.className = 'hidden';
+            fileupload.querySelector('input').onchange = function () {
+                readfiles(this.files);
+            };
+        }
+
+    </script>
 </div>

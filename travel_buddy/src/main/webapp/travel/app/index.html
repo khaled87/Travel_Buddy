@@ -16,12 +16,14 @@
         <script src="js/controllers.js"></script>  
         <script src="js/services.js"></script>  
         <script src="js/filters.js"></script>
+        <script src="js/nicEdit.js"></script>
         <link href="http://cdn-na.infragistics.com/igniteui/2014.2/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
         <link href="http://cdn-na.infragistics.com/igniteui/2014.2/latest/css/structure/infragistics.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="../../libs/bootstrap/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/default.css"/>
         <link rel="stylesheet" type="text/css" href="css/home.css"/>
         <link rel="stylesheet" type="text/css" href="css/product.css"/>
+        <link rel="stylesheet" type="text/css" href="css/admin.css"/>
         <script src="../../libs/angular/angular-base64.js"></script>
         <script src="../../libs/angular/angular-cookies.js"></script>
         
@@ -36,6 +38,8 @@
         <!-- Ignite UI Required Combined JavaScript Files -->
         <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.core.js"></script>
         <script src="http://cdn-na.infragistics.com/igniteui/2014.2/latest/js/infragistics.lob.js"></script>
+        
+        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
 
     </head>
 
@@ -53,8 +57,8 @@
                 <a class="rightHeader" href="https://plus.google.com/"><img height="22" src="img/google-plus.png" alt="Responsive"></a>
                 <a class="navbar-brand rightHeader" id="signOutBtn" style="font-size: 11px" href="#/home" ng-controller="homeCtrl" ng-click="logout()">Sign Out</a>
                 <a class="navbar-brand rightHeader" id="signInBtn" style="font-size: 11px" href="#/auth">Sign In</a>
-                <a class="navbar-brand rightHeader" id="userBtn" style="font-size: 11px" href="#/home"></a>
-                <a class="rightHeader" id="userIcon" href="#/home"><img height="22" src="img/user-icon.png" alt="Responsive"></a>
+                <a class="navbar-brand rightHeader" id="userBtn" style="font-size: 11px" href="#/user"></a>
+                <a class="rightHeader" id="userIcon" href="#/user"><img height="22" src="img/user-icon.png" alt="Responsive"></a>
             </nav>
         </header>
         <div id="headerPadding" style="height: 52px" ng-controller="homeCtrl">
