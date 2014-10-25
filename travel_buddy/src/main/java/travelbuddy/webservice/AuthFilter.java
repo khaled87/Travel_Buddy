@@ -25,7 +25,7 @@ public class AuthFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext rCtx) throws WebApplicationException {
         UriInfo uriInfo = rCtx.getUriInfo();
 
-        if (isAuthorizationRequired(uriInfo)) {
+        if (userRegistry != null && isAuthorizationRequired(uriInfo)) {
             boolean isAuthorized = false;
             String auth = rCtx.getHeaderString("authorization");
             TBUser user = userRegistry.login(auth);
