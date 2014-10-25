@@ -28,10 +28,7 @@ import travelbuddy.entity.Product;
 import travelbuddy.proxy.IEANProxy;
 import travelbuddy.proxy.IQPXProxy;
 
-/**
- *
- * @author Ali
- */
+
 @Path("/travels")
 public class TravelResource {
 

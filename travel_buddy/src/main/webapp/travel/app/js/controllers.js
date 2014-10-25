@@ -158,6 +158,26 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
     }
 ]);
 
+productCatalogueControllers.controller('CreditcardController', ['$scope', 'ProductCatalogueProxy',
+    function($scope, ProductCatalogueProxy) {
+        $scope.verify = function()
+        {
+           var paymentInfo = {};
+           paymentInfo.price = 123;
+           paymentInfo.holder = "Eric";
+           paymentInfo.ccv = "333";
+           paymentInfo.account = "111";
+           ProductCatalogueProxy.verify(paymentInfo).success(function(bankResponse) {
+                $scope.bankResponse = bankResponse.ok;
+            }).error(function(e) {
+                console.log(e);
+            });
+        };
+    }
+]);
+
+
+
 productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieStore', '$location', 
     function ($scope, Auth, $cookieStore, $location) {
         var showAuthorizedControls = function(isAdmin) {
