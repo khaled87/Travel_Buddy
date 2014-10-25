@@ -1280,7 +1280,7 @@ public class QPXProxy implements IQPXProxy {
         System.out.println("SKITSKALLE " + subtrip.get(0).getArrivalTime());
         trip.setSubtripList(subtrip);
         tripList.add(trip);
-        //subtrip.clear();
+        subtrip.clear();
 
     }
 
