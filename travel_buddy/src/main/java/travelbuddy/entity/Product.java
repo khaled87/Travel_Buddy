@@ -18,7 +18,7 @@ public class Product extends AbstractEntity {
     private double price;
     private String description;
     @OneToMany
-    private List<Flight> flights;
+    private List<Trip> trips;
     @OneToOne
     private Hotel hotel;
     @Column(columnDefinition="CLOB NOT NULL") 
@@ -29,13 +29,27 @@ public class Product extends AbstractEntity {
         
     }
 
+<<<<<<< HEAD
     public Product(String name, double price, String description, List<Flight> flights, Hotel hotel, String img) {
+=======
+    public Product(String name, double price, String description, List<Trip> trips, Hotel hotel) {
+>>>>>>> 355218538df796b156c5015e559c62ea44dfb851
         this.name = name;
         this.price = price;
         this.description = description;
         this.hotel = hotel;
+<<<<<<< HEAD
         this.flights = flights;
         this.img = img;
+=======
+      //  this.flights = flights;
+    }
+
+    public Product(Long id, String name, double price, List<Trip> trips, Hotel hotel) {
+        super(id);
+        this.name = name;
+        this.price = price;
+>>>>>>> 355218538df796b156c5015e559c62ea44dfb851
     }
 
     public String getName() {
@@ -55,8 +69,8 @@ public class Product extends AbstractEntity {
         return "Product{" + "id=" + getId() + ", name=" + name + ", price=" + price + '}';
     }
 
-    public List<Flight> getFlights() {
-        return flights;
+    public List<Trip> getFlights() {
+        return trips;
     }
 
     public Hotel getHotel() {

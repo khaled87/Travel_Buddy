@@ -8,6 +8,7 @@ var productCatalogueService = angular.module('ProductCatalogueService', []);
 productCatalogueService.factory('ProductCatalogueProxy', ['$http',
     function($http) {
         var url = 'http://localhost:8080/travel_buddy/api/v1/travels';
+        var urlBank = 'http://localhost:8080/travel_buddy/api/v1/creditcard';
 
         return {
             deletePackage: function(id) {
@@ -21,6 +22,9 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
             },
             getHotels: function(hotelInfo){
                 return $http.post(url+"/hotels", hotelInfo);
+            },
+            verify: function(paymentInfo){
+                 return $http.post(urlBank+"/verify", paymentInfo);
             }
         };
     }]);

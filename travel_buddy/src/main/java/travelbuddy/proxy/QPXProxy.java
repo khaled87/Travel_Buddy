@@ -17,7 +17,7 @@ import travelbuddy.common.Trip;
 public class QPXProxy implements IQPXProxy {
 
     private final String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=";
-    private final String ApiKey = "AIzaSyBK9KNDV3W5tIc121fI07eRYDGcT3yGUJU";
+    private final String ApiKey = "AIzaSyC3OAnGCXMYwYHyTjB-9_wIhxCC31eiV7E";
     private List<FlightInfo> FlightInfoList = new ArrayList<>();
     //private List<Slice>slices = new ArrayList<>();
     //private List<Leg>leg = new ArrayList<>();

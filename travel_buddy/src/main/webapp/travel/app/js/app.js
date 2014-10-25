@@ -34,6 +34,10 @@ shop.config(['$routeProvider',
                     templateUrl: 'auth.html',
                     controller: 'homeCtrl'
                 }).
+                when('/creditcard', {
+                    templateUrl: 'partials/products/creditcard-input.html',
+                    controller: 'CreditcardController'
+                }).
                 otherwise({
                     redirectTo: 'partials/home/home.html'
                 });

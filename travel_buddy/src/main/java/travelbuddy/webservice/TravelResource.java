@@ -7,7 +7,9 @@ package travelbuddy.webservice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -26,10 +28,7 @@ import travelbuddy.entity.Product;
 import travelbuddy.proxy.IEANProxy;
 import travelbuddy.proxy.IQPXProxy;
 
-/**
- *
- * @author Ali
- */
+
 @Path("/travels")
 public class TravelResource {
 
@@ -48,16 +47,24 @@ public class TravelResource {
     public Response createPackage(JsonObject jsonObject) {
         JsonObject jProduct = jsonObject.getJsonObject("product");
         JsonObject jHotel = jsonObject.getJsonObject("hotel");
+        List<Trip> flightList = new ArrayList<>();
+        flightList.add((Trip) jsonObject.getJsonObject("flight1"));
+        flightList.add((Trip) jsonObject.getJsonObject("flight2"));
         Hotel nHotel = new Hotel();
         nHotel.setName(jHotel.getString("name"));
         nHotel.setAddress1(jHotel.getString("address1"));
         nHotel.setPrice((long)jHotel.getInt("price"));  
+<<<<<<< HEAD
         Product p = new Product(
                 jProduct.getString("name"), 
                 (long) jProduct.getInt("price"),
                 jProduct.getString("description"), 
                 null, nHotel, 
                 jProduct.getString("imgSrc"));
+=======
+        
+        Product p = new Product( jProduct.getString("name"), (long) jProduct.getInt("price"),jProduct.getString("description"), null, nHotel);
+>>>>>>> 355218538df796b156c5015e559c62ea44dfb851
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
