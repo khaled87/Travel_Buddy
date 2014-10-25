@@ -29,27 +29,13 @@ public class Product extends AbstractEntity {
         
     }
 
-<<<<<<< HEAD
-    public Product(String name, double price, String description, List<Flight> flights, Hotel hotel, String img) {
-=======
-    public Product(String name, double price, String description, List<Trip> trips, Hotel hotel) {
->>>>>>> 355218538df796b156c5015e559c62ea44dfb851
+    public Product(String name, double price, String description, List<Trip> trips, Hotel hotel, String img) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.hotel = hotel;
-<<<<<<< HEAD
-        this.flights = flights;
+        this.trips = trips;
         this.img = img;
-=======
-      //  this.flights = flights;
-    }
-
-    public Product(Long id, String name, double price, List<Trip> trips, Hotel hotel) {
-        super(id);
-        this.name = name;
-        this.price = price;
->>>>>>> 355218538df796b156c5015e559c62ea44dfb851
     }
 
     public String getName() {
@@ -70,7 +56,7 @@ public class Product extends AbstractEntity {
     }
 
     public List<Trip> getFlights() {
-        return trips;
+        return getTrips();
     }
 
     public Hotel getHotel() {
@@ -93,15 +79,19 @@ public class Product extends AbstractEntity {
         this.description = description;
     }
 
-    public void setFlights(List<Flight> flights) {
-        this.flights = flights;
-    }
-
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 }

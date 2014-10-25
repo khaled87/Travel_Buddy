@@ -54,17 +54,12 @@ public class TravelResource {
         nHotel.setName(jHotel.getString("name"));
         nHotel.setAddress1(jHotel.getString("address1"));
         nHotel.setPrice((long)jHotel.getInt("price"));  
-<<<<<<< HEAD
         Product p = new Product(
                 jProduct.getString("name"), 
                 (long) jProduct.getInt("price"),
                 jProduct.getString("description"), 
                 null, nHotel, 
                 jProduct.getString("imgSrc"));
-=======
-        
-        Product p = new Product( jProduct.getString("name"), (long) jProduct.getInt("price"),jProduct.getString("description"), null, nHotel);
->>>>>>> 355218538df796b156c5015e559c62ea44dfb851
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
         }).build();
