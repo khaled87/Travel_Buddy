@@ -1,14 +1,13 @@
 <div>
     <div id="descPanel">
         <a class="btn btn-default" 
-           style="width: 100%" href="#/creditcard" 
+           style="width: 100%" href="#/creditcard/${id}" 
            onmouseover="this.innerHTML = 'Book'" 
            onmouseout="this.innerHTML = '${name} - ${price} Kr'">${name} - ${price} Kr</a>
-        <input id="productId" type="text" value="${id}" hidden="hidden"/>
-        <p>${description}</p>
-        
+<!--        <input id="productId" type="text" value="${id}"/>-->
+        <div>${description}</div>
         <div style="width: 100%; position: absolute; bottom: 0px">
-            <a class="btn btn-default" style="width: 100%" href="#/admin">Edit</a>        
+            <a class="btn btn-default" style="width: 100%" href="#/product/${id}">Edit</a>
         </div>
     </div>
     <div id="imgPanel">

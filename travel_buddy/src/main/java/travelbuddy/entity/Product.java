@@ -16,12 +16,14 @@ public class Product extends AbstractEntity {
 
     private String name;
     private double price;
+    @Column(columnDefinition="CLOB") 
+    @Lob 
     private String description;
     @OneToMany
     private List<Trip> trips;
     @OneToOne
     private Hotel hotel;
-    @Column(columnDefinition="CLOB NOT NULL") 
+    @Column(columnDefinition="CLOB") 
     @Lob 
     private String img;
     

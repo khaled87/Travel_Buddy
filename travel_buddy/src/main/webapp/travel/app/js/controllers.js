@@ -94,6 +94,7 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
             searchedFlight1.date = $scope.arrivalDate;
             searchedFlight1.adultCount = $scope.adultCount;
             ProductCatalogueProxy.getFlightList(searchedFlight1).success(function(flightList1) {
+                console.log(flightList1);
                 $scope.trips1 = flightList1;
             }).error(function(e) {
                 console.log(e);
@@ -105,6 +106,7 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
             searchedFlight2.date = $scope.departureDate;
             searchedFlight2.adultCount = $scope.adultCount;
             ProductCatalogueProxy.getFlightList(searchedFlight2).success(function(flightList2) {
+                console.log(flightList2);
                 $scope.trips2 = flightList2;
             }).error(function(e) {
                 console.log(e);
@@ -177,8 +179,16 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
     }
 ]);
 
-productCatalogueControllers.controller('CreditcardController', ['$scope', 'ProductCatalogueProxy',
-    function($scope, ProductCatalogueProxy) {
+productCatalogueControllers.controller('CreditcardController', ['$scope', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
+    function($scope, $routeParams, ProductCatalogueProxy, PackageProxy) {
+        debugger;
+        PackageProxy.find($routeParams.id).success(function(product) {
+            debugger;
+            console.log(product);
+            $scope.product = product;
+        }).error(function(e) {
+            console.log(e);
+        });
         
         $scope.verify = function()
         {
@@ -186,7 +196,8 @@ productCatalogueControllers.controller('CreditcardController', ['$scope', 'Produ
            paymentInfo.account = $scope.account;
            paymentInfo.holder = $scope.holder;
            paymentInfo.ccv = $scope.ccv;
-           paymentInfo.price = 123;
+           paymentInfo.email = $scope.email;
+           paymentInfo.product = $scope.product;
            ProductCatalogueProxy.verify(paymentInfo).success(function(bankResponse) {
                 if(bankResponse.ok.equals("okay"))
                 {
@@ -271,4 +282,30 @@ productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieSt
             }
         };
 }]);
+
+productCatalogueControllers.controller('ProductDetailCtrl', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy',
+    function($scope, $location, $routeParams, ProductCatalogueProxy) {
+        ProductCatalogueProxy.find($routeParams.id).success(function(product) {
+            $scope.product = product;
+        }).error(function(e) {
+            console.log(e);
+        });
+        
+        $scope.update = function() {
+            console.log($scope.product);
+            ProductCatalogueProxy.update($routeParams.id, $scope.product).success(function() {
+                $location.path('/products');
+            }).error(function(e) {
+                console.log(e);
+            });
+        };
+        $scope.delete = function() {
+            ProductCatalogueProxy.delete($routeParams.id).success(function() {
+                $location.path('/products');
+            }).error(function(e) {
+                console.log(e);
+            });
+        };
+    }
+]);
        

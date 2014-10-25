@@ -2,23 +2,35 @@
     <table> 
          <tr>
             <td>
-               purchase info
+                <h3>Purchase information</h3>
             </td>
+        </tr>
+        <tr>
+            <td>Product name &nbsp; &nbsp;</td>
+            <td><input class="text" type="text" ng-model="product.name" value="{{product.name}}" disabled/></td>
+        </tr>
+        <tr>
+            <td>Product price (SEK) &nbsp; &nbsp;</td>
+            <td><input class="text" type="number" ng-model="product.price" value="{{product.price}}" disabled/></td>
         </tr>
         <tr>
             <td>
                 Holder   &nbsp;   &nbsp;
             </td>
             <td>
-                <input  style="width: 100%; height: 20px;" type="text" ng-model="holder" required/>
+                <input class="text" type="text" ng-model="holder" required/>
             </td>
         </tr>
         <tr>
+            <td>Email &nbsp; &nbsp;</td>
+            <td><input class="text" type="text" ng-model="email" required/></td>
+        </tr>
+        <tr>
             <td>
-                Creditcard number   &nbsp;   &nbsp;
+                Credit card number   &nbsp;   &nbsp;
             </td>
             <td>
-                <input  style="width: 100%; height: 20px;" type="text" ng-model="account" required/>
+                <input class="text" type="text" ng-model="account" required/>
             </td>
         </tr>
         <tr>
@@ -26,7 +38,7 @@
                 CCV    &nbsp;   &nbsp;
             </td>
             <td>
-                 <input  style="width: 100%; height: 20px;" type="text" ng-model="ccv" required/>
+                 <input class="text" type="text" ng-model="ccv" required/>
             </td>
         </tr>
         <tr>

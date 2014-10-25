@@ -23,6 +23,10 @@ shop.config(['$routeProvider',
                     templateUrl: 'partials/products/products.html',
                     controller: 'ProductListCtrl'
                 }).
+                when('/products/:id', {
+                    templateUrl: 'partials/products/products.html',
+                    controller: 'ProductDetailCtrl'
+                }).
                 when('/orders', {
                     templateUrl: 'partials/orders/orders.html'
                 }).
@@ -34,7 +38,7 @@ shop.config(['$routeProvider',
                     templateUrl: 'auth.html',
                     controller: 'homeCtrl'
                 }).
-                when('/creditcard', {
+                when('/creditcard/:id', {
                     templateUrl: 'partials/products/creditcard-input.html',
                     controller: 'CreditcardController'
                 }).

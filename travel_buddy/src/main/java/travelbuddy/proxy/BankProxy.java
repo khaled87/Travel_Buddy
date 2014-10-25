@@ -14,7 +14,7 @@ public class BankProxy implements IBankProxy{
         {
             ok = "okay";
         }
-        else if (pi.getPrice() > 1000){
+        else if (pi.getPrice() > 6000){
              err = "moneyErr";  
         } 
         else {
