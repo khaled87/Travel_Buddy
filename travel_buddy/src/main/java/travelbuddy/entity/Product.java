@@ -1,5 +1,6 @@
 package travelbuddy.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -90,10 +91,11 @@ public class Product extends AbstractEntity {
     }
 
     public List<Trip> getTrips() {
-        return trips;
+         return new ArrayList<>(this.trips);
     }
 
     public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+        this.trips = new ArrayList<>(trips);
     }
+    
 }
