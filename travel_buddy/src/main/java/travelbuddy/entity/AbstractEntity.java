@@ -7,12 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-/**
- * Base class for all entities (later to be stored in database), Product, Order,
- * etc
- *
- * @author hajo
- */
+
 @MappedSuperclass
 public abstract class AbstractEntity implements IEntity<Long>, Serializable {
 
