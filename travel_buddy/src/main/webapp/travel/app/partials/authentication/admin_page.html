@@ -60,7 +60,11 @@
                             <table style="width:100%"> 
                                 <tr ng-repeat="t in trips1">
                                     <td style="width:100%">
+<<<<<<< HEAD
                                         <input  style="width:100%" type="button" value="{{t.shortDescription}}" class="btn btn-default" ng-click="selectFlight1(t)"/>        
+=======
+                                        <input  style="width:100%" type="button" value="{{st.origin + '   ' + st.departureTime + '   ' + st.destination + '   ' + st.arrivalTime}}" class="btn btn-default" ng-click="selectFlight1(t)"/>
+>>>>>>> d15127be12b0a8fa97da98b393d95e81cbb61ed9
                                     </td>
                                 </tr>
                             </table>
@@ -72,7 +76,17 @@
                             <table style="width:100%"> 
                                 <tr ng-repeat="t in trips2">
                                     <td style="width:100%">
+<<<<<<< HEAD
                                         <input  style="width:100%" type="button" value="{{t.shortDescription}}" class="btn btn-default" ng-click="selectFlight2(t)"/>                        
+=======
+                                        <table style="width:100%;">
+                                            <tr ng-repeat="st in t.subtripList">
+                                                <td style="width:100%">
+                                                    <input  style="width:100%" type="button" value="{{st.origin + '   ' + st.departureTime + '   ' + st.destination + '   ' + st.arrivalTime}}" class="btn btn-default" ng-click="selectFlight2(t)"/>
+                                                </td>
+                                            </tr>
+                                        </table>                        
+>>>>>>> d15127be12b0a8fa97da98b393d95e81cbb61ed9
                                     </td>
                                 </tr>
                             </table>

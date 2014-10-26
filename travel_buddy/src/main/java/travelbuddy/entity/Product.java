@@ -1,5 +1,6 @@
 package travelbuddy.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.json.JsonObject;
 import javax.persistence.Column;
@@ -91,13 +92,14 @@ public class Product extends AbstractEntity {
     }
 
     public List<Trip> getTrips() {
-        return trips;
+         return new ArrayList<>(this.trips);
     }
 
     public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+        this.trips = new ArrayList<>(trips);
     }
     
+<<<<<<< HEAD
     public static Product fromJson(JsonObject jProduct) {
         if (jProduct == null) {
             return null;
@@ -109,4 +111,6 @@ public class Product extends AbstractEntity {
         p.img = jProduct.getString("imgSrc", "img/1.jpg");
         return p;
     }
+=======
+>>>>>>> d15127be12b0a8fa97da98b393d95e81cbb61ed9
 }

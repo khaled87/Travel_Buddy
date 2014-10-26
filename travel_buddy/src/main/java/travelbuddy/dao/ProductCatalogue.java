@@ -50,6 +50,7 @@ public class ProductCatalogue extends AbstractDAO<Product, Long>
             em.persist(p.getHotel());
         }
         if (p.getFlights() != null) {
+            System.out.println("size of flight" + p.getFlights().size());
             for (Trip trip : p.getFlights()) {
                 if (trip.getSubtripList() != null) {
                     for (SubTrip subTrip : trip.getSubtripList()) {
