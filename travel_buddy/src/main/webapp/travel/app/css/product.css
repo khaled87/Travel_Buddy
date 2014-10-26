@@ -59,6 +59,10 @@
     z-index: -100;  
 }
 
+.mirror {
+    transform: rotate(180deg) scaleX(-1);
+}
+
 #dashboard .ui-igtile-maximized img {
     height: 500px;
     float:right;
