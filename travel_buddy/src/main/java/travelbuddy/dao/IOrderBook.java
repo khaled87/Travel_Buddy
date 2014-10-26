@@ -10,5 +10,5 @@ import travelbuddy.entity.*;
  */
 @Local
 public interface IOrderBook extends IDAO<PurchaseOrder, Long> {
-
+    public boolean anyOrderWithProductId(Long id);
 }

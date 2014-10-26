@@ -44,4 +44,12 @@ public class OrderBook extends AbstractDAO<PurchaseOrder, Long>
             Logger.getLogger(OrderBook.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @Override
+    public boolean anyOrderWithProductId(Long id) {
+        Long n = getEntityManager().createQuery(
+                String.format("select count(t) from %1$s t where t.product.id = %2$s", getTableName(), id), Long.class)
+                .getSingleResult();
+        return n > 0;
+    }
 }

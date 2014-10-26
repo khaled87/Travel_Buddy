@@ -6,6 +6,14 @@
            onmouseout="this.innerHTML = '${name} - ${price} Kr'">${name} - ${price} Kr</a>
 <!--        <input id="productId" type="text" value="${id}"/>-->
         <div>${description}</div>
+        <div style="width: 100%; position: absolute; bottom: 0px">
+            <a class="btn btn-default" style="width: 100%" href="#/products/delete/${id}" onclick="clicked(event)">Delete</a>
+            <script>
+                function clicked(e) {
+                    if(!confirm('Are you sure?'))e.preventDefault();
+                }
+            </script>
+        </div>
     </div>
     <div id="imgPanel">
         <img src="${img}" title="${name}" alt="error"/>

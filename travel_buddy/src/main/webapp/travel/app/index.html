@@ -56,9 +56,20 @@
                 <a class="rightHeader" href="https://linkedin.com"><img height="22" src="img/linkedin.png" alt="Responsive"></a>
                 <a class="rightHeader" href="https://plus.google.com/"><img height="22" src="img/google-plus.png" alt="Responsive"></a>
                 <a class="navbar-brand rightHeader" id="signOutBtn" style="font-size: 11px" href="#/home" ng-controller="homeCtrl" ng-click="logout()">Sign Out</a>
-                <a class="navbar-brand rightHeader" id="signInBtn" style="font-size: 11px" href="#/auth">Sign In</a>
-                <a class="navbar-brand rightHeader" id="userBtn" style="font-size: 11px" href="#/user"></a>
-                <a class="rightHeader" id="userIcon" href="#/user"><img height="22" src="img/user-icon.png" alt="Responsive"></a>
+                <a class="navbar-brand rightHeader" id="userBtn" style="font-size: 11px" href="#/home"></a>
+                <a class="rightHeader" id="userIcon" href="#/home"><img height="22" src="img/user-icon.png" alt="Responsive"></a>
+                <ul class="nav nav-pills rightHeader" id="signInBtn" ng-controller="homeCtrl">
+                    <li class="dropdown">
+                        <a class="navbar-brand rightHeader" style="font-size: 11px; padding: 15px" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+                        <div class="dropdown-menu" style="padding:8px; opacity: 0.7">
+                            <form class="form" id="formLogin">
+                                <input style="margin: 1px" type="text" ng-model="user.name" value="{{user.name}}" ng-required="required" placeholder="User name"/>
+                                <input style="margin: 1px" type="password" ng-model="user.password" value="{{user.password}}" ng-required="required" placeholder="Password"/>
+                                <input style="margin: 1px" type="button" class="btn btn-default" value="Login" ng-click="login()"/>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
             </nav>
         </header>
         <div id="headerPadding" style="height: 52px" ng-controller="homeCtrl">
