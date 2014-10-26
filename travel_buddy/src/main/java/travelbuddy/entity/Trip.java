@@ -1,5 +1,8 @@
 package travelbuddy.entity;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import javax.json.JsonArray;
@@ -70,10 +73,16 @@ public class Trip extends AbstractEntity {
         Trip trip = new Trip();
         trip.maxFreeBaggage = jTrip.getString("maxFreeBaggage", "0");
         trip.saleTotal = jTrip.getString("saleTotal", "SEK0");
-//        JsonArray subtrips = jTrip.getJsonArray("subtripList");
-//        for (JsonValue subtrip : subtrips) {
-//            // TODO
-//        }
+        String subTripList = jTrip.getJsonArray("subtripList").toString();
+        trip.setSubtripList(jsonArrayToList(subTripList));
         return trip;
+    }
+    
+    private static List<SubTrip> jsonArrayToList(String subTripList) {
+        Gson converter = new Gson();
+        Type type = new TypeToken<List<SubTrip>>() { }.getType();
+        List<SubTrip> subTriplist = converter.fromJson(subTripList, type);
+
+        return subTriplist;
     }
 }

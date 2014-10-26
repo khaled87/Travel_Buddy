@@ -131,48 +131,13 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
         };
 
         $scope.selectFlight1 = function(trip) {
-<<<<<<< HEAD
-//            var sf1 = {};
-//            sf1.arrivalTime = subTrip.arrivalTime;
-//            sf1.departureTime = subTrip.departureTime;
-//            sf1.origin = subTrip.origin;
-//            sf1.destination = subTrip.destination;
-//            sf1.passangers = $scope.adultCount;
             $scope.selectedFlight1 = trip;
             calculatePrice();
         };
 
         $scope.selectFlight2 = function(trip) {
-//            var sf2 = {};
-//            sf2.arrivalTime = subTrip.arrivalTime;
-//            sf2.departureTime = subTrip.departureTime;
-//            sf2.origin = subTrip.origin;
-//            sf2.destination = subTrip.destination;
-//            sf2.passangers = $scope.adultCount;
             $scope.selectedFlight2 = trip;
             calculatePrice();
-=======
-            /*var sf1 = {};
-            sf1.arrivalTime = subTrip.arrivalTime;
-            sf1.departureTime = subTrip.departureTime;
-            sf1.origin = subTrip.origin;
-            sf1.destination = subTrip.destination;
-            sf1.passangers = $scope.adultCount;
-            $scope.selectedFlight1 = sf1;*/
-          $scope.selectedFlight1 = trip;
-        };
-
-        $scope.selectFlight2 = function(trip) {
-           /* var sf2 = {};
-            sf2.arrivalTime = subTrip.arrivalTime;
-            sf2.departureTime = subTrip.departureTime;
-            sf2.origin = subTrip.origin;
-            sf2.destination = subTrip.destination;
-            sf2.passangers = $scope.adultCount;
-            $scope.selectedFlight2 = sf2;*/
-            $scope.selectedFlight2 = trip;
-            
->>>>>>> d15127be12b0a8fa97da98b393d95e81cbb61ed9
         };
 
         $scope.selectHotel = function(hotel) {
