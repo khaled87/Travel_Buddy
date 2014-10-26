@@ -12,9 +12,6 @@ import travelbuddy.common.FlightInfo;
 import travelbuddy.entity.SubTrip;
 import travelbuddy.entity.Trip;
 
-
-
-
 @Stateless
 public class QPXProxy implements IQPXProxy {
 
@@ -1268,7 +1265,7 @@ public class QPXProxy implements IQPXProxy {
         createTrip(saleTotal, prevMaxFreeBaggage);
         saleTotal = null;
 
-       printAll(tripList);
+        printAll(tripList);
         return tripList;
     }
 
@@ -1304,7 +1301,6 @@ public class QPXProxy implements IQPXProxy {
         subtrip.add(sub);
     }
 
-
     //  below code is for test purposes only
     private void printAll(List<Trip> tripList) {
 
@@ -1328,7 +1324,6 @@ public class QPXProxy implements IQPXProxy {
 
     private void clearPreviousData() {
         tripList.clear();
-        subtrip.clear();
         saleTotal = null;
         prevSaleTotal = null;
         prevMaxFreeBaggage = null;
