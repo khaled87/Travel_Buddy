@@ -40,11 +40,17 @@ public class TravelResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON})
     public Response createPackage(JsonObject jsonObject) {
-        /*List<Trip> flightList = new ArrayList<>();
-        flightList.add(getTrip(jsonObject.getJsonObject("flight1")));
-        flightList.add(getTrip(jsonObject.getJsonObject("flight2")));*/
-        Hotel nHotel = getHotel(jsonObject.getJsonObject("hotel"));  
-        Product p = getProduct(jsonObject.getJsonObject("product"), null, nHotel);
+        List<Trip> flightList = new ArrayList<>();
+        Trip f1 = Trip.fromJson(jsonObject.getJsonObject("flight1"));
+        Trip f2 = Trip.fromJson(jsonObject.getJsonObject("flight2"));
+        if (f1 != null) {
+            flightList.add(f1);
+        }
+        if (f2 != null) {
+            flightList.add(f2);
+        }
+        Hotel nHotel = Hotel.fromJson(jsonObject.getJsonObject("hotel"));  
+        Product p = getProduct(jsonObject.getJsonObject("product"), flightList, nHotel);
         
         productCatalogue.create(p);
         return Response.ok(new GenericEntity<Product>(p) {
@@ -52,26 +58,10 @@ public class TravelResource {
     }
 
     private Product getProduct(JsonObject jProduct, List<Trip> trips, Hotel nHotel) {
-        Product p = new Product(
-                jProduct.getString("name"),
-                (long) jProduct.getInt("price"),
-                jProduct.getString("detail"),
-                trips, nHotel,
-                jProduct.getString("imgSrc"));
+        Product p = Product.fromJson(jProduct);
+        p.setTrips(trips);
+        p.setHotel(nHotel);
         return p;
-    }
-
-    private Hotel getHotel(JsonObject jHotel) {
-        Hotel nHotel = new Hotel();
-        nHotel.setName(jHotel.getString("name"));
-        nHotel.setAddress1(jHotel.getString("address1"));
-        nHotel.setPrice((long)jHotel.getInt("price"));
-        return nHotel;
-    }
-    
-    private Trip getTrip(JsonObject jTrip) {
-        Trip trip = new Trip();
-        return trip;
     }
 
     @DELETE

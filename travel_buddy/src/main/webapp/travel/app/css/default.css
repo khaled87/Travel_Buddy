@@ -49,6 +49,10 @@ footer {
     background-color: #3a9aa8;
 }
 
+h1, h2, h3, h4 {
+    color: white;
+}
+
 .grayscale {
     filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
     filter: gray; /* IE6-9 */

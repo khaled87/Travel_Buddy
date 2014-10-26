@@ -63,8 +63,24 @@ productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'PackagePro
         };
     }]);
 
-productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCatalogueProxy',
-    function($scope, ProductCatalogueProxy) {
+productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCatalogueProxy', '$location',
+    function($scope, ProductCatalogueProxy, $location) {
+        var calculatePrice = function() {
+            debugger;
+            var price = 0;
+            if ($scope.selectedFlight1 !== undefined && $scope.selectedFlight1 !== null) {
+                price += $scope.selectedFlight1.price;
+            }
+            if ($scope.selectedFlight2 !== undefined && $scope.selectedFlight2 !== null) {
+                price += $scope.selectedFlight2.price;
+            }
+            if ($scope.selectedHotel !== undefined && $scope.selectedHotel !== null) {
+                price += $scope.selectedHotel.price;
+            }
+            $scope.package = $scope.package || {};
+            $scope.package.price = price;
+        };
+        
         $scope.package = null;
         $scope.callService = function()
         {
@@ -114,50 +130,72 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
 
         };
 
-        $scope.selectFlight1 = function(subTrip) {
-            var sf1 = {};
-            sf1.arrivalTime = subTrip.arrivalTime;
-            sf1.departureTime = subTrip.departureTime;
-            sf1.origin = subTrip.origin;
-            sf1.destination = subTrip.destination;
-            sf1.passangers = $scope.adultCount;
-            $scope.selectedFlight1 = sf1;
-          // $scope.selectedFlight1 = trip;
+        $scope.selectFlight1 = function(trip) {
+//            var sf1 = {};
+//            sf1.arrivalTime = subTrip.arrivalTime;
+//            sf1.departureTime = subTrip.departureTime;
+//            sf1.origin = subTrip.origin;
+//            sf1.destination = subTrip.destination;
+//            sf1.passangers = $scope.adultCount;
+            $scope.selectedFlight1 = trip;
+            calculatePrice();
         };
 
-        $scope.selectFlight2 = function(subTrip) {
-            var sf2 = {};
-            sf2.arrivalTime = subTrip.arrivalTime;
-            sf2.departureTime = subTrip.departureTime;
-            sf2.origin = subTrip.origin;
-            sf2.destination = subTrip.destination;
-            sf2.passangers = $scope.adultCount;
-            $scope.selectedFlight2 = sf2;
-           // $scope.selectedFlight2 = trip;
-            
+        $scope.selectFlight2 = function(trip) {
+//            var sf2 = {};
+//            sf2.arrivalTime = subTrip.arrivalTime;
+//            sf2.departureTime = subTrip.departureTime;
+//            sf2.origin = subTrip.origin;
+//            sf2.destination = subTrip.destination;
+//            sf2.passangers = $scope.adultCount;
+            $scope.selectedFlight2 = trip;
+            calculatePrice();
         };
-
 
         $scope.selectHotel = function(hotel) {
             $scope.selectedHotel = hotel;
-            // $scope.bfont = "font: 10px sans-serif;";
+            calculatePrice();
         };
 
         $scope.createPackage = function() {
+            if ($scope.package === undefined || $scope.package === null ||
+                $scope.package.name === undefined || $scope.package.name === null || $scope.package.name === "" ||
+                $scope.package.price === undefined || $scope.package.price === null || $scope.package.name < 0) {
+                alert('Please input product name and price');
+                return;
+            }
+            if ($scope.hotel === null) {
+                alert('Please select hotel');
+                return;
+            }
             var request = {};
             request.product = $scope.package;
-            request.product.img = $scope.img;
-            request.product.imgSrc = $scope.imgSrc;
-            request.product.formData = $scope.formData;
-            debugger;
+
+            if ($scope.img !== undefined) {
+                request.product.img = $scope.img;
+            }
+            if ($scope.imgSrc !== undefined) {
+                request.product.imgSrc = $scope.imgSrc;
+            }
+            if ($scope.formData !== undefined) {
+                request.product.formData = $scope.formData;
+            }
+            
             var nicE = new nicEditors.findEditor('package-description');
-            request.product.detail = nicE.getContent();
+            if (nicE.getContent !== undefined) {
+                request.product.description = nicE.getContent();
+            }
             request.hotel = $scope.selectedHotel;
             request.flight1 = $scope.selectedFlight1;
             request.flight2 = $scope.selectedFlight2;
             ProductCatalogueProxy.createPackage(request).success(function(pack) {
                 $scope.packageCreated = "Package" + pack.name + "created!";
                 alert("Package " + pack.name + " created!");
+                $scope.selectedHotel = null;
+                $scope.selectedFlight1 = null;
+                $scope.selectedFlight2 = null;
+                $scope.package = null;
+                $location.path("/products");
             }).error(function(e) {
                 console.log(e);
             });

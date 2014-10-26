@@ -1,5 +1,6 @@
 package travelbuddy.entity;
 
+import javax.json.JsonObject;
 import javax.persistence.Entity;
 
 @Entity
@@ -63,5 +64,16 @@ public class Hotel extends AbstractEntity {
 
     public void setHotelRating(double hotelRating) {
         this.hotelRating = hotelRating;
+    }
+        
+    public static Hotel fromJson(JsonObject jHotel) {
+        if (jHotel == null) {
+            return null;
+        }
+        Hotel nHotel = new Hotel();
+        nHotel.setName(jHotel.getString("name", ""));
+        nHotel.setAddress1(jHotel.getString("address1", ""));
+        nHotel.setPrice(jHotel.getInt("price", 0));
+        return nHotel;
     }
 }
