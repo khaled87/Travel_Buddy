@@ -30,6 +30,9 @@ shop.config(['$routeProvider',
                 when('/orders', {
                     templateUrl: 'partials/orders/orders.html'
                 }).
+                when('/confirmation', {
+                    templateUrl: 'partials/orders/confirmation.html'
+                }).
                 when('/admin', {
                     templateUrl: 'partials/authentication/admin_page.html',
                     controller: 'AdminController'
