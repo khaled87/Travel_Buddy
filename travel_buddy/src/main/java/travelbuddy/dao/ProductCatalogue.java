@@ -6,8 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import travelbuddy.entity.Hotel;
-import travelbuddy.entity.Product;
+import travelbuddy.entity.*;
 
 /**
  * All products
@@ -30,26 +29,36 @@ public class ProductCatalogue extends AbstractDAO<Product, Long>
     @Override
     public List<Product> getByName(String name) {
         List<Product> found = new ArrayList<>();
-        
+
         TypedQuery<Product> q = getEntityManager().createQuery(
-                String.format("select t from %1$s t where t.name like '%2$s'", getTableName(), name)
-                , Product.class);
+                String.format("select t from %1$s t where t.name like '%2$s'", getTableName(), name), Product.class);
         found.addAll(q.getResultList());
         return found;
     }
-        
+
     @PersistenceContext
     private EntityManager em;
-    
+
     @Override
     public EntityManager getEntityManager() {
         return em;
     }
-    
+
     @Override
     public void create(Product p) {
-        Hotel ph = p.getHotel();
-        em.persist(ph);
+        if (p.getHotel() != null) {
+            em.persist(p.getHotel());
+        }
+        if (p.getFlights() != null) {
+            for (Trip trip : p.getFlights()) {
+                if (trip.getSubtripList() != null) {
+                    for (SubTrip subTrip : trip.getSubtripList()) {
+                        em.persist(subTrip);
+                    }
+                }
+                em.persist(trip);
+            }
+        }
         super.create(p);
     }
 }

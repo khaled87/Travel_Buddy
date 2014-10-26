@@ -55,7 +55,7 @@ public class TravelResource {
         Product p = new Product(
                 jProduct.getString("name"),
                 (long) jProduct.getInt("price"),
-                jProduct.getString("description"),
+                jProduct.getString("detail"),
                 trips, nHotel,
                 jProduct.getString("imgSrc"));
         return p;
