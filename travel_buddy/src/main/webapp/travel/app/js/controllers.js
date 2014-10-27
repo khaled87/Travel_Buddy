@@ -20,7 +20,6 @@ productCatalogueControllers.controller('ConfirmationCtrl', ['$scope', '$location
         PackageProxy.getPurchaseOrder($routeParams.id)
                 .success(function (purchaseOrder) {
                     $scope.purchaseOrder = purchaseOrder;
-                    alert('purchaseorder' + purchaseOrder.userEmail);
                 }).error(function () {
             console.log("purchaseOrder: error");
         });
@@ -371,8 +370,8 @@ productCatalogueControllers.controller('ProductDeleteCtrl', ['$scope', '$locatio
        
 productCatalogueControllers.controller('OrdersCtrl', ['$scope', '$location',
     function($scope, $location) {
-        $scope.getOrder = function(confirmationCode) {
-            $location.path("/confirmation/" + confirmationCode);
+        $scope.getOrder = function() {
+            $location.path("/confirmation/" + $scope.confirmationCode);
         };
     }
 ]);
