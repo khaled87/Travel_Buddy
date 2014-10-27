@@ -16,6 +16,9 @@
                 Date
             </th>
             <th>
+                Price
+            </th>
+            <th>
                 Status
             </th>
         </tr>
@@ -33,6 +36,9 @@
                 {{purchaseOrder.date}}
             </td>
             <td>
+                {{purchaseOrder.product.price}}
+            </td>
+            <td>
                 Paid
             </td>
         </tr>
@@ -47,10 +53,6 @@
             <th>
                 Address    
             </th>
-            <th>
-                Price   
-            </th>
-
         </tr>
         <tr>
             <td> 
@@ -60,10 +62,6 @@
             <td> 
                 {{purchaseOrder.product.hotel.address1}}    
             </td>  
-            <td> 
-                {{purchaseOrder.product.hotel.price}}    
-            </td> 
-
         </tr>
         
     </table>
@@ -91,9 +89,6 @@
                         <th>
                             Meal
                         </th>
-                        <th>
-                            Price
-                        </th>
                     </tr>
                     <tr ng-repeat="subTrip in trip.subtripList">
 
@@ -114,9 +109,6 @@
                         </td>
                         <td>
                             {{subTrip.meal}}
-                        </td>
-                        <td>
-                            {{trip.saleTotal}}
                         </td>
                     </tr>
                 </table>

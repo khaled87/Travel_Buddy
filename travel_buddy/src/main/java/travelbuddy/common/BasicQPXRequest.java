@@ -113,6 +113,7 @@ public class BasicQPXRequest {
                                         .add("date", getDate())
                                        ))
                         .add("maxPrice", getMaxPrice())
+                        .add("saleCountry","se")
                         .add("solutions", getSolution())).build();
         }
         else{
