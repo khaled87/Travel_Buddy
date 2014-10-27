@@ -340,9 +340,10 @@ productCatalogueControllers.controller('ProductDetailCtrl', ['$scope', '$locatio
 
 productCatalogueControllers.controller('ProductDeleteCtrl', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy',
     function($scope, $location, $routeParams, ProductCatalogueProxy) {
-        ProductCatalogueProxy.canDelete($routeParams.id).success(function(result) {
+        var id = $routeParams.id;
+        ProductCatalogueProxy.canDelete(id).success(function(result) {
             if (result.value === true) {
-                ProductCatalogueProxy.deletePackage($routeParams.id).success(function() {
+                ProductCatalogueProxy.deletePackage(id).success(function() {
                 }).error(function(e) {
                     console.log(e);
                 });

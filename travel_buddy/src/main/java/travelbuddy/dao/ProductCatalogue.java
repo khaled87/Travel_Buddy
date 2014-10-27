@@ -68,7 +68,7 @@ public class ProductCatalogue extends AbstractDAO<Product, Long>
         Product p = find(id);
         if (p != null) {
             if (p.getHotel() != null) {
-                em.remove(p.getHotel().getId());
+                em.remove(p.getHotel());
             }
             if (p.getFlights() != null) {
                 for (Trip trip : p.getFlights()) {
