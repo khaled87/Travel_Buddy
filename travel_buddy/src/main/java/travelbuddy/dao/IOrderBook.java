@@ -11,6 +11,9 @@ import travelbuddy.entity.*;
 @Local
 public interface IOrderBook extends IDAO<PurchaseOrder, Long> {
     public boolean anyOrderWithProductId(Long id);
+<<<<<<< HEAD
     public String createPurchaseOrder(PurchaseOrder po);
     public PurchaseOrder getPurchaseOrder(String confirmationCode);
+=======
+>>>>>>> origin/master
 }
