@@ -220,14 +220,9 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
     }
 ]);
 
-<<<<<<< HEAD
 productCatalogueControllers.controller('CreditcardController', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
     function($scope, $location, $routeParams, ProductCatalogueProxy, PackageProxy) {
         debugger;
-=======
-productCatalogueControllers.controller('CreditcardController', ['$scope', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
-    function($scope, $routeParams, ProductCatalogueProxy, PackageProxy) {
->>>>>>> origin/master
         PackageProxy.find($routeParams.id).success(function(product) {
             console.log(product);
             $scope.product = product;
