@@ -38,8 +38,9 @@ public class CreditcardResource {
         BankResponse br = bankProxy.verify(pi);
         
         if (br.getOk().equals("okay")) {
-            orderBook.create(po);
+           br.setConfirmationCode(orderBook.createPurchaseOrder(po));
         }
+        
         
         return Response.ok(new GenericEntity<BankResponse>(br) {
         }).build();

@@ -15,6 +15,17 @@ productCatalogueControllers.controller('NavigationCtrl', ['$scope', '$location',
         };
     }]);
 
+productCatalogueControllers.controller('ConfirmationCtrl', ['$scope', '$location', '$routeParams', 'PackageProxy',
+    function ($scope, $location, $routeParams, PackageProxy) {
+        PackageProxy.getPurchaseOrder($routeParams.id)
+                .success(function (purchaseOrder) {
+                    //$scope.purchaseOrder = purchaseOrder;
+                    alert('purchaseorder' + purchaseOrder);
+                }).error(function () {
+            console.log("purchaseOrder: error");
+        });
+    }]);
+
 productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'PackageProxy',
     function($scope, PackageProxy) {
         $scope.pageSize = '9';
@@ -205,8 +216,8 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
     }
 ]);
 
-productCatalogueControllers.controller('CreditcardController', ['$scope', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
-    function($scope, $routeParams, ProductCatalogueProxy, PackageProxy) {
+productCatalogueControllers.controller('CreditcardController', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
+    function($scope, $location, $routeParams, ProductCatalogueProxy, PackageProxy) {
         debugger;
         PackageProxy.find($routeParams.id).success(function(product) {
             debugger;
@@ -227,7 +238,7 @@ productCatalogueControllers.controller('CreditcardController', ['$scope', '$rout
            ProductCatalogueProxy.verify(paymentInfo).success(function(bankResponse) {
                 if(bankResponse.ok.equals("okay"))
                 {
-                    alert("payment ok");
+                    $location.path("/confirmation/" + bankResponse.confirmationCode);
                 }
                 else if(bankResponse.err.equals("accountErr"))
                 {

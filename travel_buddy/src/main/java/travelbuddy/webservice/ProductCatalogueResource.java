@@ -10,12 +10,16 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import travelbuddy.dao.IOrderBook;
+import travelbuddy.entity.PurchaseOrder;
 
 @Path("/products")
 public class ProductCatalogueResource {
 
     @EJB
     private IProductCatalogue productCatalogue;
+      @EJB
+    private IOrderBook orderBook;
 
     @GET
     @Path("range")
@@ -41,4 +45,11 @@ public class ProductCatalogueResource {
         return Response.ok(new GenericEntity<JsonObject>(count) {
         }).build();
     }
+    @GET
+    @Path("confirmation/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getPurchaseOrder(@PathParam("id") String confirmationCode) {
+        return Response.ok(new GenericEntity<PurchaseOrder>(orderBook.getPurchaseOrder(confirmationCode)) {
+        }).build();
+    } 
 }

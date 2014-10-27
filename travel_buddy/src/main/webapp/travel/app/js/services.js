@@ -32,7 +32,7 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
 productCatalogueService.factory('PackageProxy', ['$http',
     function($http) {
         var url = 'http://localhost:8080/travel_buddy/api/v1/products';
-
+     
         return {
             findAll: function() {
                 return $http.get(url);
@@ -45,6 +45,20 @@ productCatalogueService.factory('PackageProxy', ['$http',
             },
             count: function() {
                 return $http.get(url + "/count");
+            },
+            getPurchaseOrder: function(id) {
+                return $http.get(url+ "/" + "confirmation" + "/" + id);
+            }
+        };
+    }]);
+
+productCatalogueService.factory('ConfirmationProxy', ['$http',
+    function($http) {
+        var url = 'http://localhost:8080/travel_buddy/api/v1/confirmation';
+
+        return {
+            getPurchaseOrder: function() {
+                return $http.get(url + "id");
             }
         };
     }]);

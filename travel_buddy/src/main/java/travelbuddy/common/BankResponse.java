@@ -6,6 +6,7 @@ package travelbuddy.common;
 public class BankResponse {
     String err;
     String ok;
+    String confirmationCode;
 
     public String getErr() {
         return err;
@@ -31,5 +32,13 @@ public class BankResponse {
     public BankResponse(String err, String ok) {
         this.err = err;
         this.ok = ok;
+    }
+
+    public String getConfirmationCode() {
+        return confirmationCode;
+    }
+
+    public void setConfirmationCode(String ConfirmationCode) {
+        this.confirmationCode = ConfirmationCode;
     }
 }

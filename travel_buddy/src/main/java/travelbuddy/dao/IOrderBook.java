@@ -11,4 +11,8 @@ import travelbuddy.entity.*;
 @Local
 public interface IOrderBook extends IDAO<PurchaseOrder, Long> {
 
+    public String createPurchaseOrder(PurchaseOrder po);
+     public PurchaseOrder getPurchaseOrder(String confirmationCode);
+    
+
 }
