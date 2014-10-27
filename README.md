@@ -8,6 +8,13 @@ Screenshots
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-2-product.png)
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-3-admin.png)
 
+Diagrams
+--------
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Class diagram.jpg)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Data model.jpg)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Deployment diagram.jpg)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Package diagram.jpg)
+
 Version
 -------
 1.0
