@@ -2,6 +2,12 @@ TravelBuddy
 ============
 TravelBuddy is a travel agency website.
 
+Screenshots
+-----------
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-1-home.png)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-2-product.png)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-3-admin.png)
+
 Version
 -------
 1.0
