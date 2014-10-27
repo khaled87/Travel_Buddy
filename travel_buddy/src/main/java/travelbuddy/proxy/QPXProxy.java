@@ -193,7 +193,6 @@ public class QPXProxy implements IQPXProxy {
         Trip trip = new Trip();
         trip.setSaleTotal(saleTotal);
         trip.setMaxFreeBaggage(prevMaxFreeBaggage);
-        System.out.println("SKITSKALLE " + subtrip.get(0).getArrivalTime());
         trip.setSubtripList(subtrip);
         tripList.add(trip);
         subtrip.clear();
