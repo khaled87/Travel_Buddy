@@ -369,3 +369,10 @@ productCatalogueControllers.controller('ProductDeleteCtrl', ['$scope', '$locatio
     }
 ]);
        
+productCatalogueControllers.controller('OrdersCtrl', ['$scope', '$location',
+    function($scope, $location) {
+        $scope.getOrder = function(confirmationCode) {
+            $location.path("/confirmation/" + confirmationCode);
+        };
+    }
+]);

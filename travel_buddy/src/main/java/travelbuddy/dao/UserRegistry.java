@@ -10,10 +10,8 @@ import javax.persistence.TypedQuery;
 import javax.xml.bind.DatatypeConverter;
 
 /**
- * All orders
- *
- * @author hajo
- */
+* UserRegistry is a DAO to handle user manipulation (CRUD) and login
+*/
 @Stateless
 public class UserRegistry extends AbstractDAO<TBUser, Long>
         implements IUserRegistry {
@@ -71,6 +69,11 @@ public class UserRegistry extends AbstractDAO<TBUser, Long>
         }
     }
     
+    /**
+    * Log user in the system
+    * @param auth encoded authentication credentials
+    * @return user having the provided credentials and null if not found.
+    */
     @Override
     public TBUser login(String auth) {
         byte[] base64 = DatatypeConverter.parseBase64Binary(auth.split(" ")[1].trim());

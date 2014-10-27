@@ -25,6 +25,10 @@ import travelbuddy.entity.Trip;
 import travelbuddy.proxy.IEANProxy;
 import travelbuddy.proxy.IQPXProxy;
 
+/**
+* The travel resource which shall be used (and can only be used) by the Administrators.
+* This service helps create and delete packages.
+*/
 @Path("/travels")
 public class TravelResource {
 

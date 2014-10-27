@@ -1,7 +1,13 @@
-
-<!--Body content-->
 <div>
-   
-    <h2>Orders</h2>
-
+    <table class="table" style="margin:auto;">
+        <h2>Orders</h2>
+        <tr>
+            <td>Confirmation Code: </td>
+            <td><input type="text" ng-model="confirmationCode" value="{{confirmationCode}}" ng-required="required"/></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td><input type="button" class="btn btn-default" value="Search" ng-click="getOrder()"/></td>
+        </tr>
+    </table>
 </div>

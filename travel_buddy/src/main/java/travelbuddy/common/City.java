@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package travelbuddy.common;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 
-
+/**
+* The city class contains all of the supported cities and their codes.
+* By now we don't have a convenient way to convert city names to city codes.
+*/
 public class City {
-
-    /*public static void main(String[] args) {
-        City city = new City();
-        city.setAbbrev();
-        city.getCityAbbrev("gOthenburg");
-    }*/
     HashMap cities = new HashMap();
 
     public void createAbbrevList() {

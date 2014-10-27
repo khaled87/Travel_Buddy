@@ -9,6 +9,9 @@ import javax.ws.rs.core.Response;
 import travelbuddy.dao.IUserRegistry;
 import travelbuddy.entity.TBUser;
 
+/**
+* The authentication service.
+*/
 @Path("/auth")
 public class AuthService {
     @EJB

@@ -24,7 +24,8 @@ shop.config(['$routeProvider',
                     controller: 'ProductDeleteCtrl'
                 }).
                 when('/orders', {
-                    templateUrl: 'partials/orders/orders.html'
+                    templateUrl: 'partials/orders/orders.html',
+                    controller: 'OrdersCtrl'
                 }).
                 when('/confirmation/:id', {
                     templateUrl: 'partials/orders/confirmation.html',

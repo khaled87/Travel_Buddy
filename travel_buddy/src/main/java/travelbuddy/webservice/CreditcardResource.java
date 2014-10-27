@@ -10,7 +10,10 @@ import travelbuddy.common.PaymentInfo;
 import travelbuddy.dao.IOrderBook;
 import travelbuddy.entity.*;
 import travelbuddy.proxy.IBankProxy;
- 
+
+/**
+* The credit card resource is used in the payment process.
+*/
 @Path("/creditcard")
 public class CreditcardResource {
     

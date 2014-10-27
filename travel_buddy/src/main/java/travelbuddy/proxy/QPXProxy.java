@@ -8,16 +8,18 @@ import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.stream.JsonParser;
 import travelbuddy.common.BasicQPXRequest;
-import travelbuddy.common.FlightInfo;
 import travelbuddy.entity.SubTrip;
 import travelbuddy.entity.Trip;
 
+/**
+* The QPX Proxy is the communicator between TravelBuddy and the flight booking API: QPX Express API.
+* https://developers.google.com/qpx-express/
+*/
 @Stateless
 public class QPXProxy implements IQPXProxy {
 
     private final String url = "https://www.googleapis.com/qpxExpress/v1/trips/search?key=";
     private final String ApiKey = "AIzaSyC3OAnGCXMYwYHyTjB-9_wIhxCC31eiV7E";
-    private List<FlightInfo> FlightInfoList = new ArrayList<>();
     //private List<Slice>slices = new ArrayList<>();
     //private List<Leg>leg = new ArrayList<>();
     //private final Slice slice = new Slice();
@@ -45,6 +47,7 @@ public class QPXProxy implements IQPXProxy {
         return parseToFlightInfo(value);
     }
     
+    // Only for test
     public Collection<Trip> getFlightList() {
         //String value = RequestHandler.execute(RequestHandler.RequestMethod.POST, url + ApiKey, fr.toParam());
         // System.out.println("TITTA HÄÄÄÄR" + value);

@@ -11,6 +11,9 @@ import javax.persistence.TypedQuery;
 import travelbuddy.common.EmailSender;
 import travelbuddy.common.SessionIdentifierGenerator;
 
+/**
+* OrderBook is a DAO to handle bookings from customers
+*/
 @Stateless
 public class OrderBook extends AbstractDAO<PurchaseOrder, Long>
         implements IOrderBook {

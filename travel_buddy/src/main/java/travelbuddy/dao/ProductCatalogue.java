@@ -9,21 +9,14 @@ import javax.persistence.TypedQuery;
 import travelbuddy.entity.*;
 
 /**
- * All products
- *
- * @author hajo
- */
+* ProductCatalogue is a DAO to handle product manipulation (CRUD)
+*/
 @Stateless
 public class ProductCatalogue extends AbstractDAO<Product, Long>
         implements IProductCatalogue {
 
     protected ProductCatalogue() {
         super(Product.class);
-    }
-
-    // Factory method
-    public static IProductCatalogue newInstance() {
-        return new ProductCatalogue();
     }
 
     @Override

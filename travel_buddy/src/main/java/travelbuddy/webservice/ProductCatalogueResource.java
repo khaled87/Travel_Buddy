@@ -13,6 +13,9 @@ import javax.ws.rs.core.Response;
 import travelbuddy.dao.IOrderBook;
 import travelbuddy.entity.PurchaseOrder;
 
+/**
+* The product catalogue resource which shall be used by the customers.
+*/
 @Path("/products")
 public class ProductCatalogueResource {
 

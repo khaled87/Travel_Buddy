@@ -68,6 +68,10 @@ public class BasicEANRequest {
         this.cacheLocation = cacheLocation;
     }
     
+    /**
+    * Create a REST parameter string conforming with EAN API based on the current data.
+    * @return the EAN REST parameter string.
+    */
     public String toRESTParamString() {
         List<Field> allFields = new ArrayList<>();
         getAllFields(allFields, this.getClass());

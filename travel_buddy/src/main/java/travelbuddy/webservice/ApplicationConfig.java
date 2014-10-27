@@ -27,7 +27,6 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(travelbuddy.webservice.AuthFilter.class);
         resources.add(travelbuddy.webservice.AuthService.class);
-        resources.add(travelbuddy.webservice.ConfirmationResource.class);
         resources.add(travelbuddy.webservice.CreditcardResource.class);
         resources.add(travelbuddy.webservice.ProductCatalogueResource.class);
         resources.add(travelbuddy.webservice.TravelResource.class);
