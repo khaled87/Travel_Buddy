@@ -10,6 +10,10 @@ Screenshots
 
 Diagrams
 --------
+Layered view
+
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Layered view.jpg)
+
 Class diagram
 
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Class diagram.jpg)
