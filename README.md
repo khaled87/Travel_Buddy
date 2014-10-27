@@ -2,6 +2,11 @@ TravelBuddy
 ============
 TravelBuddy is a travel agency website.
 
+Documentation
+-------------
+
+[Documentation] - Documentation pdf
+
 Screenshots
 -----------
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-1-home.png)
@@ -22,10 +27,6 @@ Data Model
 
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Data model.jpg)
 
-Package Diagram
-
-![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Package diagram.jpg)
-
 Component Diagram
 
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Component diagram .jpg)
@@ -34,6 +35,9 @@ Deployment Diagram
 
 ![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Deployment diagram.jpg)
 
+Package Diagram
+
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/Package diagram.jpg)
 
 Version
 -------
@@ -59,3 +63,4 @@ MIT
 
 [Expedia Affiliate Network (EAN)]:http://developer.ean.com/
 [QPX Express API]:https://developers.google.com/qpx-express/
+[Documentation]:https://github.com/khaled87/Travel_Buddy/blob/master/FinalDocument.pdf
