@@ -30,6 +30,7 @@ public class CreditcardResource {
     public Response verify(JsonObject jsonObject) {
         PurchaseOrder po = new PurchaseOrder();
         Product p = getProduct(jsonObject.getJsonObject("product"));
+        po.setUserFullName(jsonObject.getString("holder"));
         po.setProduct(p);
         po.setUserEmail(jsonObject.getString("email"));
         

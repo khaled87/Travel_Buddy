@@ -1,73 +1,129 @@
 
 <div align="center" >
-    <table class = "confirmation">
+    <h3> Purchase Information</h3>
+    <table class = "table">
+        <tr>
+            <th>
+                Name     
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Confirmation Code
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+        <tr>
+            <td> 
+                {{purchaseOrder.userFullName}}    
+            </td>                
+            <td> 
+                {{purchaseOrder.userEmail}}    
+            </td>
+            <td>
+                {{purchaseOrder.confirmationCode}}
+            </td>
+            <td>
+                {{purchaseOrder.date}}
+            </td>
+            <td>
+                Paid
+            </td>
+        </tr>
         
+    </table>
+    <h3> Hotel Information</h3>
+    <table class = "table">
         <tr>
             <th>
-                Origin
+                Name     
             </th>
             <th>
-                Departure time
+                Address    
             </th>
             <th>
-                Destination
+                Price   
             </th>
-            <th>
-                Arrival Timeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </th>
-            <th>
-                Max kilo
-            </th>
-            <th>
-                Meal
-            </th>
-            <th>
-                Price
-            </th>
+
         </tr>
         <tr>
-            <td >
-                Row 1
-            </td>
-            <td>
-                Row 1
-            </td>
-            <td>
-                Row 1
-            </td>
+            <td> 
+                {{purchaseOrder.product.hotel.name}}    
+            </td>  
+
+            <td> 
+                {{purchaseOrder.product.hotel.address1}}    
+            </td>  
+            <td> 
+                {{purchaseOrder.product.hotel.price}}    
+            </td> 
+
         </tr>
-        <tr>
-            <td >
-                Row 2
-            </td>
+        
+    </table>
+    <h3> Flight information</h3>
+    <table class = "table">
+        <tr ng-repeat="trip in purchaseOrder.product.trips">
             <td>
-                Row 2
-            </td>
-            <td>
-                Row 2
-            </td>
+                <table style="width:100%">
+                    <tr>
+                        <th>
+                            Origin
+                        </th>
+                        <th>
+                            Departure time
+                        </th>
+                        <th>
+                            Destination
+                        </th>
+                        <th>
+                            Arrival Time
+                        </th>
+                        <th>
+                            Max kilo
+                        </th>
+                        <th>
+                            Meal
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                    <tr ng-repeat="subTrip in trip.subtripList">
+
+                        <td>
+                            {{subTrip.origin}}
+                        </td>
+                        <td>
+                            {{subTrip.departureTime}}
+                        </td>
+                        <td>
+                            {{subTrip.destination}}
+                        </td>
+                        <td>
+                            {{subTrip.arrivalTime}}
+                        </td>
+                        <td>
+                            {{trip.maxFreeBaggage}}
+                        </td>
+                        <td>
+                            {{subTrip.meal}}
+                        </td>
+                        <td>
+                            {{trip.saleTotal}}
+                        </td>
+                    </tr>
+                </table>
+            </td> 
         </tr>
-        <tr>
-            <td >
-                Row 2
-            </td>
-            <td>
-                Row 2
-            </td>
-            <td>
-                Row 2
-            </td>
-        </tr>
-        <tr>
-            <td >
-                Row 3
-            </td>
-            <td>
-                Row 3
-            </td>
-            <td>
-                Row 3
-            </td>
-        </tr>
+
+
+
     </table>
 </div>
