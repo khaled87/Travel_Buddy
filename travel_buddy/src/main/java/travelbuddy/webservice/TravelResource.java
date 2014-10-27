@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.json.Json;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.Response;
 import travelbuddy.common.BasicQPXRequest;
 import travelbuddy.common.City;
 import travelbuddy.common.HotelRequest;
+import travelbuddy.dao.IOrderBook;
 import travelbuddy.dao.IProductCatalogue;
 import travelbuddy.entity.Hotel;
 import travelbuddy.entity.Product;
@@ -34,6 +36,9 @@ public class TravelResource {
 
     @EJB
     private IProductCatalogue productCatalogue;
+    
+    @EJB
+    private IOrderBook orderBook;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -113,5 +118,13 @@ public class TravelResource {
         r = Response.ok(new GenericEntity<Collection<Hotel>>(eanProxy.getHotels(hr).getHotelList()) {
         }).build();
         return r;
+    }
+    
+    @GET
+    @Path("candelete/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response canDelete(@PathParam("id") final long id) {
+        JsonObject result = Json.createObjectBuilder().add("value", !orderBook.anyOrderWithProductId(id)).build();
+        return Response.ok(new GenericEntity<JsonObject>(result) {}).build();
     }
 }

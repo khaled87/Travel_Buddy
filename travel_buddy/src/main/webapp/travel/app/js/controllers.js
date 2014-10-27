@@ -44,8 +44,6 @@ productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'PackagePro
             var fst = $scope.pageSize * $scope.currentPage;
             PackageProxy.findRange(fst, $scope.pageSize)
                     .success(function(products) {
-                        debugger;
-                        console.log(products);
                         $scope.products = products;
                         createDashboard($scope.products);
                     }).error(function() {
@@ -53,7 +51,13 @@ productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'PackagePro
             });
         }
         var createDashboard = function (dataSource) {
-            $.get("partials/products/product-detail.html", function (detail) {
+            debugger;
+            var user = angular.element($("#headerPadding")).scope().user;
+            var productdetail = "partials/products/product-detail.html";
+            if (user !== null && user !== undefined && user.role === 'ADMIN') {
+                productdetail = "partials/products/product-detail-admin.html";
+            }
+            $.get(productdetail, function (detail) {
                 $.get("partials/products/product-overview.html", function (overview) {
                     var options = {
                         marginLeft: 0,
@@ -216,11 +220,15 @@ productCatalogueControllers.controller('AdminController', ['$scope', 'ProductCat
     }
 ]);
 
+<<<<<<< HEAD
+productCatalogueControllers.controller('CreditcardController', ['$scope', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
+    function($scope, $routeParams, ProductCatalogueProxy, PackageProxy) {
+=======
 productCatalogueControllers.controller('CreditcardController', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy', 'PackageProxy',
     function($scope, $location, $routeParams, ProductCatalogueProxy, PackageProxy) {
         debugger;
+>>>>>>> Confirmation
         PackageProxy.find($routeParams.id).success(function(product) {
-            debugger;
             console.log(product);
             $scope.product = product;
         }).error(function(e) {
@@ -257,8 +265,6 @@ productCatalogueControllers.controller('CreditcardController', ['$scope', '$loca
     }
 ]);
 
-
-
 productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieStore', '$location', 
     function ($scope, Auth, $cookieStore, $location) {
         var showAuthorizedControls = function(isAdmin) {
@@ -280,6 +286,8 @@ productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieSt
             $("#signInBtn").show();
         };
         
+        hideAuthorizedControls();
+        
         $scope.login = function (redirect) {
             Auth.login($scope.user.name, $scope.user.password)
                 .success(function (user) {
@@ -296,12 +304,13 @@ productCatalogueControllers.controller('homeCtrl', ['$scope', 'Auth', '$cookieSt
                     }
                 }).error(function () {
                     Auth.clearCredentials();
-                    $scope.message = "Bad credentials";
+                    hideAuthorizedControls();
                     console.log("Bad credentials!");
                 });
         };
 
         $scope.logout = function() {
+            $scope.user = null;
             Auth.clearCredentials();
             hideAuthorizedControls();
             $cookieStore.remove('user');
@@ -343,6 +352,25 @@ productCatalogueControllers.controller('ProductDetailCtrl', ['$scope', '$locatio
                 console.log(e);
             });
         };
+    }
+]);
+
+productCatalogueControllers.controller('ProductDeleteCtrl', ['$scope', '$location', '$routeParams', 'ProductCatalogueProxy',
+    function($scope, $location, $routeParams, ProductCatalogueProxy) {
+        var id = $routeParams.id;
+        ProductCatalogueProxy.canDelete(id).success(function(result) {
+            if (result.value === true) {
+                ProductCatalogueProxy.deletePackage(id).success(function() {
+                }).error(function(e) {
+                    console.log(e);
+                });
+            } else {
+                alert('Cannot delete this package. There are customers having already booked it.');
+            }
+        }).error(function(e) {
+            console.log(e);
+        });
+        $location.path('/products');
     }
 ]);
        

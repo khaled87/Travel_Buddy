@@ -25,6 +25,9 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
             },
             verify: function(paymentInfo){
                  return $http.post(urlBank+"/verify", paymentInfo);
+            },
+            canDelete: function(id) {
+                return $http.get(url + "/candelete/" + id);
             }
         };
     }]);

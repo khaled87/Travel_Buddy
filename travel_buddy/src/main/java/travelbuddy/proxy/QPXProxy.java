@@ -41,6 +41,11 @@ public class QPXProxy implements IQPXProxy {
 
     @Override
     public Collection<Trip> getFlightList(BasicQPXRequest fr) {
+        String value = RequestHandler.execute(RequestHandler.RequestMethod.POST, url + ApiKey, fr.toParam());
+        return parseToFlightInfo(value);
+    }
+    
+    public Collection<Trip> getFlightList() {
         //String value = RequestHandler.execute(RequestHandler.RequestMethod.POST, url + ApiKey, fr.toParam());
         // System.out.println("TITTA HÄÄÄÄR" + value);
         String value = "{\n" +

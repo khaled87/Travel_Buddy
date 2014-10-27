@@ -62,4 +62,21 @@ public class ProductCatalogue extends AbstractDAO<Product, Long>
         }
         super.create(p);
     }
+    
+    @Override
+    public void delete(Long id) {
+        Product p = find(id);
+        if (p != null) {
+            if (p.getHotel() != null) {
+                em.remove(p.getHotel());
+            }
+            if (p.getFlights() != null) {
+                for (Trip trip : p.getFlights()) {
+                    em.remove(trip);
+                    p.getFlights().remove(trip);
+                }
+            }
+            super.delete(id);
+        }
+    }
 }

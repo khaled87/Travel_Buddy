@@ -2,6 +2,12 @@ TravelBuddy
 ============
 TravelBuddy is a travel agency website.
 
+Screenshots
+-----------
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-1-home.png)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-2-product.png)
+![alt tag](https://github.com/khaled87/Travel_Buddy/blob/master/screenshot-3-admin.png)
+
 Version
 -------
 1.0
@@ -12,12 +18,12 @@ The website is built using HTML5, jQuery, jAngular, Restful Webservices.
 
 The website also uses external web APIs:
 - [Expedia Affiliate Network (EAN)] - hotel booking API
-- [Travelport] - flight booking API
-- [Google Map] - map API
+- [QPX Express API] - flight booking API
 
 Setup
 -----
 Development Database URL: jdbc:derby://localhost:1527/travelbuddy
+
 Test Database URL: jdbc:derby://localhost:1527/travelbuddy_test
 
 License
@@ -25,5 +31,4 @@ License
 MIT
 
 [Expedia Affiliate Network (EAN)]:http://developer.ean.com/
-[Travelport]:http://www.travelport.com/
-[Google Map]: http://maps.google.com
+[QPX Express API]:https://developers.google.com/qpx-express/

@@ -15,17 +15,13 @@ shop.config(['$routeProvider',
                 when('/home', {
                     templateUrl: 'partials/home/home.html'
                 }).
-                when('/user', {
-                    templateUrl: 'partials/users/user-detail.html',
-                    controller: 'AdminController'
-                }).
                 when('/products', {
                     templateUrl: 'partials/products/products.html',
                     controller: 'ProductListCtrl'
                 }).
-                when('/products/:id', {
+                when('/products/delete/:id', {
                     templateUrl: 'partials/products/products.html',
-                    controller: 'ProductDetailCtrl'
+                    controller: 'ProductDeleteCtrl'
                 }).
                 when('/orders', {
                     templateUrl: 'partials/orders/orders.html'
